@@ -1,5 +1,6 @@
 package FrameWork;
 
+import Test.PerformanceTest;
 import Test.PassTest;
 import Utils.WriteToLog;
 import org.openqa.selenium.remote.BrowserType;
@@ -20,7 +21,7 @@ public class Runner {
 
 //            new Thread(new VersionCheck(BrowserType.CHROME,"67")).start();
 //            new Thread(new VersionCheck(BrowserType.CHROME,"66")).start();
-            new Thread(new PassTest(BrowserType.FIREFOX)).start();
+//            new Thread(new PassTest(BrowserType.FIREFOX)).start();
 //            new Thread(new PassTest(BrowserType.CHROME)).start();
 //            new Thread(new PassTest(BrowserType.IE)).start();
 //            new Thread(new PassTest(BrowserType.SAFARI)).start();
@@ -37,10 +38,10 @@ public class Runner {
 //            new Thread(new Basic(BrowserType.SAFARI)).start();
 //            new Thread(new Basic(BrowserType.IE)).start();
 //
-//            new Thread(new LongTest(BrowserType.CHROME)).start();
-//            new Thread(new LongTest(BrowserType.FIREFOX)).start();
-//            new Thread(new LongTest(BrowserType.SAFARI)).start();
-//            new Thread(new LongTest(BrowserType.IE)).start();
+//            new Thread(new PerformanceTest(BrowserType.CHROME)).start();
+//            new Thread(new PerformanceTest(BrowserType.FIREFOX)).start();
+//            new Thread(new PerformanceTest(BrowserType.SAFARI)).start();
+            new Thread(new PerformanceTest(BrowserType.IE)).start();
 //
 //            new Thread(new AccessKeyTest(BrowserType.IE)).start();
 //            new Thread(new AccessKeyTest(BrowserType.FIREFOX)).start();
@@ -53,10 +54,10 @@ public class Runner {
 //            new Thread(new PassTest(BrowserType.IE)).start();
 //
 //
-//            new Thread(new LongTest(BrowserType.CHROME)).start();
-//            new Thread(new LongTest(BrowserType.FIREFOX)).start();
-//            new Thread(new LongTest(BrowserType.SAFARI)).start();
-//            new Thread(new LongTest(BrowserType.IE)).start();
+//            new Thread(new PerformanceTest(BrowserType.CHROME)).start();
+//            new Thread(new PerformanceTest(BrowserType.FIREFOX)).start();
+//            new Thread(new PerformanceTest(BrowserType.SAFARI)).start();
+//            new Thread(new PerformanceTest(BrowserType.IE)).start();
 
             System.out.println(">>>>>>>>>>>>>>>>> Test #" + j + " <<<<<<<<<<<<<<<<<<<<<<<");
             j++;

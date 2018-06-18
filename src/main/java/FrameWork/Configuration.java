@@ -11,8 +11,8 @@ import static FrameWork.Credentials.*;
 
 public class Configuration {
     public Configuration() {
-        CloudServerName cloudName = CloudServerName.ARIEL_MAC_USER;
-//        CloudServerName cloudName = CloudServerName.ARIEL_MAC_PRO_ADMIN;
+//        CloudServerName cloudName = CloudServerName.ARIEL_MAC_USER;
+        CloudServerName cloudName = CloudServerName.ARIEL_MAC_PRO_ADMIN;
 //        CloudServerName cloudName = CloudServerName.ARIEL_MAC_SECURE_ADMIN;
 //        CloudServerName cloudName = CloudServerName.ARIEL_MAC_ADMIN;
 //        CloudServerName cloudName = CloudServerName.MASTER_CLOUD;

@@ -1,6 +1,6 @@
 package FrameWork;
 
-import Test.LongTest;
+import Test.PerformanceTest;
 import Test.VersionCheckOneByOne;
 import Utils.WriteToLog;
 import org.openqa.selenium.remote.BrowserType;
@@ -15,7 +15,7 @@ public class Suits {
 
         WriteToLog.writeFirstTime();
 
-        testAgent(25, 30, 7);
+        testAgent(25, 500, 7);
 
 //        fastTests(30, 1);
 //        testIE(10, 1);
@@ -34,12 +34,12 @@ public class Suits {
             executor = Executors.newFixedThreadPool(numOfThreads);
 
             for (int j = 0; j < numOfSet; j++) {
-//                executor.execute(new LongTest(BrowserType.CHROME));
-                executor.execute(new LongTest(BrowserType.FIREFOX));
+                executor.execute(new PerformanceTest(BrowserType.CHROME));
+                executor.execute(new PerformanceTest(BrowserType.FIREFOX));
             }
-//            executor.execute(new LongTest(BrowserType.SAFARI));
-//            executor.execute(new LongTest(BrowserType.IE));
-//            executor.execute(new LongTest(BrowserType.IE));
+            executor.execute(new PerformanceTest(BrowserType.SAFARI));
+            executor.execute(new PerformanceTest(BrowserType.IE));
+            executor.execute(new PerformanceTest(BrowserType.IE));
 
             executor.shutdown();
             while (!executor.isTerminated()) {
@@ -56,11 +56,11 @@ public class Suits {
         ExecutorService executor;
         for (int i = 1; i < numOfReturns + 1; i++) {
             executor = Executors.newFixedThreadPool(numOfThreads);
-            executor.execute(new LongTest(BrowserType.IE));
+            executor.execute(new PerformanceTest(BrowserType.IE));
 //            executor.execute(new FailTest.IE());
 //            executor.execute(new PassTest(s));
 //            executor.execute(new AccessKeyTest(s));
-//            executor.execute(new LongTest(s));
+//            executor.execute(new PerformanceTest(s));
 //            executor.execute(new SpeedTestGenerateReport.IE());
 //            executor.execute(new SpeedTestScreenshots.IE());
 
@@ -77,7 +77,7 @@ public class Suits {
 
         for (int i = 0; i < numOfReturns; i++) {
             executor = Executors.newFixedThreadPool(numOfThreads);
-            executor.execute(new LongTest(BrowserType.SAFARI));
+            executor.execute(new PerformanceTest(BrowserType.SAFARI));
 //            executor.execute(new FailTest.Safari());
 //            executor.execute(new PassTest(BrowserType.SAFARI));
 //            executor.execute(new AccessKeyTest(BrowserType.SAFARI));
@@ -111,10 +111,10 @@ public class Suits {
 
         for (int i = 0; i < numOfReturns; i++) {
             executor = Executors.newFixedThreadPool(numOfThreads);
-            executor.execute(new LongTest(BrowserType.FIREFOX));
-            executor.execute(new LongTest(BrowserType.CHROME));
-//            executor.execute(new LongTest(BrowserType.IE));
-            executor.execute(new LongTest(BrowserType.SAFARI));
+            executor.execute(new PerformanceTest(BrowserType.FIREFOX));
+            executor.execute(new PerformanceTest(BrowserType.CHROME));
+//            executor.execute(new PerformanceTest(BrowserType.IE));
+            executor.execute(new PerformanceTest(BrowserType.SAFARI));
 
             executor.shutdown();
             while (!executor.isTerminated()) {

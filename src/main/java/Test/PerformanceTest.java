@@ -19,9 +19,9 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by ariel.hazan on 02-Jan-18.
  */
-public class LongTest extends TestBase {
+public class PerformanceTest extends TestBase {
 
-    public LongTest(String browserType) {
+    public PerformanceTest(String browserType) {
         this.browserType = browserType;
         testName = this.getClass().getSimpleName() + " Test " + browserType;
         dc.setCapability("testName", testName);
@@ -35,8 +35,8 @@ public class LongTest extends TestBase {
         driver = new RemoteWebDriver(url, dc);
 
         if (!browserType.equals(BrowserType.IE)) {
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            driver.manage().timeouts().pageLoadTimeout(90, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+            driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
         }
         driver.get("http://192.168.1.64/index.html#/login");
         WebElement username = driver.findElement(By.xpath("//*[@name=\"username\"]"));
