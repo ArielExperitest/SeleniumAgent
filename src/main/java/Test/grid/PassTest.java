@@ -1,13 +1,13 @@
-package Test;
+package Test.grid;
 
 import FrameWork.TestBase;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 
-public class IncompleteTest extends TestBase {
+public class PassTest extends TestBase {
 
-    public IncompleteTest(String browserType) {
+    public PassTest(String browserType) {
         this.browserType = browserType;
         testName = this.getClass().getSimpleName() + " Test " + browserType;
         dc.setCapability("testName", testName);
@@ -16,7 +16,6 @@ public class IncompleteTest extends TestBase {
 
     @Override
     public void test() {
-        dc.setCapability("newSessionWaitTimeout", 1);
         driver = new RemoteWebDriver(url, dc);
         driver.get("https://www.ynet.co.il");
     }

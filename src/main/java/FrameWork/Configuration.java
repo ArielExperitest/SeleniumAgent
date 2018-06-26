@@ -10,15 +10,15 @@ import java.net.URL;
 import static FrameWork.Credentials.*;
 
 public class Configuration {
-    public Configuration() {
+    Configuration() {
 //        CloudServerName cloudName = CloudServerName.ARIEL_MAC_USER;
-        CloudServerName cloudName = CloudServerName.ARIEL_MAC_PRO_ADMIN;
-//        CloudServerName cloudName = CloudServerName.ARIEL_MAC_SECURE_ADMIN;
+//        CloudServerName cloudName = CloudServerName.ARIEL_MAC_PRO_ADMIN;
 //        CloudServerName cloudName = CloudServerName.ARIEL_MAC_ADMIN;
+//        CloudServerName cloudName = CloudServerName.ARIEL_MAC_SECURE_ADMIN;
 //        CloudServerName cloudName = CloudServerName.MASTER_CLOUD;
 //        CloudServerName cloudName = CloudServerName.YORAM;
 
-//        CloudServerName cloudName = CloudServerName.ARIEL_WIN_ADMIN;
+        CloudServerName cloudName = CloudServerName.ARIEL_WIN_ADMIN;
 //        CloudServerName cloudName = CloudServerName.ARIEL_WIN_SECURE_ADMIN;
 //     CloudServerName cloudName = CloudServerName.QA_SECURE_USER
 
@@ -50,7 +50,7 @@ public class Configuration {
         dc.setCapability("generateReport", true);
         dc.setCapability("newCommandTimeout", 500);//default is 300
         dc.setCapability("newSessionWaitTimeout", 500);//default is 300
-//        dc.setCapability(CapabilityType.BROWSER_VERSION, "60.0.2");
+//        dc.setCapability(CapabilityType.BROWSER_VERSION, "61.0b9");
 //        dc.setCapability(CapabilityType.PLATFORM_NAME, Platform.MAC);
 //        dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
     }

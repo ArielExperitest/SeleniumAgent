@@ -1,4 +1,4 @@
-package Test;
+package Test.grid;
 
 import FrameWork.TestBase;
 import org.openqa.selenium.By;
@@ -38,7 +38,6 @@ public class SpeedTestGenerateReport extends TestBase {
         driver.quit();
         if (fast > slow) {
             System.out.println(">>>> Speed Generate Report Test on " + browserType + " has failed.");
-
         }
     }
 
@@ -67,13 +66,5 @@ public class SpeedTestGenerateReport extends TestBase {
             i++;
         }
 
-    }
-
-    private void sleep(int time) {
-        try {
-            Thread.sleep(time);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }

@@ -1,10 +1,9 @@
-package Test;
+package Test.grid;
 
 import FrameWork.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
 
 /**
  * Created by ariel.hazan on 28-Nov-17
@@ -66,14 +65,6 @@ public class SpeedTestScreenshots extends TestBase {
             driver.findElement(By.xpath("//*[@id=\"side-menu\"]/li[4]")).click();
             sleep(1500);
             i++;
-        }
-    }
-
-    private void sleep(int time) {
-        try {
-            Thread.sleep(time);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 }

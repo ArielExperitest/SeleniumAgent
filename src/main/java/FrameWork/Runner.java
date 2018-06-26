@@ -1,7 +1,8 @@
 package FrameWork;
 
-import Test.PerformanceTest;
-import Test.PassTest;
+import Test.grid.SeleniumScreenshot;
+import Test.manual.OpenManualBrowserViaCloud;
+import Test.grid.PassTest;
 import Utils.WriteToLog;
 import org.openqa.selenium.remote.BrowserType;
 
@@ -15,9 +16,10 @@ public class Runner {
         int j = 0;
         while (j < 1) {
 
-//            new Thread(new SaveScreenshot(BrowserType.FIREFOX)).start();
-//            new Thread(new SaveScreenshot(BrowserType.CHROME)).start();
-//            new Thread(new SaveScreenshot(BrowserType.IE)).start();
+            new Thread(new OpenManualBrowserViaCloud()).start();
+//            new Thread(new SeleniumScreenshot(BrowserType.FIREFOX)).start();
+//            new Thread(new SeleniumScreenshot(BrowserType.CHROME)).start();
+//            new Thread(new SeleniumScreenshot(BrowserType.IE)).start();
 
 //            new Thread(new VersionCheck(BrowserType.CHROME,"67")).start();
 //            new Thread(new VersionCheck(BrowserType.CHROME,"66")).start();
@@ -41,7 +43,7 @@ public class Runner {
 //            new Thread(new PerformanceTest(BrowserType.CHROME)).start();
 //            new Thread(new PerformanceTest(BrowserType.FIREFOX)).start();
 //            new Thread(new PerformanceTest(BrowserType.SAFARI)).start();
-            new Thread(new PerformanceTest(BrowserType.IE)).start();
+//            new Thread(new PerformanceTest(BrowserType.IE)).start();
 //
 //            new Thread(new AccessKeyTest(BrowserType.IE)).start();
 //            new Thread(new AccessKeyTest(BrowserType.FIREFOX)).start();

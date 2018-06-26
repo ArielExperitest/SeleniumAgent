@@ -6,6 +6,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import org.openqa.selenium.Capabilities;
 
 import java.io.*;
+import java.util.Arrays;
 
 import static FrameWork.Configuration.*;
 import static FrameWork.Credentials.*;
@@ -78,6 +79,8 @@ public class WriteToLog {
             else
                 writer.write("Driver is null\n");
             writer.write("----------Exception-------------\n" + e.toString() + "\n");
+            if (Arrays.toString(e.getStackTrace()).contains("com.experitest"))
+                writer.write("----------Exception-------------\n" + Arrays.toString(e.getStackTrace()) + "\n");
             writer.write("================================\n");
 
 
@@ -89,10 +92,13 @@ public class WriteToLog {
 
 
     private static String collectSupportData(String testName, String startTime) {
-        String url = "http://" + HOST + "/api/v2/configuration/collect-support-data/false/false";
-        if (SECURE)
-            url = "https://" + HOST + "/api/v2/configuration/collect-support-data/false/false";
         String fileName = collectSupportDataPath + testIndex + "_" + testName + "_" + startTime.replace(":", "-") + ".zip";
+
+        String url = "http://" + HOST + "/api/v2/configuration/collect-support-data/false/false";
+        if (SECURE) {
+            url = "https://" + HOST + "/api/v2/configuration/collect-support-data/false/false";
+        }
+
         try {
             HttpResponse<InputStream> response = Unirest.get(url)
                     .basicAuth(USER, PASS).asBinary();
@@ -102,8 +108,8 @@ public class WriteToLog {
             int inByte;
             while ((inByte = is.read()) != -1)
                 fos.write(inByte);
-            is.close();
 
+            is.close();
             fos.close();
         } catch (IOException | UnirestException e) {
             e.printStackTrace();
@@ -112,7 +118,7 @@ public class WriteToLog {
     }
 
     private static String rportAttachment(String reportUrl, String testName, String startTime) {
-        if (reportUrl == null) {
+        if (reportUrl == null || reportUrl.contains("Test failed,")) {
             return null;
         }
         String testID = reportUrl.split("/")[5];

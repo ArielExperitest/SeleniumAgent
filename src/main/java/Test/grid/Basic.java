@@ -1,4 +1,4 @@
-package Test;
+package Test.grid;
 
 import FrameWork.TestBase;
 import org.openqa.selenium.remote.CapabilityType;

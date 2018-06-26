@@ -1,4 +1,4 @@
-package Test;
+package Test.grid;
 
 import FrameWork.TestBase;
 import org.openqa.selenium.OutputType;
@@ -11,9 +11,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SaveScreenshot extends TestBase {
+public class SeleniumScreenshot extends TestBase {
 
-    public SaveScreenshot(String browserType) {
+    public SeleniumScreenshot(String browserType) {
         this.browserType = browserType;
         testName = this.getClass().getSimpleName() + " Test " + browserType;
         dc.setCapability("testName", testName);
@@ -28,12 +28,11 @@ public class SaveScreenshot extends TestBase {
         dc.setCapability("generateReport", false);
         driver = new RemoteWebDriver(url, dc);
         driver.get("https://en.wikipedia.org");
-        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File scrFile = driver.getScreenshotAs(OutputType.FILE);
         driver.get("https://www.google.com");
-
         try {
             BufferedImage bufferedImage = ImageIO.read(scrFile);
-            ImageIO.write(bufferedImage, "png", new File("c:\\temp\\screenshot_" + browserType + "_" + System.currentTimeMillis() + ".png"));
+            ImageIO.write(bufferedImage, "png", new File("reports/images/screenshot_" + browserType + "_" + System.currentTimeMillis() + ".png"));
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,4 +1,4 @@
-package Test;
+package Test.grid;
 
 import FrameWork.TestBase;
 import org.openqa.selenium.By;
@@ -41,7 +41,7 @@ public class TimeTest extends TestBase {
         driver.findElement(By.xpath("//*[@id=\"dropdown\"]/option[2]")).click();
         driver.navigate().back();
         driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[16]/a")).click();
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        JavascriptExecutor jse = driver;
         jse.executeScript("scroll(0, 500);"); //Down
         jse.executeScript("scroll(0, 250);"); //Down
         jse.executeScript("scroll(0, -250);");//Up

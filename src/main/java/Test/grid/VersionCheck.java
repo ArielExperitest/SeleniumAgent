@@ -1,4 +1,4 @@
-package Test;
+package Test.grid;
 
 import FrameWork.TestBase;
 import org.openqa.selenium.By;
@@ -6,9 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 /**
@@ -20,18 +17,16 @@ public class VersionCheck extends TestBase {
 
     public VersionCheck(String browserType, String versionToCheck) {
         this.browserType = browserType;
+        this.versionToCheck = versionToCheck;
         testName = this.getClass().getSimpleName() + " Test " + browserType + " " + versionToCheck;
         dc.setCapability("testName", testName);
         dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
-        this.versionToCheck = versionToCheck;
         dc.setCapability(CapabilityType.BROWSER_VERSION, versionToCheck);
 
     }
 
     @Override
     public void test() {
-        startTime = new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis()));
-
         switch (browserType) {
             case BrowserType.FIREFOX: {
                 driver = new RemoteWebDriver(url, dc);
@@ -74,6 +69,5 @@ public class VersionCheck extends TestBase {
 
             }
         }
-        platformName = (String) dc.getCapability("platformName");
     }
 }

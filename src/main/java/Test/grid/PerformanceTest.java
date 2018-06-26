@@ -1,4 +1,4 @@
-package Test;
+package Test.grid;
 
 import FrameWork.TestBase;
 import org.openqa.selenium.By;
@@ -11,8 +11,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -30,7 +28,6 @@ public class PerformanceTest extends TestBase {
 
     @Override
     protected void test() {
-        startTime = new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis()));
 
         driver = new RemoteWebDriver(url, dc);
 
@@ -39,11 +36,13 @@ public class PerformanceTest extends TestBase {
             driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
         }
         driver.get("http://192.168.1.64/index.html#/login");
+        sleep(2 * 1000);
+
         WebElement username = driver.findElement(By.xpath("//*[@name=\"username\"]"));
         username.sendKeys("ariel");
         driver.findElement(By.xpath("//*[@name=\"password\"]")).sendKeys("Experitest2012");
         driver.findElement(By.xpath("//*[@name=\"login\"]")).click();
-
+        sleep(2 * 1000);
         //Firefox open a new tab when try to click on log in button
         if (driver.getWindowHandles().size() > 1 || !driver.getCurrentUrl().contains("192.168.1.64")) {
             driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.TAB);
@@ -59,6 +58,7 @@ public class PerformanceTest extends TestBase {
         }
         //Wikipedia
         driver.get("https://en.wikipedia.org/wiki/Special:Random");
+        sleep(2 * 1000);
         String s = driver.getCurrentUrl();
         driver.findElement(By.xpath("//*[@id=\"searchInput\"]")).sendKeys("Experitest");
         driver.findElement(By.id("searchInput")).sendKeys(Keys.ENTER);
@@ -66,6 +66,7 @@ public class PerformanceTest extends TestBase {
 
         int j = 0;
         driver.get("http://the-internet.herokuapp.com");
+        sleep(2 * 1000);
         driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[5]/a")).click();
 
         while (j < 3) {
@@ -85,12 +86,13 @@ public class PerformanceTest extends TestBase {
         dropdown.findElement(By.xpath("//*[@id=\"dropdown\"]/option[2]")).click();
         driver.navigate().back();
         driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[16]/a")).click();
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        JavascriptExecutor jse = driver;
         jse.executeScript("scroll(0, 500);"); //Down
         jse.executeScript("scroll(0, 250);"); //Down
         jse.executeScript("scroll(0, -250);");//Up
         jse.executeScript("scroll(0, -600);");//Up
         driver.get("https://www.google.com");
+        sleep(2 * 1000);
         WebElement searchBar = driver.findElement(By.id("lst-ib"));
         searchBar.click();
         searchBar.sendKeys("Jerusalem wiki");

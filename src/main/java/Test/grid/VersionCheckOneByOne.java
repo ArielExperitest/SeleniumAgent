@@ -1,4 +1,4 @@
-package Test;
+package Test.grid;
 
 import FrameWork.Credentials;
 import FrameWork.TestBase;
@@ -14,6 +14,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 import static FrameWork.Credentials.*;
@@ -45,33 +46,38 @@ public class VersionCheckOneByOne extends TestBase {
                 startTime = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date(System.currentTimeMillis()));
                 test();
                 endTime = new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis()));
-                Thread.sleep(10000);
+
+                Thread.sleep(1000);
             } catch (Exception e) {
                 exception = e;
-                isTestPass = false;
+                if (!e.getMessage().contains("Go To Fail Test!!!") ||
+                        (Arrays.toString(e.getStackTrace()).contains("IncompleteTest") && e.getMessage().contains("time out"))) {
+                    isTestPass = false;
+                    e.printStackTrace();
+                }
             } finally {
                 if (driver != null) {
 
                     reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
-                    if (isTestPass)
+                    platformName = String.valueOf(driver.getCapabilities().getPlatform());
+
+
+                    if (isTestPass) {
                         WriteToLog.writeToOverall(startTime, endTime, testName, platformName, reportUrl);
-                    else {
+                    } else {
                         WriteToLog.writeToOverall(startTime, endTime, testName, platformName, exception, driver.getCapabilities(), reportUrl);
                     }
                     driver.quit();
                 } else {
                     System.out.println(exception.getMessage().split("\n")[0]);
-                    WriteToLog.writeToOverall(startTime, endTime, testName, platformName, "Test failed, driver is null " + exception.getMessage().split("\n")[0]);
+                    WriteToLog.writeToOverall(startTime, endTime, testName, platformName, exception, null, "Test failed, driver is null because " + exception.getMessage().split("\n")[0]);
                 }
-
             }
         }
-
     }
 
     @Override
     public void test() {
-        platformName = null;
         switch (browserType) {
             case BrowserType.FIREFOX: {
                 dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.FIREFOX);
@@ -120,7 +126,6 @@ public class VersionCheckOneByOne extends TestBase {
             }
         }
 
-        platformName = String.valueOf(driver.getCapabilities().getPlatform());
     }
 
     private void getAllBuilds() {

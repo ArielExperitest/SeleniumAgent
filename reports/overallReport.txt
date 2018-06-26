@@ -1,2 +1,1 @@
 #      Start -   End     Status Platform Name            Test Name                                                             Report Url           Collect support data
-1.  18:59:05 - 18:59:42  PASS    XP   PerformanceTest Test firefox             http://arielhazan-lt:9000/#/test/93885
