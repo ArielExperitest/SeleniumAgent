@@ -27,7 +27,7 @@ public class PerformanceTest extends TestBase {
     }
 
     @Override
-    protected void test() {
+    protected void test()  {
 
         driver = new RemoteWebDriver(url, dc);
 
@@ -36,7 +36,7 @@ public class PerformanceTest extends TestBase {
             driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
         }
         driver.get("http://192.168.1.64/index.html#/login");
-        sleep(2 * 1000);
+        sleep(3 * 1000);
 
         WebElement username = driver.findElement(By.xpath("//*[@name=\"username\"]"));
         username.sendKeys("ariel");
@@ -68,6 +68,7 @@ public class PerformanceTest extends TestBase {
         driver.get("http://the-internet.herokuapp.com");
         sleep(2 * 1000);
         driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[5]/a")).click();
+        sleep(2 * 1000);
 
         while (j < 3) {
 
@@ -79,18 +80,21 @@ public class PerformanceTest extends TestBase {
             }
             j++;
         }
-        driver.navigate().back();
-        driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[9]/a")).click();
-        WebElement dropdown = driver.findElement(By.xpath("//*[@id=\"dropdown\"]"));
-        dropdown.click();
-        dropdown.findElement(By.xpath("//*[@id=\"dropdown\"]/option[2]")).click();
-        driver.navigate().back();
-        driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[16]/a")).click();
-        JavascriptExecutor jse = driver;
-        jse.executeScript("scroll(0, 500);"); //Down
-        jse.executeScript("scroll(0, 250);"); //Down
-        jse.executeScript("scroll(0, -250);");//Up
-        jse.executeScript("scroll(0, -600);");//Up
+        if (!browserType.equals(BrowserType.SAFARI)) {
+            driver.navigate().back();
+            driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[9]/a")).click();
+            driver.get("http://the-internet.herokuapp.com/dropdown");
+            WebElement dropdown = driver.findElement(By.xpath("//*[@id=\"dropdown\"]"));
+            dropdown.click();
+            dropdown.findElement(By.xpath("//*[@id=\"dropdown\"]/option[2]")).click();
+            driver.navigate().back();
+            driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[16]/a")).click();
+            JavascriptExecutor jse = driver;
+            jse.executeScript("scroll(0, 500);"); //Down
+            jse.executeScript("scroll(0, 250);"); //Down
+            jse.executeScript("scroll(0, -250);");//Up
+            jse.executeScript("scroll(0, -600);");//Up
+        }
         driver.get("https://www.google.com");
         sleep(2 * 1000);
         WebElement searchBar = driver.findElement(By.id("lst-ib"));
@@ -123,11 +127,12 @@ public class PerformanceTest extends TestBase {
 //        driver.manage().window().getSize();
         //------- Add 11.6.18 --------------
         driver.manage().deleteAllCookies();
-        for (String logTypes :
-                driver.manage().logs().getAvailableLogTypes()) {
-            driver.manage().logs().get(logTypes);
+        if (!browserType.equals(BrowserType.SAFARI)) {
+            for (String logTypes :
+                    driver.manage().logs().getAvailableLogTypes()) {
+                driver.manage().logs().get(logTypes);
+            }
         }
-        System.out.println();
         driver.getTitle();
 
     }

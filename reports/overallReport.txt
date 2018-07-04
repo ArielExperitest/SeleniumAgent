@@ -1,1 +1,13 @@
 #      Start -   End     Status Platform Name            Test Name                                                             Report Url           Collect support data
+1.  04-07-2018 09:46:05 - 09:46:52  PASS    XP   PerformanceTest Test firefox http://arielhazan-lt:9000/#/test/107494/project/Default/
+2.  04-07-2018 09:46:05 - 09:46:58  PASS    XP   PerformanceTest Test firefox http://arielhazan-lt:9000/#/test/107495/project/Default/
+3.  04-07-2018 09:46:05 - 09:47:01  PASS    XP   PerformanceTest Test firefox http://arielhazan-lt:9000/#/test/107497/project/Default/
+4.  04-07-2018 09:46:05 - 09:47:07  PASS    XP   PerformanceTest Test firefox http://arielhazan-lt:9000/#/test/107501/project/Default/
+5.  04-07-2018 09:46:05 - 09:47:11  PASS    XP   PerformanceTest Test firefox http://arielhazan-lt:9000/#/test/107499/project/Default/
+6.  04-07-2018 09:46:05 - 09:48:39  PASS   MAC   PerformanceTest Test firefox http://arielhazan-lt:9000/#/test/107496/project/Default/
+7.  04-07-2018 09:46:05 - 09:48:40  PASS   MAC   PerformanceTest Test firefox http://arielhazan-lt:9000/#/test/107498/project/Default/
+8.  04-07-2018 09:46:05 - 09:48:45  PASS   MAC   PerformanceTest Test firefox http://arielhazan-lt:9000/#/test/107500/project/Default/
+9.  04-07-2018 09:46:05 - 09:48:49  PASS   MAC   PerformanceTest Test firefox http://arielhazan-lt:9000/#/test/107502/project/Default/
+10.  04-07-2018 09:46:05 - 09:48:56  PASS   MAC   PerformanceTest Test firefox http://arielhazan-lt:9000/#/test/107503/project/Default/
+
+=========Finish Safari Suits #10=========

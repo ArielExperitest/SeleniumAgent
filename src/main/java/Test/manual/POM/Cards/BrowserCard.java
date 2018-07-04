@@ -18,4 +18,8 @@ public interface BrowserCard {
     List<WebElement> getOSSelector();
 
     boolean isCardVisible();
+
+    String getCurrentOS();
+
+    String getCurrentVersion();
 }

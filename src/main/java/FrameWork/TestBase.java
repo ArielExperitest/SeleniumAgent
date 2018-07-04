@@ -3,12 +3,11 @@ package FrameWork;
 import Utils.WriteToLog;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 
 public abstract class TestBase extends Configuration implements Runnable {
 
-    protected abstract void test();
+    protected abstract void test() throws Exception;
 
     protected String startTime = "", endTime = "";
     protected boolean isTestPass = true;
@@ -29,10 +28,9 @@ public abstract class TestBase extends Configuration implements Runnable {
 
         } catch (Exception e) {
             exception = e;
-            if (!e.getMessage().contains("Go To Fail Test!!!") ||
-                    (Arrays.toString(e.getStackTrace()).contains("IncompleteTest") && e.getMessage().contains("time out"))) {
+            if (!e.getMessage().contains("Go To Fail Test!!!")) {
                 isTestPass = false;
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         } finally {
             if (driver != null) {
@@ -46,7 +44,11 @@ public abstract class TestBase extends Configuration implements Runnable {
                 } else {
                     WriteToLog.writeToOverall(startTime, endTime, testName, platformName, exception, driver.getCapabilities(), reportUrl);
                 }
-                driver.quit();
+                try {
+                    driver.quit();
+                } catch (Exception e) {
+                    System.out.println("Fail to preform quit: " + platformName + reportUrl + testName);
+                }
             } else {
                 System.out.println(exception.getMessage().split("\n")[0]);
                 WriteToLog.writeToOverall(startTime, endTime, testName, platformName, exception, null, "Test failed, driver is null because " + exception.getMessage().split("\n")[0]);

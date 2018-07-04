@@ -7,6 +7,7 @@ import org.openqa.selenium.Capabilities;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.Objects;
 
 import static FrameWork.Configuration.*;
 import static FrameWork.Credentials.*;
@@ -16,12 +17,13 @@ public class WriteToLog {
 
     private static int fail = 0;
     private static int pass = 0;
+    private static CollectSupportDataAPI collectSupportDataAPI;
 
     public static synchronized void writeFirstTime() {
         PrintWriter writer;
+        collectSupportDataAPI = new CollectSupportDataAPI();
         try {
             writer = new PrintWriter(new BufferedWriter(new FileWriter(reportsPath + logFileName, false)));
-
             writer.write(String.format("%s %10s - %5s %10s %10s %20s %70s %30s\n", "#", "Start", "End", "Status", "Platform Name", "Test Name", "Report Url", "Collect support data"));
 
             writer.close();
@@ -64,7 +66,7 @@ public class WriteToLog {
         PrintWriter writer;
         String testStatus = "FAIL";
         fail++;
-        String CSDPath = collectSupportData(testName, startTime), reportPath = rportAttachment(reportUrl, testName, startTime);
+        String CSDPath = collectSupportDataAPI.downloadCSD(testIndex, testName, startTime), reportPath = reporterAttachment(reportUrl, testName, startTime);
 
 
         try {
@@ -90,35 +92,8 @@ public class WriteToLog {
         }
     }
 
-
-    private static String collectSupportData(String testName, String startTime) {
-        String fileName = collectSupportDataPath + testIndex + "_" + testName + "_" + startTime.replace(":", "-") + ".zip";
-
-        String url = "http://" + HOST + "/api/v2/configuration/collect-support-data/false/false";
-        if (SECURE) {
-            url = "https://" + HOST + "/api/v2/configuration/collect-support-data/false/false";
-        }
-
-        try {
-            HttpResponse<InputStream> response = Unirest.get(url)
-                    .basicAuth(USER, PASS).asBinary();
-            InputStream is = response.getBody();
-
-            FileOutputStream fos = new FileOutputStream(new File(fileName));
-            int inByte;
-            while ((inByte = is.read()) != -1)
-                fos.write(inByte);
-
-            is.close();
-            fos.close();
-        } catch (IOException | UnirestException e) {
-            e.printStackTrace();
-        }
-        return "C:\\SeleniumAgent\\SeleniumAgent\\" + fileName;
-    }
-
-    private static String rportAttachment(String reportUrl, String testName, String startTime) {
-        if (reportUrl == null || reportUrl.contains("Test failed,")) {
+    private static String reporterAttachment(String reportUrl, String testName, String startTime) {
+        if (Objects.isNull(reportUrl) || reportUrl.contains("Test failed,")) {
             return null;
         }
         String testID = reportUrl.split("/")[5];

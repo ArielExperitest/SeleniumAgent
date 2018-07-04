@@ -13,4 +13,7 @@
       <module name="SeleniumAgent" target="1.8" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="DEBUGGING_INFO" value="false" />
+  </component>
 </project>

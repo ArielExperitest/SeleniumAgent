@@ -15,7 +15,7 @@ public class IncompleteTest extends TestBase {
     }
 
     @Override
-    public void test() {
+    public void test() {//TODO handle the exception
         dc.setCapability("newSessionWaitTimeout", 1);
         driver = new RemoteWebDriver(url, dc);
         driver.get("https://www.ynet.co.il");

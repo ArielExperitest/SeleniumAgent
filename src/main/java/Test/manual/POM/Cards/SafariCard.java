@@ -39,7 +39,7 @@ public class SafariCard extends BrowsersPage implements BrowserCard {
     @Override
     public List<WebElement> getVersionSelector() {
         if (isCardVisible()) {
-            if (isSelectorVisible()) refresh();
+            if (isSelectorVisible()) escapeButton();
             getChosenVersionField().click();
             return getSelector();
         } else {
@@ -50,7 +50,7 @@ public class SafariCard extends BrowsersPage implements BrowserCard {
     @Override
     public List<WebElement> getOSSelector() {
         if (isCardVisible()) {
-            if (isSelectorVisible()) refresh();
+            if (isSelectorVisible()) escapeButton();
             getChosenOSField().click();
             return getSelector();
         } else {
@@ -61,5 +61,15 @@ public class SafariCard extends BrowsersPage implements BrowserCard {
     @Override
     public boolean isCardVisible() {
         return cardWebElement.findElements(By.xpath("//*[@class=\"browsers-image safari\"]")).size() > 0;
+    }
+
+    @Override
+    public String getCurrentOS() {
+        return getChosenOSField().getText();
+    }
+
+    @Override
+    public String getCurrentVersion() {
+        return getChosenVersionField().getText();
     }
 }

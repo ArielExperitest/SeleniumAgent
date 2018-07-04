@@ -13,6 +13,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.util.List;
 
 public class BrowsersPage {
+    private static final By SELECTOR_XPATH = By.xpath("//*[@class=\"md-select-menu-container md-active md-clickable\"]/md-select-menu/md-content/md-option");
     protected RemoteWebDriver driver;
     private static final String HTTPS_QACLOUD_EXPERITEST_COM = "https://qacloud.experitest.com";
     private static final String HTTPS_QACLOUD_EXPERITEST_COM_BROWSERS = "https://qacloud.experitest.com/index.html#/browsers";
@@ -60,16 +61,17 @@ public class BrowsersPage {
     }
 
     protected List<WebElement> getSelector() {
-        return driver.findElements(By.xpath("//*[@class=\"md-select-menu-container md-active md-clickable\"]/md-select-menu/md-content"));
+        return driver.findElements(SELECTOR_XPATH);
     }
 
     protected boolean isSelectorVisible() {
-        return driver.findElements(By.xpath("//*[@class=\"md-select-menu-container md-active md-clickable\"]/md-select-menu/md-content")).size() > 0;
+        return driver.findElements(SELECTOR_XPATH).size() > 0;
     }
 
-    protected void refresh() {
+    public void escapeButton() {
         driver.getKeyboard().pressKey(Keys.ESCAPE);
     }
+
 
     public void sleep(int time) {
         try {

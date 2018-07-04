@@ -22,12 +22,8 @@ public class Basic extends TestBase {
 
         driver = new RemoteWebDriver(url, dc);
         driver.get("https://mail.google.com/mail/?tab=wm");
-        try {
-            Thread.sleep(1000*60*3);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep(1000 * 60 * 3);
 
-        }
+    }
 
 }
