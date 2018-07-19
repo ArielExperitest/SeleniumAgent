@@ -1,11 +1,7 @@
 package FrameWork;
 
-import Test.grid.PerformanceTest;
-import Test.grid.SeleniumScreenshot;
-import Test.grid.VersionCheck;
-import Test.manual.OpenManualBrowserViaCloud;
 import Test.grid.PassTest;
-import Utils.CollectSupportDataAPI;
+import Test.manual.OpenManualBrowserViaCloud;
 import Utils.WriteToLog;
 import org.openqa.selenium.remote.BrowserType;
 
@@ -27,7 +23,7 @@ public class Runner {
 
 //            new Thread(new VersionCheck(BrowserType.CHROME,"67")).start();
 //            new Thread(new VersionCheck(BrowserType.CHROME,"66")).start();
-//            new Thread(new PassTest(BrowserType.FIREFOX)).start();
+//            new Thread(new PassTest(BrowserType.SAFARI)).start();
 //            new Thread(new PassTest(BrowserType.CHROME)).start();
 //            new Thread(new PassTest(BrowserType.IE)).start();
 //            new Thread(new PassTest(BrowserType.SAFARI)).start();

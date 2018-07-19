@@ -31,8 +31,8 @@ public class Configuration {
 //        System.getProperties().setProperty("javax.net.ssl.trustStorePassword", "123456");
 
         //Ariel Mac keystore
-        System.getProperties().setProperty("javax.net.ssl.trustStore", "C:\\Users\\ariel.hazan\\Desktop\\Key\\Ariel_Mac_Keystore.jks");
-        System.getProperties().setProperty("javax.net.ssl.trustStorePassword", "");
+//        System.getProperties().setProperty("javax.net.ssl.trustStore", "C:\\Users\\ariel.hazan\\Desktop\\Key\\Ariel_Mac_Keystore.jks");
+//        System.getProperties().setProperty("javax.net.ssl.trustStorePassword", "");
     }
 
     public static String logFileName = "overallReport.txt";
@@ -44,12 +44,12 @@ public class Configuration {
     protected void setDC() {
         setURL();
 
-//        dc.setCapability("seleniumScreenshot", true);
+        dc.setCapability("seleniumScreenshot", true);
         dc.setCapability("takeScreenshots", true);
         dc.setCapability(CapabilityType.TAKES_SCREENSHOT, true);//takesScreenshot
         dc.setCapability("generateReport", true);
-        dc.setCapability("newCommandTimeout", 500);//default is 300
-        dc.setCapability("newSessionWaitTimeout", 500);//default is 300
+        dc.setCapability("newCommandTimeout", "500");//default is 300
+        dc.setCapability("newSessionWaitTimeout", "500");//default is 300
 //        dc.setCapability(CapabilityType.BROWSER_VERSION, "8");
 //        dc.setCapability(CapabilityType.PLATFORM_NAME, Platform.MAC);
 //        dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);

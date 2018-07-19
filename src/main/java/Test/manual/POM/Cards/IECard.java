@@ -1,6 +1,7 @@
 package Test.manual.POM.Cards;
 
 import Test.manual.POM.BrowsersPage;
+import Test.manual.POM.Cards.BrowserCard;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -14,33 +15,32 @@ public class IECard extends BrowsersPage implements BrowserCard {
     private static final By OS_FIELD = By.xpath("//*[@ng-model=\"browserCtrl.selectedVersion.ie.os\"]");
     private static final By OPEN_BUTTON = By.xpath("//*[@ng-click=\"browserCtrl.openManual('internet explorer', browserCtrl.selectedVersion.ie)\"]");
     private static final By IE_CARD = By.xpath("//*[@class=\"browser-card _md\"][3]");
-    private WebElement cardWebElement;
 
     public IECard(RemoteWebDriver driver) {
         super(driver);
-        cardWebElement = driver.findElement(IE_CARD);
+        setBrowserName("Internet Explorer ");
     }
 
     @Override
-    public WebElement getChosenVersionField() {
-        return cardWebElement.findElement(VERSION_FIELD);
+    public WebElement getVersionField() {
+        return driver.findElement(VERSION_FIELD);
     }
 
     @Override
-    public WebElement getChosenOSField() {
-        return cardWebElement.findElement(OS_FIELD);
+    public WebElement getOSField() {
+        return driver.findElement(OS_FIELD);
     }
 
     @Override
     public WebElement getButton() {
-        return cardWebElement.findElement(OPEN_BUTTON);
+        return driver.findElement(OPEN_BUTTON);
     }
 
     @Override
     public List<WebElement> getVersionSelector() {
         if (isCardVisible()) {
-            if (isSelectorVisible()) escapeButton();
-            getChosenVersionField().click();
+            hideSelector();
+            getVersionField().click();
             return getSelector();
         } else {
             return null;
@@ -50,8 +50,8 @@ public class IECard extends BrowsersPage implements BrowserCard {
     @Override
     public List<WebElement> getOSSelector() {
         if (isCardVisible()) {
-            if (isSelectorVisible()) escapeButton();
-            getChosenOSField().click();
+            hideSelector();
+            getOSField().click();
             return getSelector();
         } else {
             return null;
@@ -60,19 +60,6 @@ public class IECard extends BrowsersPage implements BrowserCard {
 
     @Override
     public boolean isCardVisible() {
-        return cardWebElement.findElements(By.xpath("//*[@class=\"browsers-image ie\"]")).size() > 0;
-
+        return driver.findElements(By.xpath("//*[@class=\"browsers-image ie\"]")).size() > 0;
     }
-
-
-    @Override
-    public String getCurrentOS() {
-        return getChosenOSField().getText();
-    }
-
-    @Override
-    public String getCurrentVersion() {
-        return getChosenVersionField().getText();
-    }
-
 }

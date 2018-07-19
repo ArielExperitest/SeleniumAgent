@@ -19,7 +19,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class PerformanceTest extends TestBase {
 
-    public PerformanceTest(String browserType) {
+    public
+    PerformanceTest(String browserType) {
         this.browserType = browserType;
         testName = this.getClass().getSimpleName() + " Test " + browserType;
         dc.setCapability("testName", testName);
@@ -30,6 +31,8 @@ public class PerformanceTest extends TestBase {
     protected void test()  {
 
         driver = new RemoteWebDriver(url, dc);
+
+        sleep(10000);
 
         if (!browserType.equals(BrowserType.IE)) {
             driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -127,12 +130,14 @@ public class PerformanceTest extends TestBase {
 //        driver.manage().window().getSize();
         //------- Add 11.6.18 --------------
         driver.manage().deleteAllCookies();
-        if (!browserType.equals(BrowserType.SAFARI)) {
-            for (String logTypes :
-                    driver.manage().logs().getAvailableLogTypes()) {
-                driver.manage().logs().get(logTypes);
-            }
-        }
+
+        //How to get HPROF file :)
+//        if (!browserType.equals(BrowserType.SAFARI)) {
+//            for (String logTypes :
+//                    driver.manage().logs().getAvailableLogTypes()) {
+//                driver.manage().logs().get(logTypes);
+//            }
+//        }
         driver.getTitle();
 
     }

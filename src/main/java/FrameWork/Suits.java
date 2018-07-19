@@ -1,6 +1,7 @@
 package FrameWork;
 
 import Test.grid.*;
+import Test.manual.OpenManualBrowserViaCloud;
 import Utils.WriteToLog;
 import org.openqa.selenium.remote.BrowserType;
 
@@ -14,8 +15,27 @@ public class Suits {
 
         WriteToLog.writeFirstTime();
 
-//        testAgent(33, 300, 15);
-        test(12, 1, 10, BrowserType.CHROME);
+        testAgent(500, 5);
+//        test(12, 10, 15, BrowserType.SAFARI);
+//        testManual(2, 100, 2, BrowserType.CHROME);
+    }
+
+    private static void testManual(int numOfThreads, int numOfSetReturns, int numOfSet, String browserType) {
+        ExecutorService executor;
+        int i;
+        for (int j = 0; j < numOfSetReturns; j++) {
+            executor = Executors.newFixedThreadPool(numOfThreads);
+            for (i = 0; i < numOfSet; i++) {
+                executor.execute(new OpenManualBrowserViaCloud(browserType));
+            }
+            executor.shutdown();
+            while (true) {
+                if (executor.isTerminated()) break;
+            }
+            WriteToLog.writeStringToLog("=========Finish Safari Suits #" + i + "=========");
+        }
+        System.out.println("Finished all threads");
+
     }
 
 
@@ -37,6 +57,10 @@ public class Suits {
 
     }
 
+    private static void testAgent(int numOfSetReturns, int numOfSet) {
+        testAgent(numOfSet * 3, numOfSetReturns, numOfSet);
+    }
+
     private static void testAgent(int numOfThreads, int numOfSetReturns, int numOfSet) {
         ExecutorService executor;
 
@@ -46,8 +70,8 @@ public class Suits {
             for (int j = 0; j < numOfSet; j++) {
                 executor.execute(new PerformanceTest(BrowserType.CHROME));
                 executor.execute(new PerformanceTest(BrowserType.FIREFOX));
+                executor.execute(new PerformanceTest(BrowserType.SAFARI));
             }
-//                executor.execute(new PerformanceTest(BrowserType.SAFARI));
 //            executor.execute(new PerformanceTest(BrowserType.IE));
 //            executor.execute(new PerformanceTest(BrowserType.IE));
 

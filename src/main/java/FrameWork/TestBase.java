@@ -11,7 +11,7 @@ public abstract class TestBase extends Configuration implements Runnable {
 
     protected String startTime = "", endTime = "";
     protected boolean isTestPass = true;
-    protected String reportUrl = "Can't get report URL";
+    protected String reportUrl = "[Ariel Log] Can't get report URL";
     protected String testName = "testName";
     protected String platformName = null;
     protected String browserType = "";
@@ -47,11 +47,11 @@ public abstract class TestBase extends Configuration implements Runnable {
                 try {
                     driver.quit();
                 } catch (Exception e) {
-                    System.out.println("Fail to preform quit: " + platformName + reportUrl + testName);
+                    System.out.println("[Ariel Log] Fail to preform quit: " + platformName + " " + testName + " " + reportUrl);
                 }
             } else {
                 System.out.println(exception.getMessage().split("\n")[0]);
-                WriteToLog.writeToOverall(startTime, endTime, testName, platformName, exception, null, "Test failed, driver is null because " + exception.getMessage().split("\n")[0]);
+                WriteToLog.writeToOverall(startTime, endTime, testName, platformName, exception, null, "[Ariel Log] Test failed, driver is null because " + exception.getMessage().split("\n")[0]);
             }
         }
     }

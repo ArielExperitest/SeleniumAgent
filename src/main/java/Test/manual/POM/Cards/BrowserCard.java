@@ -7,9 +7,9 @@ import java.util.List;
 public interface BrowserCard {
 
 
-    WebElement getChosenVersionField();
+    WebElement getVersionField();
 
-    WebElement getChosenOSField();
+    WebElement getOSField();
 
     WebElement getButton();
 
@@ -19,7 +19,7 @@ public interface BrowserCard {
 
     boolean isCardVisible();
 
-    String getCurrentOS();
+    void hideSelector();
 
-    String getCurrentVersion();
+    String getBrowserName();
 }
