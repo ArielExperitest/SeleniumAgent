@@ -1,6 +1,7 @@
 package FrameWork;
 
 import Test.grid.PassTest;
+import Test.grid.PerformanceTest;
 import Test.manual.OpenManualBrowserViaCloud;
 import Utils.WriteToLog;
 import org.openqa.selenium.remote.BrowserType;
@@ -10,7 +11,6 @@ public class Runner {
 
 
     public static void main(String[] args) {
-        WriteToLog.writeFirstTime();
 
         int j = 0;
         while (j < 1) {

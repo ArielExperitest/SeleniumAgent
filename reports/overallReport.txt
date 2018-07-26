@@ -1,2 +1,0 @@
-#      Start -   End     Status Platform Name            Test Name                                                             Report Url           Collect support data
-1.  19-07-2018 17:09:50 - 17:16:38  PASS    XP OpenManualBrowserViaCloud Test chrome                                               null

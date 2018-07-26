@@ -43,9 +43,7 @@ public class VersionCheckOneByOne extends TestBase {
                 testName = "Check Version " + versionToCheck + " on " + browserType;
                 dc.setCapability("testName", testName);
 
-                startTime = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date(System.currentTimeMillis()));
                 test();
-                endTime = new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis()));
 
                 Thread.sleep(1000);
             } catch (Exception e) {
@@ -61,16 +59,16 @@ public class VersionCheckOneByOne extends TestBase {
                     reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
                     platformName = String.valueOf(driver.getCapabilities().getPlatform());
 
-
+//TODO inihrite from TestBase
                     if (isTestPass) {
-                        WriteToLog.writeToOverall(startTime, endTime, testName, platformName, reportUrl);
+//                        WriteToLog.writeToOverall(startTime, endTime, testName, platformName, reportUrl);
                     } else {
-                        WriteToLog.writeToOverall(startTime, endTime, testName, platformName, exception, driver.getCapabilities(), reportUrl);
+//                        WriteToLog.writeToOverall(startTime, endTime, testName, platformName, exception, driver.getCapabilities(), reportUrl);
                     }
                     driver.quit();
                 } else {
                     System.out.println(exception.getMessage().split("\n")[0]);
-                    WriteToLog.writeToOverall(startTime, endTime, testName, platformName, exception, null, "Test failed, driver is null because " + exception.getMessage().split("\n")[0]);
+//                    WriteToLog.writeToOverall(startTime, endTime, testName, platformName, exception, null, "Test failed, driver is null because " + exception.getMessage().split("\n")[0]);
                 }
             }
         }
@@ -125,7 +123,8 @@ public class VersionCheckOneByOne extends TestBase {
 
             }
         }
-
+        platformName = String.valueOf(driver.getCapabilities().getPlatform());
+        reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
     }
 
     private void getAllBuilds() {

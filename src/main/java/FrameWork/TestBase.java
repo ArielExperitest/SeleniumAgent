@@ -1,20 +1,21 @@
 package FrameWork;
 
-import Utils.WriteToLog;
+import org.apache.log4j.Logger;
+import org.openqa.selenium.Capabilities;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Objects;
+
 
 public abstract class TestBase extends Configuration implements Runnable {
-
     protected abstract void test() throws Exception;
 
-    protected String startTime = "", endTime = "";
+    private final Logger log = Logger.getLogger(this.getClass().getName());
+    private static int testIndex = 0;
+
+    private int fail = 0;
+    private int pass = 0;
     protected boolean isTestPass = true;
-    protected String reportUrl = "[Ariel Log] Can't get report URL";
-    protected String testName = "testName";
-    protected String platformName = null;
-    protected String browserType = "";
+    protected String testName = "testName", browserType = "", platformName = null, reportUrl = "Can't get report URL";
     protected Exception exception = null;
 
     @Override
@@ -22,38 +23,62 @@ public abstract class TestBase extends Configuration implements Runnable {
 
         setDC();
         try {
-            startTime = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date(System.currentTimeMillis()));
+            log.info("Start test");
             test();
-            endTime = new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis()));
+            log.info("End test");
 
         } catch (Exception e) {
             exception = e;
             if (!e.getMessage().contains("Go To Fail Test!!!")) {
                 isTestPass = false;
-//                e.printStackTrace();
+                log.error("Failed test with error " + e.getMessage());
+                e.printStackTrace();
             }
         } finally {
-            if (driver != null) {
-
-                reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
-                platformName = String.valueOf(driver.getCapabilities().getPlatform());
-
-
-                if (isTestPass) {
-                    WriteToLog.writeToOverall(startTime, endTime, testName, platformName, reportUrl);
-                } else {
-                    WriteToLog.writeToOverall(startTime, endTime, testName, platformName, exception, driver.getCapabilities(), reportUrl);
-                }
+            if (Objects.nonNull(driver)) {
                 try {
                     driver.quit();
                 } catch (Exception e) {
-                    System.out.println("[Ariel Log] Fail to preform quit: " + platformName + " " + testName + " " + reportUrl);
+                    log.info("Fail to preform quit: " + platformName + " " + testName + " " + reportUrl + " exceptionMsg= " + e.getMessage());
+                }
+                if (isTestPass) {
+                    writeToLog();
+                } else {
+                    writeToLog(driver.getCapabilities());
                 }
             } else {
-                System.out.println(exception.getMessage().split("\n")[0]);
-                WriteToLog.writeToOverall(startTime, endTime, testName, platformName, exception, null, "[Ariel Log] Test failed, driver is null because " + exception.getMessage().split("\n")[0]);
+                log.info(exception.getMessage().split("\n")[0]);
+                writeToLog(null);
             }
         }
+    }
+
+    //Passed
+    private void writeToLog() {
+        pass++;
+        testIndex++;
+        log.info("Result - " + testIndex + ". " + " PASS " + platformName + " " + testName + " reportPath=" + reportUrl);
+    }
+
+    //Failed
+    private void writeToLog(Capabilities capabilities) {
+        fail++;
+
+//        ExecutorService executor = Executors.newFixedThreadPool(2);
+//        executor.submit(new CollectSupportDataAPI(testIndex, testName, startTime));
+//        executor.submit(new ReporterAttachment(testIndex, reportUrl, testName, startTime));
+//        executor.shutdown();
+
+        String CSDPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
+        String reportPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
+        testIndex++;
+        log.info("Result - " + testIndex + ". " + " FAIL " + platformName + " " + testName + " reportUrl=" + reportUrl + " CSDZip=" + CSDPath + " reportZip=" + reportPath);
+        if (capabilities != null)
+            log.info("Result - " + "-------- " + capabilities.toString() + "");
+        else
+            log.info("Result - " + "capabilities are null");
+        log.info("Result - " + "----------Exception ", exception);
+//            log.info("----------Exception------------- "+e.get);
     }
 
     protected void sleep(int time) {
@@ -63,5 +88,4 @@ public abstract class TestBase extends Configuration implements Runnable {
             e.printStackTrace();
         }
     }
-
 }

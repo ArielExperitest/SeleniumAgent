@@ -17,6 +17,8 @@ public class FailTest extends TestBase {
     @Override
     public void test() {
         driver = new RemoteWebDriver(url, dc);
+        platformName = String.valueOf(driver.getCapabilities().getPlatform());
+        reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
         driver.get("https://www.google.com");
         driver.findElement(By.xpath("Go To Fail Test!!!"));
     }

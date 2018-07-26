@@ -29,6 +29,8 @@ public class MinimumCapabilityTest extends TestBase {
     @Override
     public void test() {
         driver = new RemoteWebDriver(url, desiredCapabilities);
+        platformName = String.valueOf(driver.getCapabilities().getPlatform());
+        reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
         driver.get("https://www.ynet.co.il");
     }
 }

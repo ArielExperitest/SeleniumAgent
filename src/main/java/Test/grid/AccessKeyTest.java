@@ -19,8 +19,10 @@ public class AccessKeyTest extends TestBase {
 
 
     @Override
-    public void test(){
+    public void test() {
         driver = new RemoteWebDriver(url, dc);
+        platformName = String.valueOf(driver.getCapabilities().getPlatform());
+        reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
         driver.get("https://www.ynet.co.il");
     }
 

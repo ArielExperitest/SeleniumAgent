@@ -19,8 +19,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class PerformanceTest extends TestBase {
 
-    public
-    PerformanceTest(String browserType) {
+    public PerformanceTest(String browserType) {
         this.browserType = browserType;
         testName = this.getClass().getSimpleName() + " Test " + browserType;
         dc.setCapability("testName", testName);
@@ -28,17 +27,17 @@ public class PerformanceTest extends TestBase {
     }
 
     @Override
-    protected void test()  {
+    protected void test() {
 
         driver = new RemoteWebDriver(url, dc);
-
-        sleep(10000);
+        platformName = String.valueOf(driver.getCapabilities().getPlatform());
+        reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
 
         if (!browserType.equals(BrowserType.IE)) {
             driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-            driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+            driver.manage().timeouts().pageLoadTimeout(90, TimeUnit.SECONDS);
         }
-        driver.get("http://192.168.1.64/index.html#/login");
+        driver.get("https://qacloud.experitest.com");
         sleep(3 * 1000);
 
         WebElement username = driver.findElement(By.xpath("//*[@name=\"username\"]"));
@@ -47,7 +46,7 @@ public class PerformanceTest extends TestBase {
         driver.findElement(By.xpath("//*[@name=\"login\"]")).click();
         sleep(2 * 1000);
         //Firefox open a new tab when try to click on log in button
-        if (driver.getWindowHandles().size() > 1 || !driver.getCurrentUrl().contains("192.168.1.64")) {
+        if (driver.getWindowHandles().size() > 1 || !driver.getCurrentUrl().contains("qacloud.experitest.com")) {
             driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.TAB);
             driver.findElement(By.xpath("//*[@name=\"password\"]")).sendKeys(Keys.ENTER);
 
@@ -139,8 +138,5 @@ public class PerformanceTest extends TestBase {
 //            }
 //        }
         driver.getTitle();
-
     }
-
-
 }
