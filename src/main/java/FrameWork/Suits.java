@@ -2,12 +2,13 @@ package FrameWork;
 
 import Test.grid.*;
 import Test.manual.OpenManualBrowserViaCloud;
-import Utils.WriteToLog;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.remote.BrowserType;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import static FrameWork.Configuration.executorReport;
 
 
 public class Suits {
@@ -15,10 +16,30 @@ public class Suits {
 
     public static void main(String[] args) {
 
-//        testAgent(3, 3);
+//        testAgent(1, 10);
 //        test(12, 10, 15, BrowserType.SAFARI);
-//        testManual(2, 100, 2, BrowserType.CHROME);
-        testSuit(10);
+        testManual(4, 5, 3, BrowserType.CHROME);
+//        testSuit(10);
+//        checkAllBrowsers(3, 8);
+    }
+
+    private static void checkAllBrowsers(int numOfSetReturns, int numOfSet) {
+        ExecutorService executor;
+
+        for (int i = 0; i < numOfSetReturns; i++) {
+            executor = Executors.newFixedThreadPool(numOfSet + 1);
+
+            for (int j = 0; j < numOfSet; j++) {
+                executor.execute(new CheckAllBrowserVersion());
+            }
+
+
+            executor.shutdown();
+            while (true) {
+                if (executor.isTerminated()) break;
+            }
+            log.info("=========Finish Agent Suits #" + i + "=========");
+        }
     }
 
     private static void testManual(int numOfThreads, int numOfSetReturns, int numOfSet, String browserType) {
@@ -46,7 +67,7 @@ public class Suits {
         for (int j = 0; j < numOfSetReturns; j++) {
             executor = Executors.newFixedThreadPool(numOfThreads);
             for (i = 0; i < numOfSet; i++) {
-                executor.execute(new PerformanceTest(browserType));
+                executor.execute(new PerformanceTest("", browserType));
             }
             executor.shutdown();
             while (true) {
@@ -69,9 +90,10 @@ public class Suits {
             executor = Executors.newFixedThreadPool(numOfThreads);
 
             for (int j = 0; j < numOfSet; j++) {
-                executor.execute(new PerformanceTest(BrowserType.CHROME));
-                executor.execute(new PerformanceTest(BrowserType.FIREFOX));
-//                executor.execute(new PerformanceTest(BrowserType.SAFARI));
+//                executor.execute(new PerformanceTest(BrowserType.CHROME, "67"));
+//                executor.execute(new PerformanceTest(BrowserType.CHROME, "68"));
+                executor.execute(new PerformanceTest(BrowserType.FIREFOX, "62.0b14"));
+//                executor.execute(new PerformanceTest(BrowserType.FIREFOX, "61.0.1"));
             }
 //            executor.execute(new PerformanceTest(BrowserType.IE));
 //            executor.execute(new PerformanceTest(BrowserType.IE));
@@ -84,6 +106,7 @@ public class Suits {
 
         }
         log.info("-------Finished all threads-------");
+        executorReport.shutdown();
     }
 
     public static void testSuit(int numOfThreads, int numOfSetReturns, String browserType) {
@@ -92,48 +115,13 @@ public class Suits {
         for (int j = 0; j < numOfSetReturns; j++) {
             executor = Executors.newFixedThreadPool(numOfThreads);
 
-            executor.execute(new PerformanceTest(browserType));
+            executor.execute(new PerformanceTest("", browserType));
             executor.execute(new AccessKeyTest(browserType));
             executor.execute(new PassTest(browserType));
             executor.execute(new FailTest(browserType));
             executor.execute(new MinimumCapabilityTest(browserType));
             executor.execute(new VersionCheckOneByOne());
 
-            executor.shutdown();
-            while (true) {
-                if (executor.isTerminated()) break;
-            }
-            log.info("=========Finish Safari Suits #" + j + "=========");
-        }
-        log.info("Finished all threads");
-
-    }
-
-    private static void testSuit(int numOfSetReturns) {
-        ExecutorService executor;
-        int i;
-        for (int j = 0; j < numOfSetReturns; j++) {
-            executor = Executors.newFixedThreadPool(8);
-
-            executor.execute(new VersionCheckOneByOne());
-
-//            executor.execute(new PerformanceTest(BrowserType.CHROME));
-            executor.execute(new AccessKeyTest(BrowserType.CHROME));
-//            executor.execute(new PassTest(BrowserType.CHROME));
-//            executor.execute(new FailTest(BrowserType.CHROME));
-            executor.execute(new MinimumCapabilityTest(BrowserType.CHROME));
-
-//            executor.execute(new PerformanceTest(BrowserType.FIREFOX));
-            executor.execute(new AccessKeyTest(BrowserType.FIREFOX));
-//            executor.execute(new PassTest(BrowserType.FIREFOX));
-//            executor.execute(new FailTest(BrowserType.FIREFOX));
-            executor.execute(new MinimumCapabilityTest(BrowserType.FIREFOX));
-
-            executor.execute(new PerformanceTest(BrowserType.SAFARI));
-            executor.execute(new AccessKeyTest(BrowserType.SAFARI));
-//            executor.execute(new PassTest(BrowserType.SAFARI));
-            executor.execute(new FailTest(BrowserType.SAFARI));
-            executor.execute(new MinimumCapabilityTest(BrowserType.SAFARI));
             executor.shutdown();
             while (true) {
                 if (executor.isTerminated()) break;

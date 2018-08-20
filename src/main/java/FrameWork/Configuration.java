@@ -1,10 +1,15 @@
 package FrameWork;
 
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static FrameWork.Credentials.*;
 
@@ -30,23 +35,24 @@ public class Configuration {
 //        System.getProperties().setProperty("javax.net.ssl.trustStorePassword", "");
     }
 
+    static ExecutorService executorReport = Executors.newFixedThreadPool(2);
+
 
     Configuration() {
         updateServerCredentials(cloudName);
     }
 
-
     protected void setDC() {
         setURL();
 //        dc.setCapability("seleniumScreenshot", true);
 //        dc.setCapability(CapabilityType.TAKES_SCREENSHOT, true);//takesScreenshot
-        dc.setCapability("takeScreenshots", true);
-        dc.setCapability("generateReport", true);
-        dc.setCapability("newCommandTimeout", "500");//default is 300
+//        dc.setCapability("takeScreenshots", true);
+//        dc.setCapability("generateReport", true);
+//        dc.setCapability("newCommandTimeout", "500");//default is 300
         dc.setCapability("newSessionWaitTimeout", "500");//default is 300
-//        dc.setCapability(CapabilityType.BROWSER_VERSION, "8");
-//        dc.setCapability(CapabilityType.PLATFORM_NAME, Platform.MAC);
-//        dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
+//        dc.setCapability(CapabilityType.BROWSER_VERSION, "53.0.3");
+//        dc.setCapability(CapabilityType.PLATFORM, Platform.WIN10);
+//        dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.FIREFOX);
     }
 
     private void setURL() {

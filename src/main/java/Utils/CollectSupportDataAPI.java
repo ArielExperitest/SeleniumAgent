@@ -43,8 +43,8 @@ public class CollectSupportDataAPI implements Runnable {
         }
     }
 
-    public CollectSupportDataAPI(int testIndex, String testName, String startTime) {
-        fileName = "reports/CSD/" + testIndex + "_" + testName + "_" + startTime.replace(":", "-") + ".zip";
+    public CollectSupportDataAPI(int testIndex, long START_TEST_TIME) {
+        fileName = "reports/CSD/" + testIndex + "_" + START_TEST_TIME + ".zip";
         baseURL = "http://" + HOST + ":" + PORT;
         if (SECURE) {
             baseURL = "https://" + HOST + ":" + PORT;

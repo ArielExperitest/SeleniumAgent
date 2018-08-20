@@ -1,10 +1,10 @@
 package FrameWork;
 
-import Test.grid.PassTest;
-import Test.grid.PerformanceTest;
+import Test.grid.*;
 import Test.manual.OpenManualBrowserViaCloud;
-import Utils.WriteToLog;
 import org.openqa.selenium.remote.BrowserType;
+
+import static FrameWork.Configuration.executorReport;
 
 
 public class Runner {
@@ -13,53 +13,39 @@ public class Runner {
     public static void main(String[] args) {
 
         int j = 0;
-        while (j < 1) {
+        while (j < 15) {
+            new Thread(new WatchCloudTest(BrowserType.CHROME, "admin", "Experitest2012")).start();
 //            CollectSupportDataAPI collectSupportDataAPI = new CollectSupportDataAPI();
 //            collectSupportDataAPI.downloadCSD(1,"aaa","166");
-            new Thread(new OpenManualBrowserViaCloud(BrowserType.CHROME)).start();
+//            new Thread(new OpenManualBrowserViaCloud(BrowserType.CHROME)).start();
 //            new Thread(new SeleniumScreenshot(BrowserType.FIREFOX)).start();
-//            new Thread(new SeleniumScreenshot(BrowserType.CHROME)).start();
 //            new Thread(new PerformanceTest(BrowserType.IE)).start();
+//            new Thread(new FaileTest2(BrowserType.FIREFOX)).start();
+//            new Thread(new FaileTest2(BrowserType.CHROME)).start();
+
+//            new Thread(new VersionCheckOneByOne()).start();
+//            new Thread(new CheckAllBrowserVersion()).start();
 
 //            new Thread(new VersionCheck(BrowserType.CHROME,"67")).start();
-//            new Thread(new VersionCheck(BrowserType.CHROME,"66")).start();
-//            new Thread(new PassTest(BrowserType.SAFARI)).start();
-//            new Thread(new PassTest(BrowserType.CHROME)).start();
-//            new Thread(new PassTest(BrowserType.IE)).start();
 //            new Thread(new PassTest(BrowserType.SAFARI)).start();
 
 //            new Thread(new VersionCheck.Firefox()).start();
-//            VersionCheckChrome();
-//            new Thread(new VersionCheck(BrowserType.SAFARI, "11.1")).start();
-//            new Thread(new VersionCheck.IE("11")).start();
-//            new Thread(new VersionCheckOneByOne()).start();
+
+//            new Thread(new VersionCheck(BrowserType.FIREFOX, "60.0.2")).start();
+//            new Thread(new VersionCheck(BrowserType.FIREFOX, "58.0.1")).start();
+//
+//  new Thread(new VersionCheck.IE("11")).start();
 //            new Thread(new TimeTestYoram()).start();
 
-//            new Thread(new Basic(BrowserType.CHROME)).start();
 //            new Thread(new Basic(BrowserType.FIREFOX)).start();
-//            new Thread(new Basic(BrowserType.SAFARI)).start();
-//            new Thread(new Basic(BrowserType.IE)).start();
-//
+
 //            new Thread(new PerformanceTest(BrowserType.CHROME)).start();
-//            new Thread(new PerformanceTest(BrowserType.FIREFOX)).start();
-//            new Thread(new PerformanceTest(BrowserType.SAFARI)).start();
-//            new Thread(new PerformanceTest(BrowserType.IE)).start();
 //
-//            new Thread(new AccessKeyTest(BrowserType.IE)).start();
 //            new Thread(new AccessKeyTest(BrowserType.FIREFOX)).start();
-//            new Thread(new AccessKeyTest(BrowserType.SAFARI)).start();
-//            new Thread(new AccessKeyTest(BrowserType.IE)).start();
 //
 //            new Thread(new PassTest(BrowserType.CHROME)).start();
-//            new Thread(new PassTest(BrowserType.FIREFOX)).start();
-//            new Thread(new PassTest(BrowserType.SAFARI)).start();
-//            new Thread(new PassTest(BrowserType.IE)).start();
-//
-//
+
 //            new Thread(new PerformanceTest(BrowserType.CHROME)).start();
-//            new Thread(new PerformanceTest(BrowserType.FIREFOX)).start();
-//            new Thread(new PerformanceTest(BrowserType.SAFARI)).start();
-//            new Thread(new PerformanceTest(BrowserType.IE)).start();
 
             System.out.println(">>>>>>>>>>>>>>>>> Test #" + j + " <<<<<<<<<<<<<<<<<<<<<<<");
             j++;
@@ -68,6 +54,7 @@ public class Runner {
 //            if (j % 3 == 0)
 //                Thread.sleep(5 * 60 * 1000);
         }
+        executorReport.shutdown();
     }
 
     public void passTest(int numberOfChrome, int numberOfFirefox, int numberOfIE) {

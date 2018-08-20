@@ -12,18 +12,14 @@ public class Basic extends TestBase {
     public Basic(String browserType) {
         this.browserType = browserType;
         testName = this.getClass().getSimpleName() + " Test " + browserType;
-        dc.setCapability("testName", testName);
-        dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
+//        dc.setCapability("testName", testName);
+//        dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
     }
 
     @Override
     public void test() {
-
-
         driver = new RemoteWebDriver(url, dc);
         driver.get("https://mail.google.com/mail/?tab=wm");
-        sleep(1000 * 60 * 3);
-
     }
 
 }

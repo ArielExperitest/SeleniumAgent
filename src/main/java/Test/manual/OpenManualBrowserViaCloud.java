@@ -3,12 +3,16 @@ package Test.manual;
 import FrameWork.TestBase;
 import Test.manual.POM.BrowsersPage;
 import Test.manual.POM.Cards.ChromeCard;
+import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
 import java.util.Set;
 
 public class OpenManualBrowserViaCloud extends TestBase {
+    private final Logger log = Logger.getLogger(this.getClass().getName());
 
 
     public OpenManualBrowserViaCloud(String browserType) {
@@ -19,7 +23,7 @@ public class OpenManualBrowserViaCloud extends TestBase {
     }
 
     @Override
-    protected void test() {
+    protected void test() throws Exception {
         driver = new RemoteWebDriver(url, dc);
         BrowsersPage browsersPage = new BrowsersPage(driver);
         checkCardVersion(browsersPage.getChromeCard());
@@ -27,123 +31,71 @@ public class OpenManualBrowserViaCloud extends TestBase {
         driver.quit();
     }
 
-    private void checkCardVersion(ChromeCard chromeCard) {
+    private void checkCardVersion(ChromeCard chromeCard) throws Exception {
         if (chromeCard.isCardVisible()) {
             int versionSelectorSize = chromeCard.getVersionSelector().size();
             chromeCard.hideSelector();
-            System.out.println("Start the for loop");
+            log.info("Start the for loop");
             for (int i = 0; i < versionSelectorSize; i++) {
                 chromeCard.hideSelector();
-                System.out.println("Click on selector in " + i);
+                log.info("Click on selector in " + i);
                 chromeCard.getVersionSelector().get(i).click();
 
-                System.out.println("Click on button");
+                log.info("Click on button");
                 String versionName = chromeCard.getVersionField().getText();
                 chromeCard.getButton().click();
 
-                System.out.println("<<<<<checkNewWindow");
+                log.info("<<<<<checkNewWindow");
+                if (i == 0)
+                    versionName = versionName.split(" ")[0];
                 checkNewWindow(versionName);
-                System.out.println("checkNewWindow>>>>>>>>>");
+                log.info("checkNewWindow>>>>>>>>>");
             }
         } else {
-            System.out.println("Agent is offline");
+            log.info("Agent is offline");
         }
     }
 
-    private void checkNewWindow(String windowTitle) {
-        boolean findNewTab = true;
+    private void checkNewWindow(String windowTitle) throws Exception {
         //Wait to manual browser to open
         while (true) {
+            sleep(10 * 1000);
             if (driver.getWindowHandles().size() > 1) {
-                System.out.println("Found it!");
+                log.info("Found it!");
                 break;
             }
-            if (driver.findElements(By.xpath("//*[@class=\"modal-dialog \"]")).size() > 0) {
-                driver.findElement(By.xpath("//*[@ng-click=\"deviceOpenFailureCtrl.cancel()\"]")).click();
-                findNewTab = false;
-                System.out.println("--- Failed to open a new tab!!");
-            }
-            System.out.println("new opend window not found!");
+
+            if (driver.findElements(By.xpath("//*[@class=\"modal-dialog \"]")).size() > 0)
+                throw new RuntimeException("--- Popup failed to open " + windowTitle);
+//            Assert.assertFalse("--- Popup failed to open " + windowTitle + " !!", driver.findElements(By.xpath("//*[@class=\"modal-dialog \"]")).size() > 0);
+
+            log.info("New window not found!");
         }
-        if (findNewTab) {
-            String currentWindowHandle = driver.getWindowHandle();
-            System.out.println("- Open a new tab");
-            Set<String> windowHandles = driver.getWindowHandles();
-            for (String window : windowHandles) {
-                //if it contains the current window we want to eliminate that from switchTo();
-                if (!window.equals(currentWindowHandle)) {
-                    driver.switchTo().window(window);
-                    System.out.println("- Ask " + windowTitle + " and get " + driver.getTitle());
+        String currentWindowHandle = driver.getWindowHandle();
+        log.info("- Open a new tab");
+        Set<String> windowHandles = driver.getWindowHandles();
+        for (String window : windowHandles) {
+            //if it contains the current window we want to eliminate that from switchTo();
+            if (!window.equals(currentWindowHandle)) {
+                driver.switchTo().window(window);
+                log.info("- Ask " + windowTitle + " and get " + driver.getTitle());
 
-                    //check the window
-                    if (!driver.getTitle().equals(windowTitle)) {
-//                    System.out.println("Ask " + driver.getTitle() + " and get " + windowTitle);
-//                    throw new RuntimeException("Ask " + driver.getTitle() + " and get " + windowTitle);
-                    }
-//                driver.findElement(By.xpath("//*[@id=\"screenCanvas\"]"));
-
-                    //Close the newly opened tab
-                    driver.close();
-                    System.out.println("- Close the new tab");
-                    driver.switchTo().window(currentWindowHandle);
-                    System.out.println("- Switch back to Cloud");
+                while (true) {
+                    if (driver.findElements(By.xpath("//*[@id=\"screenCanvas\"]")).size() > 0) break;
                 }
+                //check the window
+                if (!driver.getTitle().contains(windowTitle))
+                    throw new RuntimeException("Ask " + windowTitle + " and get " + driver.getTitle());
+
+//                Assert.assertTrue("Ask " + windowTitle + " and get " + driver.getTitle(), driver.getTitle().contains(windowTitle));
+
+                //Close the newly opened tab
+                driver.close();
+                log.info("- Close the new tab");
+                driver.switchTo().window(currentWindowHandle);
+                log.info("- Switch back to Cloud");
             }
         }
     }
-//
-//    public void checkFirefox(BrowsersPage browsersPage) {
-//        System.out.println("-------FF---------");
-//        FirefoxCard firefoxCard = browsersPage.getFirefoxCard();
-////        if (firefoxCard.isCardVisible()) {
-//
-//        List<WebElement> a = firefoxCard.getOSSelector();
-//        for (WebElement anA : a) {
-//            System.out.println(anA.getText());
-//        }
-//        a = firefoxCard.getVersionSelector();
-//        for (WebElement anA : a) {
-//            System.out.println(anA.getText());
-//        }
-////        }else{
-////            System.out.println("Agent is offline");
-////        }
-//    }
-//
-//    public void checkIE(BrowsersPage browsersPage) {
-//        System.out.println("-------IE---------");
-//        IECard ieCard = browsersPage.getIECard();
-//        if (ieCard.isCardVisible()) {
-//
-//            List<WebElement> a = ieCard.getOSSelector();
-//            for (WebElement anA : a) {
-//                System.out.println(anA.getText());
-//            }
-//            a = ieCard.getVersionSelector();
-//            for (WebElement anA : a) {
-//                System.out.println(anA.getText());
-//            }
-//        } else {
-//            System.out.println("Agent is offline");
-//        }
-//    }
-
-//    public void checkSafari(BrowsersPage browsersPage) {
-//        System.out.println("-------Safari---------");
-//        SafariCard safariCard = browsersPage.getSafariCard();
-//        if (safariCard.isCardVisible()) {
-//            List<WebElement> a = safariCard.getOSSelector();
-//            for (WebElement anA : a) {
-//                System.out.println(anA.getText());
-//            }
-//            a = safariCard.getVersionSelector();
-//            for (WebElement anA : a) {
-//                System.out.println(anA.getText());
-//            }
-//
-//        } else {
-//            System.out.println("Agent is offline");
-//        }
-//    }
 }
 

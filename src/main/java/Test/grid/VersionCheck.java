@@ -32,12 +32,12 @@ public class VersionCheck extends TestBase {
                 driver = new RemoteWebDriver(url, dc);
                 driver.get("about:support");
                 WebElement ver = driver.findElement(By.xpath("//*[@id=\"version-box\"]"));
-                if (!ver.getText().equals(versionToCheck)) {
-                    System.out.println("Version to check= " + versionToCheck);
-                    System.out.println("Version= " + ver.getText());
-                }
+//                if (!ver.getText().equals(versionToCheck)) {
+                System.out.println("Version to check= " + versionToCheck);
+                System.out.println("Version= " + ver.getText());
+//                }
+                System.out.println(driver.getCapabilities().getPlatform());
                 break;
-
             }
             case BrowserType.IE: {
                 driver = new RemoteWebDriver(url, dc);
@@ -69,5 +69,6 @@ public class VersionCheck extends TestBase {
 
             }
         }
+        sleep(120 * 1000);
     }
 }

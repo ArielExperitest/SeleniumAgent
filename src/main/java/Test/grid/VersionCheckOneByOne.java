@@ -2,7 +2,6 @@ package Test.grid;
 
 import FrameWork.Credentials;
 import FrameWork.TestBase;
-import Utils.WriteToLog;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -12,10 +11,8 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 
 import static FrameWork.Credentials.*;
 
@@ -57,18 +54,18 @@ public class VersionCheckOneByOne extends TestBase {
                 if (driver != null) {
 
                     reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
-                    platformName = String.valueOf(driver.getCapabilities().getPlatform());
+                    platform = String.valueOf(driver.getCapabilities().getPlatform());
 
 //TODO inihrite from TestBase
                     if (isTestPass) {
-//                        WriteToLog.writeToOverall(startTime, endTime, testName, platformName, reportUrl);
+//                        WriteToLog.writeToOverall(startTime, endTime, testName, platform, reportUrl);
                     } else {
-//                        WriteToLog.writeToOverall(startTime, endTime, testName, platformName, exception, driver.getCapabilities(), reportUrl);
+//                        WriteToLog.writeToOverall(startTime, endTime, testName, platform, exception, driver.getCapabilities(), reportUrl);
                     }
                     driver.quit();
                 } else {
                     System.out.println(exception.getMessage().split("\n")[0]);
-//                    WriteToLog.writeToOverall(startTime, endTime, testName, platformName, exception, null, "Test failed, driver is null because " + exception.getMessage().split("\n")[0]);
+//                    WriteToLog.writeToOverall(startTime, endTime, testName, platform, exception, null, "Test failed, driver is null because " + exception.getMessage().split("\n")[0]);
                 }
             }
         }
@@ -123,7 +120,7 @@ public class VersionCheckOneByOne extends TestBase {
 
             }
         }
-        platformName = String.valueOf(driver.getCapabilities().getPlatform());
+        platform = String.valueOf(driver.getCapabilities().getPlatform());
         reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
     }
 

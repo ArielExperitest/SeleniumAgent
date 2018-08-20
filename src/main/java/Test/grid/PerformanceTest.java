@@ -1,6 +1,7 @@
 package Test.grid;
 
 import FrameWork.TestBase;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -12,25 +13,31 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by ariel.hazan on 02-Jan-18.
  */
 public class PerformanceTest extends TestBase {
+    private final Logger log = Logger.getLogger(this.getClass().getName());
 
-    public PerformanceTest(String browserType) {
+    public PerformanceTest(String browserType, String browserVersion) {
         this.browserType = browserType;
         testName = this.getClass().getSimpleName() + " Test " + browserType;
         dc.setCapability("testName", testName);
         dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
+
+        if (Objects.nonNull(browserVersion))
+            dc.setCapability(CapabilityType.BROWSER_VERSION, browserVersion);
     }
 
     @Override
     protected void test() {
-
+        log.info("dc= " + dc.getCapability("platform") + " - " + dc.getVersion() + " - " + dc);
         driver = new RemoteWebDriver(url, dc);
-        platformName = String.valueOf(driver.getCapabilities().getPlatform());
+        log.info("driver= " + driver.getCapabilities().getCapability("platform") + " - " + driver.getCapabilities().getVersion() + " - " + driver.getCapabilities());
+        platform = String.valueOf(driver.getCapabilities().getPlatform());
         reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
 
         if (!browserType.equals(BrowserType.IE)) {

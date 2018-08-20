@@ -2,6 +2,8 @@ package FrameWork;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.remote.BrowserType;
 
 import java.util.Objects;
 
@@ -15,7 +17,10 @@ public abstract class TestBase extends Configuration implements Runnable {
     private int fail = 0;
     private int pass = 0;
     protected boolean isTestPass = true;
-    protected String testName = "testName", browserType = "", platformName = null, reportUrl = "Can't get report URL";
+    protected String testName = "testName";
+    protected String browserType = "";
+    protected String platform = null;
+    protected String reportUrl = "Can't get report URL";
     protected Exception exception = null;
 
     @Override
@@ -23,23 +28,23 @@ public abstract class TestBase extends Configuration implements Runnable {
 
         setDC();
         try {
-            log.info("Start test");
+            log.info("Start test - " + dc);
             test();
-            log.info("End test");
+            log.info("End test - " + dc);
 
         } catch (Exception e) {
             exception = e;
             if (!e.getMessage().contains("Go To Fail Test!!!")) {
                 isTestPass = false;
                 log.error("Failed test with error " + e.getMessage());
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         } finally {
             if (Objects.nonNull(driver)) {
                 try {
                     driver.quit();
                 } catch (Exception e) {
-                    log.info("Fail to preform quit: " + platformName + " " + testName + " " + reportUrl + " exceptionMsg= " + e.getMessage());
+                    log.info("Fail to preform quit: " + platform + " " + testName + " " + reportUrl + " exceptionMsg= " + e.getMessage());
                 }
                 if (isTestPass) {
                     writeToLog();
@@ -54,25 +59,23 @@ public abstract class TestBase extends Configuration implements Runnable {
     }
 
     //Passed
-    private void writeToLog() {
+    protected void writeToLog() {
         pass++;
         testIndex++;
-        log.info("Result - " + testIndex + ". " + " PASS " + platformName + " " + testName + " reportPath=" + reportUrl);
+        log.info("Result - #" + testIndex + ". " + " PASS " + platform + " " + testName + " reportPath=" + reportUrl);
     }
 
     //Failed
-    private void writeToLog(Capabilities capabilities) {
+    protected void writeToLog(Capabilities capabilities) {
         fail++;
+        testIndex++;
 
-//        ExecutorService executor = Executors.newFixedThreadPool(2);
-//        executor.submit(new CollectSupportDataAPI(testIndex, testName, startTime));
-//        executor.submit(new ReporterAttachment(testIndex, reportUrl, testName, startTime));
-//        executor.shutdown();
+//        executorReport.execute(new CollectSupportDataAPI(testIndex, START_TEST_TIME));
+//        executorReport.execute(new ReporterAttachment(testIndex, reportUrl, START_TEST_TIME));
 
         String CSDPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
         String reportPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
-        testIndex++;
-        log.info("Result - " + testIndex + ". " + " FAIL " + platformName + " " + testName + " reportUrl=" + reportUrl + " CSDZip=" + CSDPath + " reportZip=" + reportPath);
+        log.info("Result - #" + testIndex + "  FAIL " + platform + " " + testName + " reportUrl=" + reportUrl + " CSDZip=" + CSDPath + " reportZip=" + reportPath);
         if (capabilities != null)
             log.info("Result - " + "-------- " + capabilities.toString() + "");
         else
@@ -83,7 +86,11 @@ public abstract class TestBase extends Configuration implements Runnable {
 
     protected void sleep(int time) {
         try {
-            Thread.sleep(time);
+            if (browserType.equals(BrowserType.SAFARI)) {
+                Thread.sleep(time * 3);
+            } else {
+                Thread.sleep(time);
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -38,8 +38,8 @@ public class ReporterAttachment implements Runnable {
         }
     }
 
-    public ReporterAttachment(int testIndex, String reportUrl, String testName, String startTime) {
-        if (Objects.isNull(reportUrl) || reportUrl.contains("Test failed")) {
+    public ReporterAttachment(int testIndex, String reportUrl, long START_TEST_TIME) {
+        if (Objects.isNull(reportUrl) || reportUrl.contains("Can't get")) {
             isReportNull = true;
         } else {
             String testID = reportUrl.split("/")[5];
@@ -47,7 +47,7 @@ public class ReporterAttachment implements Runnable {
             url = "http://" + REPORTER_HOST + ":" + REPORTER_PORT + "/api/" + PROJECT + "/" + testID + "/attachments-name";
             if (REPORTER_SECURE)
                 url = "https://" + REPORTER_HOST + ":" + REPORTER_PORT + "/api/" + PROJECT + "/" + testID + "/attachments-name";
-            fileName = "reports/attachment/" + (testIndex + 1) + "_" + testName + "_" + startTime.replace(":", "-") + ".zip";
+            fileName = "reports/attachment/" + (testIndex + 1) + "_" + START_TEST_TIME + ".zip";
         }
     }
 }

@@ -71,7 +71,6 @@ public class BrowsersPage {
 
     public void hideSelector() {
         if (isSelectorVisible()) {
-//            getSelector().get(0).click();
             driver.getKeyboard().pressKey(Keys.ENTER);
             sleep(100);
             driver.getKeyboard().pressKey(Keys.ESCAPE);
