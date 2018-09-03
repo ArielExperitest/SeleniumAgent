@@ -347,7 +347,7 @@ public class Credentials {
                 HOST = "qacloud.experitest.com";
                 PORT = "443";
                 USER = "ariel-user";
-                PROJECT = "arielProject";
+                PROJECT = "arielP";
                 PASS = "G123l321";
                 SECURE = true;
                 REPORTER_HOST = "";

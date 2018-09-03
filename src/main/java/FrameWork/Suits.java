@@ -16,11 +16,12 @@ public class Suits {
 
     public static void main(String[] args) {
 
-//        testAgent(1, 10);
+//        testAgent(3, 10);
 //        test(12, 10, 15, BrowserType.SAFARI);
-        testManual(4, 5, 3, BrowserType.CHROME);
+//        testManual(4, 5, 3, BrowserType.CHROME);
 //        testSuit(10);
 //        checkAllBrowsers(3, 8);
+        testAgent(1, 9);
     }
 
     private static void checkAllBrowsers(int numOfSetReturns, int numOfSet) {
@@ -91,9 +92,9 @@ public class Suits {
 
             for (int j = 0; j < numOfSet; j++) {
 //                executor.execute(new PerformanceTest(BrowserType.CHROME, "67"));
-//                executor.execute(new PerformanceTest(BrowserType.CHROME, "68"));
-                executor.execute(new PerformanceTest(BrowserType.FIREFOX, "62.0b14"));
-//                executor.execute(new PerformanceTest(BrowserType.FIREFOX, "61.0.1"));
+                executor.execute(new PerformanceTest(BrowserType.CHROME));
+                executor.execute(new PerformanceTest(BrowserType.SAFARI));
+                executor.execute(new PerformanceTest(BrowserType.FIREFOX));
             }
 //            executor.execute(new PerformanceTest(BrowserType.IE));
 //            executor.execute(new PerformanceTest(BrowserType.IE));

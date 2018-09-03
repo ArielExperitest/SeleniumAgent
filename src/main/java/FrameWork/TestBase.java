@@ -22,6 +22,7 @@ public abstract class TestBase extends Configuration implements Runnable {
     protected String platform = null;
     protected String reportUrl = "Can't get report URL";
     protected Exception exception = null;
+    protected String sessionId = null;
 
     @Override
     public void run() {
@@ -37,7 +38,6 @@ public abstract class TestBase extends Configuration implements Runnable {
             if (!e.getMessage().contains("Go To Fail Test!!!")) {
                 isTestPass = false;
                 log.error("Failed test with error " + e.getMessage());
-//                e.printStackTrace();
             }
         } finally {
             if (Objects.nonNull(driver)) {
@@ -75,22 +75,26 @@ public abstract class TestBase extends Configuration implements Runnable {
 
         String CSDPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
         String reportPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
-        log.info("Result - #" + testIndex + "  FAIL " + platform + " " + testName + " reportUrl=" + reportUrl + " CSDZip=" + CSDPath + " reportZip=" + reportPath);
+        log.info("Result - #" + testIndex + "  FAIL " + sessionId + " " + platform + " " + testName + " reportUrl=" + reportUrl + " CSDZip=" + CSDPath + " reportZip=" + reportPath);
         if (capabilities != null)
             log.info("Result - " + "-------- " + capabilities.toString() + "");
         else
             log.info("Result - " + "capabilities are null");
         log.info("Result - " + "----------Exception ", exception);
-//            log.info("----------Exception------------- "+e.get);
     }
 
     protected void sleep(int time) {
         try {
-            if (browserType.equals(BrowserType.SAFARI)) {
-                Thread.sleep(time * 3);
-            } else {
+            Thread.sleep(3 * time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void sleepSafari(int time) {
+        try {
+            if (browserType.equals(BrowserType.SAFARI))
                 Thread.sleep(time);
-            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

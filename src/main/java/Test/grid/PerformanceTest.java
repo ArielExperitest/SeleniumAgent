@@ -12,9 +12,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by ariel.hazan on 02-Jan-18.
@@ -23,27 +21,37 @@ public class PerformanceTest extends TestBase {
     private final Logger log = Logger.getLogger(this.getClass().getName());
 
     public PerformanceTest(String browserType, String browserVersion) {
-        this.browserType = browserType;
-        testName = this.getClass().getSimpleName() + " Test " + browserType;
-        dc.setCapability("testName", testName);
-        dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
+        config(browserType);
 
         if (Objects.nonNull(browserVersion))
             dc.setCapability(CapabilityType.BROWSER_VERSION, browserVersion);
     }
 
+
+    public PerformanceTest(String browserType) {
+        config(browserType);
+    }
+
+    private void config(String browserType) {
+        this.browserType = browserType;
+        testName = this.getClass().getSimpleName() + " " + browserType;
+        dc.setCapability("testName", testName);
+        dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
+    }
+
     @Override
     protected void test() {
-        log.info("dc= " + dc.getCapability("platform") + " - " + dc.getVersion() + " - " + dc);
         driver = new RemoteWebDriver(url, dc);
-        log.info("driver= " + driver.getCapabilities().getCapability("platform") + " - " + driver.getCapabilities().getVersion() + " - " + driver.getCapabilities());
         platform = String.valueOf(driver.getCapabilities().getPlatform());
         reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
+        sessionId = (String) driver.getCapabilities().getCapability("sessionId");
+        log.info("driver= " + platform + " - " + sessionId + " - " + reportUrl + " - " + driver.getCapabilities().getVersion() + " - " + driver.getCapabilities());
 
         if (!browserType.equals(BrowserType.IE)) {
-            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-            driver.manage().timeouts().pageLoadTimeout(90, TimeUnit.SECONDS);
+//            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+//            driver.manage().timeouts().pageLoadTimeout(90, TimeUnit.SECONDS);
         }
+        sleepSafari(10 * 1000);
         driver.get("https://qacloud.experitest.com");
         sleep(3 * 1000);
 
@@ -66,23 +74,21 @@ public class PerformanceTest extends TestBase {
             i++;
         }
         //Wikipedia
+        sleepSafari(10 * 1000);
         driver.get("https://en.wikipedia.org/wiki/Special:Random");
-        sleep(2 * 1000);
-        String s = driver.getCurrentUrl();
-        driver.findElement(By.xpath("//*[@id=\"searchInput\"]")).sendKeys("Experitest");
-        driver.findElement(By.id("searchInput")).sendKeys(Keys.ENTER);
 
+        sleep(2 * 1000);
+        String currentUrl = driver.getCurrentUrl();
+        driver.findElement(By.xpath("//*[@id=\"searchInput\"]")).sendKeys("Experitest");
 
         int j = 0;
+        sleepSafari(10 * 1000);
         driver.get("http://the-internet.herokuapp.com");
         sleep(2 * 1000);
         driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[5]/a")).click();
         sleep(2 * 1000);
-
         while (j < 3) {
-
-            List<WebElement> isChecked = driver.findElements(By.xpath("//*[@checked]"));
-            if (isChecked.size() > 0) {
+            if (driver.findElements(By.xpath("//*[@checked]")).size() > 0) {
                 driver.findElement(By.xpath("//*[@id=\"checkboxes\"]/input[1]")).click();
             } else {
                 driver.findElement(By.xpath("//*[@id=\"checkboxes\"]/input[2]")).click();
@@ -92,6 +98,7 @@ public class PerformanceTest extends TestBase {
         if (!browserType.equals(BrowserType.SAFARI)) {
             driver.navigate().back();
             driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[9]/a")).click();
+            sleepSafari(10 * 1000);
             driver.get("http://the-internet.herokuapp.com/dropdown");
             WebElement dropdown = driver.findElement(By.xpath("//*[@id=\"dropdown\"]"));
             dropdown.click();
@@ -104,15 +111,17 @@ public class PerformanceTest extends TestBase {
             jse.executeScript("scroll(0, -250);");//Up
             jse.executeScript("scroll(0, -600);");//Up
         }
+        sleepSafari(10 * 1000);
+        sleepSafari(10 * 1000);
         driver.get("https://www.google.com");
         sleep(2 * 1000);
         WebElement searchBar = driver.findElement(By.id("lst-ib"));
         searchBar.click();
         searchBar.sendKeys("Jerusalem wiki");
-//        sleep(5000);
 
         //uploadFile
 
+        sleepSafari(10 * 1000);
 //            driver.get("http://www.csm-testcenter.org/test?do=show&subdo=common&test=file_upload");
 //            driver.findElement(By.xpath("//*[@type=\"file\"]")).sendKeys("C:\\SeleniumAgent\\SeleniumAgent\\Selenium\\Example_File.txt");
 //            driver.findElement(By.xpath("//*[@name=\"http_submit\"]")).click();
@@ -123,9 +132,9 @@ public class PerformanceTest extends TestBase {
         driver.navigate().back();
         driver.navigate().refresh();
         driver.navigate().forward();
-        driver.navigate().to(s);
+        driver.navigate().to(currentUrl);
         try {
-            driver.navigate().to(new URL(s));
+            driver.navigate().to(new URL(currentUrl));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -141,6 +150,7 @@ public class PerformanceTest extends TestBase {
 //        if (!browserType.equals(BrowserType.SAFARI)) {
 //            for (String logTypes :
 //                    driver.manage().logs().getAvailableLogTypes()) {
+//        sleepSafari(210* 1000);
 //                driver.manage().logs().get(logTypes);
 //            }
 //        }

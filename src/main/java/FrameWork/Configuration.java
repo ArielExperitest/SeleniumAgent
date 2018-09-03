@@ -18,12 +18,12 @@ public class Configuration {
     long START_TEST_TIME = System.currentTimeMillis();
 
     //        CloudServerName cloudName = CloudServerName.ARIEL_MAC_PRO_ADMIN;
-    CloudServerName cloudName = CloudServerName.ARIEL_MAC_ADMIN;
+//    CloudServerName cloudName = CloudServerName.ARIEL_MAC_ADMIN;
     //        CloudServerName cloudName = CloudServerName.ARIEL_MAC_USER;
 //     CloudServerName cloudName = CloudServerName.ARIEL_WIN_ADMIN;
     //        CloudServerName cloudName = CloudServerName.YORAM;
 //        CloudServerName cloudName = CloudServerName.MASTER_CLOUD;
-//     CloudServerName cloudName = CloudServerName.QA_SECURE_USER
+     CloudServerName cloudName = CloudServerName.QA_SECURE_USER;
 
     static {
         //Ariel Windows keystore
@@ -44,12 +44,12 @@ public class Configuration {
 
     protected void setDC() {
         setURL();
-//        dc.setCapability("seleniumScreenshot", true);
-//        dc.setCapability(CapabilityType.TAKES_SCREENSHOT, true);//takesScreenshot
-//        dc.setCapability("takeScreenshots", true);
-//        dc.setCapability("generateReport", true);
-//        dc.setCapability("newCommandTimeout", "500");//default is 300
-        dc.setCapability("newSessionWaitTimeout", "500");//default is 300
+//        dc.setCapability("seleniumScreenshot", false);
+//        dc.setCapability(CapabilityType.TAKES_SCREENSHOT, false);//takesScreenshot
+//        dc.setCapability("takeScreenshots", false);
+//        dc.setCapability("generateReport", false);
+        dc.setCapability("newCommandTimeout", "300");//default is 300
+        dc.setCapability("newSessionWaitTimeout", "300");//default is 300
 //        dc.setCapability(CapabilityType.BROWSER_VERSION, "53.0.3");
 //        dc.setCapability(CapabilityType.PLATFORM, Platform.WIN10);
 //        dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.FIREFOX);

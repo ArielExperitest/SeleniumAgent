@@ -13,13 +13,18 @@ public class Runner {
     public static void main(String[] args) {
 
         int j = 0;
-        while (j < 15) {
-            new Thread(new WatchCloudTest(BrowserType.CHROME, "admin", "Experitest2012")).start();
+        while (j <5) {
+//            new Thread(new WatchCloudTest(BrowserType.CHROME, "admin", "Experitest2012")).start();
+
+//            new Thread(new WatchCloudTest(BrowserType.FIREFOX, "https://qa-win2016.experitest.com", "diklaLDAP", "Experitest2012")).start();
+
 //            CollectSupportDataAPI collectSupportDataAPI = new CollectSupportDataAPI();
 //            collectSupportDataAPI.downloadCSD(1,"aaa","166");
 //            new Thread(new OpenManualBrowserViaCloud(BrowserType.CHROME)).start();
 //            new Thread(new SeleniumScreenshot(BrowserType.FIREFOX)).start();
 //            new Thread(new PerformanceTest(BrowserType.IE)).start();
+            new Thread(new PerformanceTest(BrowserType.FIREFOX)).start();
+//            new Thread(new PerformanceTest(BrowserType.CHROME)).start();
 //            new Thread(new FaileTest2(BrowserType.FIREFOX)).start();
 //            new Thread(new FaileTest2(BrowserType.CHROME)).start();
 
@@ -37,7 +42,7 @@ public class Runner {
 //  new Thread(new VersionCheck.IE("11")).start();
 //            new Thread(new TimeTestYoram()).start();
 
-//            new Thread(new Basic(BrowserType.FIREFOX)).start();
+            new Thread(new Basic(BrowserType.FIREFOX)).start();
 
 //            new Thread(new PerformanceTest(BrowserType.CHROME)).start();
 //
@@ -56,18 +61,4 @@ public class Runner {
         }
         executorReport.shutdown();
     }
-
-    public void passTest(int numberOfChrome, int numberOfFirefox, int numberOfIE) {
-        int i = 0;
-        while (++i < numberOfChrome)
-            new Thread(new PassTest(BrowserType.CHROME)).start();
-        i = 0;
-        while (++i < numberOfFirefox)
-            new Thread(new PassTest(BrowserType.FIREFOX)).start();
-        i = 0;
-        while (++i < numberOfIE)
-            new Thread(new PassTest(BrowserType.IE)).start();
-    }
-
-
 }
