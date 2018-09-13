@@ -115,7 +115,7 @@ public class PerformanceTest extends TestBase {
         sleepSafari(10 * 1000);
         driver.get("https://www.google.com");
         sleep(2 * 1000);
-        WebElement searchBar = driver.findElement(By.id("lst-ib"));
+        WebElement searchBar = driver.findElement(By.xpath("//*[@id=\"lst-ib\"]"));
         searchBar.click();
         searchBar.sendKeys("Jerusalem wiki");
 

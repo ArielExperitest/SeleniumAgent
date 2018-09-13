@@ -1,18 +1,18 @@
 package Test.grid;
 
+import FrameWork.Configuration;
 import FrameWork.Credentials;
-import FrameWork.TestBase;
-import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.apache.log4j.Logger;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.openqa.selenium.remote.BrowserType;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static FrameWork.Credentials.*;
 
@@ -20,112 +20,45 @@ import static FrameWork.Credentials.*;
 /**
  * Created by ariel.hazan on 04-Dec-17
  */
-public class VersionCheckOneByOne extends TestBase {
+public class VersionCheckOneByOne extends Configuration {
 
-    private String versionToCheck;
-    private ArrayList<String> arrayList = new ArrayList<>();
+    private ArrayList<JSONObject> jsonNodes;
+    private final Logger log = Logger.getLogger(this.getClass().getName());
 
 
-    @Override
-    public void run() {
-        setDC();
+    public VersionCheckOneByOne() {
+        super();
+        jsonNodes = getAvailableBrowser();
+        ExecutorService executor = Executors.newFixedThreadPool(2);
 
-        getAllBuilds();
-        while (arrayList.size() > 0) {
-            isTestPass = true;
-            versionToCheck = arrayList.remove(0);
+        for (JSONObject jsonObject : jsonNodes) {
 
-            whatBrowser();
-            try {
-                testName = "Check Version " + versionToCheck + " on " + browserType;
-                dc.setCapability("testName", testName);
+            String browserVersion = jsonObject.getString("browserVersion");
+            String browserName = jsonObject.getString("browserName");
+            if (browserName.equals(BrowserType.CHROME)) browserVersion = browserVersion.split("\\.")[0];
 
-                test();
-
-                Thread.sleep(1000);
-            } catch (Exception e) {
-                exception = e;
-                if (!e.getMessage().contains("Go To Fail Test!!!") ||
-                        (Arrays.toString(e.getStackTrace()).contains("IncompleteTest") && e.getMessage().contains("time out"))) {
-                    isTestPass = false;
-                    e.printStackTrace();
-                }
-            } finally {
-                if (driver != null) {
-
-                    reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
-                    platform = String.valueOf(driver.getCapabilities().getPlatform());
-
-//TODO inihrite from TestBase
-                    if (isTestPass) {
-//                        WriteToLog.writeToOverall(startTime, endTime, testName, platform, reportUrl);
-                    } else {
-//                        WriteToLog.writeToOverall(startTime, endTime, testName, platform, exception, driver.getCapabilities(), reportUrl);
-                    }
-                    driver.quit();
-                } else {
-                    System.out.println(exception.getMessage().split("\n")[0]);
-//                    WriteToLog.writeToOverall(startTime, endTime, testName, platform, exception, null, "Test failed, driver is null because " + exception.getMessage().split("\n")[0]);
-                }
-            }
+            executor.execute(new VersionCheck(browserName, browserVersion));
         }
     }
 
-    @Override
-    public void test() {
-        switch (browserType) {
-            case BrowserType.FIREFOX: {
-                dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.FIREFOX);
-                driver = new RemoteWebDriver(url, dc);
-                driver.get("about:support");
-                WebElement ver = driver.findElement(By.xpath("//*[@id=\"version-box\"]"));
-                if (!ver.getText().equals(versionToCheck)) {
-                    System.out.println("Version to check= " + versionToCheck);
-                    System.out.println("Version= " + ver.getText());
+    private ArrayList<JSONObject> getAvailableBrowser() {
+        ArrayList<JSONObject> jsonNodes = new ArrayList<>();
+        JsonNode jsonNode = seleniumAgentApi();
+        for (int i = 0; i < jsonNode.getArray().length(); i++) {
+            if (jsonNode.getArray().getJSONObject(i).getBoolean("connected")) {
+
+                JSONArray jsonArray = jsonNode.getArray().getJSONObject(i).getJSONArray("supportedBrowsers");
+
+                for (int j = 0; j < jsonArray.length(); j++) {
+                    jsonNodes.add((JSONObject) jsonArray.get(j));
                 }
-                break;
-
-            }
-            case BrowserType.IE: {
-                dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.IE);
-                driver = new RemoteWebDriver(url, dc);
-                driver.get("http://www.whatversion.net/internet-explorer/");
-                WebElement ver = driver.findElement(By.xpath("//*[@id=\"browser-info\"]/h2")); //Your IE version is 11.0
-                System.out.println("Version to check= " + versionToCheck);
-                System.out.println(ver.getText());
-                break;
-
-            }
-
-            case BrowserType.SAFARI: {
-                dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.SAFARI);
-                driver = new RemoteWebDriver(url, dc);
-                driver.get("http://www.whatversion.net/safari/");
-                WebElement ver = driver.findElement(By.xpath("//*[@id=\"browser-info\"]/h2")); //Your IE version is 11.0
-                System.out.println("Version to check= " + versionToCheck);
-                System.out.println("Version= " + ver.getText());
-                break;
-
-            }
-            case BrowserType.CHROME: {
-                dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
-                driver = new RemoteWebDriver(url, dc);
-                driver.get("chrome://version");
-                WebElement ver = driver.findElement(By.xpath("//*[@id=\"version\"]/span[1]"));
-                if (!(ver.getText().split("\\.")[0]).equals(versionToCheck)) {
-                    System.out.println("Version to check= " + versionToCheck);
-                    System.out.println("Version= " + ver.getText());
-                }
-                break;
-
             }
         }
-        platform = String.valueOf(driver.getCapabilities().getPlatform());
-        reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
+        return jsonNodes;
     }
 
-    private void getAllBuilds() {
-        HttpResponse<String> response = null;
+    private JsonNode seleniumAgentApi() {
+        JsonNode response = null;
         String strAPI = "/api/v2/selenium-agents";
         String baseURL = "http://" + HOST;
         if (Credentials.SECURE) {
@@ -134,48 +67,10 @@ public class VersionCheckOneByOne extends TestBase {
         try {
             response = Unirest.get(baseURL + strAPI)
                     .basicAuth(USER, PASS)
-                    .asString();
+                    .asJson().getBody();
         } catch (UnirestException e) {
             e.printStackTrace();
         }
-//        System.out.println(response.getBody());
-
-        String[] agents;
-        if (response != null) {
-            agents = response.getBody().split("\"id\" :");
-
-            for (int i = 1; i < agents.length; i++) {
-                if (agents[i].contains("\"connected\" : true,")) {
-                    String[] eachAgent = agents[i].split("\"browserVersion\" : \"");
-                    for (int j = 1; j < eachAgent.length; j++) {
-                        arrayList.add(eachAgent[j].split("\"")[0]);
-                    }
-                }
-            }
-            System.out.println(arrayList.toString());
-        } else {
-            System.out.println("Agent is down!!!!!");
-        }
-    }
-
-    private void whatBrowser() {
-        dc.setCapability(CapabilityType.BROWSER_VERSION, versionToCheck);
-
-        if (versionToCheck.contains(".")) {
-            String num = versionToCheck.split("\\.")[0];
-            if (Integer.parseInt(num) < 15) {
-
-                browserType = BrowserType.SAFARI;
-            } else {
-                //Firefox
-                browserType = BrowserType.FIREFOX;
-            }
-        } else if (Integer.parseInt(versionToCheck) < 15) {
-            //IE
-            browserType = BrowserType.IE;
-        } else {
-            //Chrome
-            browserType = BrowserType.CHROME;
-        }
+        return response;
     }
 }

@@ -13,7 +13,7 @@ public class Runner {
     public static void main(String[] args) {
 
         int j = 0;
-        while (j <5) {
+        while (j < 10) {
 //            new Thread(new WatchCloudTest(BrowserType.CHROME, "admin", "Experitest2012")).start();
 
 //            new Thread(new WatchCloudTest(BrowserType.FIREFOX, "https://qa-win2016.experitest.com", "diklaLDAP", "Experitest2012")).start();
@@ -23,10 +23,12 @@ public class Runner {
 //            new Thread(new OpenManualBrowserViaCloud(BrowserType.CHROME)).start();
 //            new Thread(new SeleniumScreenshot(BrowserType.FIREFOX)).start();
 //            new Thread(new PerformanceTest(BrowserType.IE)).start();
-            new Thread(new PerformanceTest(BrowserType.FIREFOX)).start();
+//            new Thread(new PerformanceTest(BrowserType.FIREFOX)).start();
 //            new Thread(new PerformanceTest(BrowserType.CHROME)).start();
 //            new Thread(new FaileTest2(BrowserType.FIREFOX)).start();
 //            new Thread(new FaileTest2(BrowserType.CHROME)).start();
+
+            new VersionCheckOneByOne();
 
 //            new Thread(new VersionCheckOneByOne()).start();
 //            new Thread(new CheckAllBrowserVersion()).start();
@@ -42,7 +44,7 @@ public class Runner {
 //  new Thread(new VersionCheck.IE("11")).start();
 //            new Thread(new TimeTestYoram()).start();
 
-            new Thread(new Basic(BrowserType.FIREFOX)).start();
+//            new Thread(new Basic(BrowserType.FIREFOX)).start();
 
 //            new Thread(new PerformanceTest(BrowserType.CHROME)).start();
 //

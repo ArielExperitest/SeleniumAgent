@@ -1,8 +1,5 @@
 package FrameWork;
 
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.remote.BrowserType;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -19,7 +16,7 @@ public class Configuration {
 
     //        CloudServerName cloudName = CloudServerName.ARIEL_MAC_PRO_ADMIN;
 //    CloudServerName cloudName = CloudServerName.ARIEL_MAC_ADMIN;
-    //        CloudServerName cloudName = CloudServerName.ARIEL_MAC_USER;
+//            CloudServerName cloudName = CloudServerName.DIKLA_WIN_USER;
 //     CloudServerName cloudName = CloudServerName.ARIEL_WIN_ADMIN;
     //        CloudServerName cloudName = CloudServerName.YORAM;
 //        CloudServerName cloudName = CloudServerName.MASTER_CLOUD;
@@ -33,12 +30,18 @@ public class Configuration {
         //Ariel Mac keystore
 //        System.getProperties().setProperty("javax.net.ssl.trustStore", "C:\\Users\\ariel.hazan\\Desktop\\Key\\Ariel_Mac_Keystore.jks");
 //        System.getProperties().setProperty("javax.net.ssl.trustStorePassword", "");
+
+        //Dikla keystore
+//        System.getProperties().setProperty("javax.net.ssl.trustStore", "C:\\Users\\ariel.hazan\\Downloads\\trust_store.jks");
+//        System.getProperties().setProperty("javax.net.ssl.trustStorePassword", "");
+
+
     }
 
-    static ExecutorService executorReport = Executors.newFixedThreadPool(2);
+    static ExecutorService executorReport = Executors.newFixedThreadPool(3);
 
 
-    Configuration() {
+    protected Configuration() {
         updateServerCredentials(cloudName);
     }
 

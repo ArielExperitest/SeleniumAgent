@@ -15,29 +15,21 @@ public class Suits {
     private static final Logger log = Logger.getLogger("Suits");
 
     public static void main(String[] args) {
+//        checkAllBrowsers(150, 20);
 
 //        testAgent(3, 10);
 //        test(12, 10, 15, BrowserType.SAFARI);
 //        testManual(4, 5, 3, BrowserType.CHROME);
 //        testSuit(10);
-//        checkAllBrowsers(3, 8);
-        testAgent(1, 9);
+//        testSuit(3, 2, BrowserType.CHROME);
+//        testAgent(3, 2);
     }
 
     private static void checkAllBrowsers(int numOfSetReturns, int numOfSet) {
-        ExecutorService executor;
 
         for (int i = 0; i < numOfSetReturns; i++) {
-            executor = Executors.newFixedThreadPool(numOfSet + 1);
-
             for (int j = 0; j < numOfSet; j++) {
-                executor.execute(new CheckAllBrowserVersion());
-            }
-
-
-            executor.shutdown();
-            while (true) {
-                if (executor.isTerminated()) break;
+                new VersionCheckOneByOne();
             }
             log.info("=========Finish Agent Suits #" + i + "=========");
         }
@@ -93,7 +85,7 @@ public class Suits {
             for (int j = 0; j < numOfSet; j++) {
 //                executor.execute(new PerformanceTest(BrowserType.CHROME, "67"));
                 executor.execute(new PerformanceTest(BrowserType.CHROME));
-                executor.execute(new PerformanceTest(BrowserType.SAFARI));
+//                executor.execute(new PerformanceTest(BrowserType.SAFARI));
                 executor.execute(new PerformanceTest(BrowserType.FIREFOX));
             }
 //            executor.execute(new PerformanceTest(BrowserType.IE));
@@ -116,12 +108,12 @@ public class Suits {
         for (int j = 0; j < numOfSetReturns; j++) {
             executor = Executors.newFixedThreadPool(numOfThreads);
 
-            executor.execute(new PerformanceTest("", browserType));
+//            executor.execute(new PerformanceTest("", browserType));
             executor.execute(new AccessKeyTest(browserType));
             executor.execute(new PassTest(browserType));
             executor.execute(new FailTest(browserType));
             executor.execute(new MinimumCapabilityTest(browserType));
-            executor.execute(new VersionCheckOneByOne());
+            new VersionCheckOneByOne();
 
             executor.shutdown();
             while (true) {

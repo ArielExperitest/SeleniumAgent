@@ -1,11 +1,14 @@
 package Test.grid;
 
 import FrameWork.TestBase;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.util.Objects;
 
 
 /**
@@ -14,6 +17,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class VersionCheck extends TestBase {
 
     private String versionToCheck;
+    private final Logger log = Logger.getLogger(this.getClass().getName());
 
     public VersionCheck(String browserType, String versionToCheck) {
         this.browserType = browserType;
@@ -27,48 +31,37 @@ public class VersionCheck extends TestBase {
 
     @Override
     public void test() {
+        driver = new RemoteWebDriver(url, dc);
+        platform = String.valueOf(driver.getCapabilities().getPlatform());
+        reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
+        sessionId = (String) driver.getCapabilities().getCapability("sessionId");
+
+        WebElement ver = null;
         switch (browserType) {
             case BrowserType.FIREFOX: {
-                driver = new RemoteWebDriver(url, dc);
                 driver.get("about:support");
-                WebElement ver = driver.findElement(By.xpath("//*[@id=\"version-box\"]"));
-//                if (!ver.getText().equals(versionToCheck)) {
-                System.out.println("Version to check= " + versionToCheck);
-                System.out.println("Version= " + ver.getText());
-//                }
-                System.out.println(driver.getCapabilities().getPlatform());
+                ver = driver.findElement(By.xpath("//*[@id=\"version-box\"]"));
                 break;
             }
             case BrowserType.IE: {
-                driver = new RemoteWebDriver(url, dc);
                 driver.get("http://www.whatversion.net/internet-explorer/");
-                WebElement ver = driver.findElement(By.xpath("//*[@id=\"browser-info\"]/h2")); //Your IE version is 11.0
-                System.out.println("Version to check= " + versionToCheck);
-                System.out.println(ver.getText());
+                ver = driver.findElement(By.xpath("//*[@id=\"browser-info\"]")); //Your IE version is 11.0
                 break;
+            }
 
+            case BrowserType.SAFARI: {
+                driver.get("http://www.whatversion.net/safari/");
+                ver = driver.findElement(By.xpath("//*[@id=\"browser-info\"]/h2")); //Your IE version is 11.0\
+                break;
             }
             case BrowserType.CHROME: {
-                driver = new RemoteWebDriver(url, dc);
                 driver.get("chrome://version");
-                WebElement ver = driver.findElement(By.xpath("//*[@id=\"version\"]/span[1]"));
-                if (!(ver.getText().split("\\.")[0]).equals(versionToCheck)) {
-                    System.out.println("Version to check= " + versionToCheck);
-                    System.out.println("Version= " + ver.getText());
-                }
+                ver = driver.findElement(By.xpath("//*[@id=\"version\"]/span[1]"));
                 break;
-
-            }
-            case BrowserType.SAFARI: {
-                driver = new RemoteWebDriver(url, dc);
-                driver.get("http://www.whatversion.net/safari/");
-                WebElement ver = driver.findElement(By.xpath("//*[@id=\"browser-info\"]/h2")); //Your IE version is 11.0
-                System.out.println("Version to check= " + versionToCheck);
-                System.out.println("Version= " + ver.getText());
-                break;
-
             }
         }
-        sleep(120 * 1000);
+
+        if (Objects.nonNull(ver) && !ver.getText().contains(versionToCheck))
+            log.error("Check for version " + versionToCheck + " get " + ver.getText());
     }
 }

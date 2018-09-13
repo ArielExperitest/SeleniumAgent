@@ -9,7 +9,7 @@ public class Credentials {
     public static boolean SECURE, REPORTER_SECURE;
 
     public enum CloudServerName {
-        NAVOT, STAGE_CLOUD_ADMIN, VM, QA, MIRRON, PUBLIC, EYAl, QA_Not_Secured, ARIEL_WIN_ADMIN, ARIEL_WIN_SECURE_ADMIN, ARIEL_WIN_PRO_ADMIN, ARIEL_WIN_USER, ARIEL_MAC_ADMIN, ARIEL_MAC_PRO_ADMIN, ARIEL_MAC_USER, YEHUDA, RELEASE_CLOUD, MASTER_CLOUD, QA_SECURE_USER, QA_SECURE_ADMIN, QA_SECURE_PRO, SHELI, IGAL, SELENIUM, YORAM, ARIEL_MAC_SECURE_PRO_ADMIN, ARIEL_MAC_SECURE_USER, ARIEL_MAC_SECURE_ADMIN, DIKLA_WIN_ADMIN, DIKLA_MAC_ADMIN, DIKLA_WIN_USER_SSO_2, DIKLA_WIN_USER_SSO_1, DIKLA_WIN_PRO_SSO, DIKLA_WIN_ADMIN_SSO, DEEP_TESTING_CLOUD_ADMIN;
+        NAVOT, STAGE_CLOUD_ADMIN, VM, MIRRON, PUBLIC, EYAl, QA_Not_Secured, ARIEL_WIN_ADMIN, ARIEL_WIN_SECURE_ADMIN, ARIEL_WIN_PRO_ADMIN, ARIEL_WIN_USER, ARIEL_MAC_ADMIN, ARIEL_MAC_PRO_ADMIN, ARIEL_MAC_USER, YEHUDA, RELEASE_CLOUD, MASTER_CLOUD, QA_SECURE_USER, QA_SECURE_ADMIN, QA_SECURE_PRO, SHELI, IGAL, SELENIUM, YORAM, ARIEL_MAC_SECURE_PRO_ADMIN, ARIEL_MAC_SECURE_USER, ARIEL_MAC_SECURE_ADMIN, DIKLA_WIN_ADMIN, DIKLA_MAC_ADMIN, DEEP_TESTING_CLOUD_ADMIN, DIKLA_WIN_USER;
     }
 
     public static void updateServerCredentials(CloudServerName cloudName) {
@@ -50,56 +50,20 @@ public class Credentials {
                 REPORTER_SECURE = false;
                 AK = "";
                 break;
-            case DIKLA_WIN_USER_SSO_1:
-                HOST = "192.168.2.30";
-                PORT = "8090";
+            case DIKLA_WIN_USER:
+                HOST = "diklaohayon-lt";
+                PORT = "443";
                 USER = "ss@ss.com";
                 PROJECT = "Default";
                 PASS = "Aa123456";
-                SECURE = false;
+                SECURE = true;
                 REPORTER_HOST = "";
                 REPORTER_PORT = "";
                 REPORTER_SECURE = false;
-                AK = "eyJ4cC51IjoxMDE2NDEsInhwLnAiOjI4NDgsInhwLm0iOiJNVFV6TkRRd016QTFNRGN3TWciLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE4NTAxMDg0MDEsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.08s9z3uqJDPm5L22H-dd1Xz6BQlvY7TWS-fkFHFW5Fg";
-                break;
-            case DIKLA_WIN_USER_SSO_2:
-                HOST = "192.168.2.30";
-                PORT = "8090";
-                USER = "ff@ff.com";
-                PROJECT = "Default";
-                PASS = "Aa123456";
-                SECURE = false;
-                REPORTER_HOST = "";
-                REPORTER_PORT = "";
-                REPORTER_SECURE = false;
-                AK = "eyJ4cC51IjoxMDEwNjIsInhwLnAiOjIsInhwLm0iOiJNVFV6TXpneE5URTNNRFk0T0EiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE4NTAwNDc3MTUsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.ic74lacMUR9DdB5KZQUidf4NTnbmt_WqqdHgzGo0fkY";
-                break;
-            case DIKLA_WIN_PRO_SSO:
-                HOST = "192.168.2.30";
-                PORT = "8090";
-                USER = "ff@ff.com";
-                PROJECT = "project 1060";
-                PASS = "Aa123456";
-                SECURE = false;
-                REPORTER_HOST = "";
-                REPORTER_PORT = "";
-                REPORTER_SECURE = false;
-                AK = "eyJ4cC51IjoxMDEwNjIsInhwLnAiOjEwNjAsInhwLm0iOiJNVFV6TXpneE5URTNNRFk0T0EiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE4NTAxMDgzNTIsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.mk7SpsUOOMV2JeY8kH0_PrMowK25-4PGDsS_AWj7fs0";
-                break;
-            case DIKLA_WIN_ADMIN_SSO:
-                HOST = "192.168.2.30";
-                PORT = "8090";
-                USER = "aa@aa.com";
-                PROJECT = "Default";
-                PASS = "Aa123456";
-                SECURE = false;
-                REPORTER_HOST = "";
-                REPORTER_PORT = "";
-                REPORTER_SECURE = false;
-                AK = "eyJ4cC51IjoxMDE4MTgsInhwLnAiOjIsInhwLm0iOiJNVFV6TkRjME9EQTBNVFUxTWciLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE4NTAxMDg0NTEsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.68LxJ4aCx3Lg1U7s_YAmCMd8kHMsbHYDcXPPhDUa_FA";
+                AK = "eyJ4cC51Ijo0NjcyLCJ4cC5wIjoyLCJ4cC5tIjoiTVRVek5UazRORGsxTWpnMk13IiwiYWxnIjoiSFMyNTYifQ.eyJleHAiOjE4NTIwOTgxNjIsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.-uFhxOdbcV6NQ3EyYkpoTz3xpwGfBRySbNBjOCxmfr0";
                 break;
             case DIKLA_MAC_ADMIN:
-                HOST = "192.168.2.59";
+                HOST = "192.168.1.59";
                 PORT = "8090";
                 USER = "admin";
                 PROJECT = "Default";
