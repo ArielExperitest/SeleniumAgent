@@ -27,7 +27,6 @@ public abstract class TestBase extends Configuration implements Runnable {
 
     @Override
     public void run() {
-
         setDC();
         try {
             log.info("Start test - " + dc);
@@ -58,19 +57,20 @@ public abstract class TestBase extends Configuration implements Runnable {
     }
 
     //Passed
-    protected void writeToLog() {
+    private void writeToLog() {
         testIndex++;
         log.info("Result - #" + testIndex + ". " + " PASS " + platform + " " + testName + " reportPath=" + reportUrl);
     }
 
     //Failed
-    protected void writeToLog(Capabilities capabilities) {
+    private void writeToLog(Capabilities capabilities) {
         testIndex++;
         String CSDPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
         String reportPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
 
-//        executorReport.execute(new CollectSupportDataAPI(testIndex, START_TEST_TIME));
-//        executorReport.execute(new ReporterAttachment(testIndex, reportUrl, START_TEST_TIME));
+        new Thread(new CollectSupportDataAPI(CSDPath), testIndex + "_" + testName + "_" + START_TEST_TIME).start();
+//        executorReport.submit(new ReporterAttachment(reportPath, reportUrl));
+
 
         log.error("Result - #" + testIndex + "  FAIL " + sessionId + " " + platform + " " + testName + " reportUrl=" + reportUrl + " CSDZip=" + CSDPath + " reportZip=" + reportPath);
         if (Objects.nonNull(capabilities))

@@ -11,16 +11,17 @@ import java.util.concurrent.Executors;
 import static FrameWork.Credentials.*;
 
 public class Configuration {
+
     protected boolean USE_AK_Flag = false;
     long START_TEST_TIME = System.currentTimeMillis();
 
-    //        CloudServerName cloudName = CloudServerName.ARIEL_MAC_PRO_ADMIN;
-//    CloudServerName cloudName = CloudServerName.ARIEL_MAC_ADMIN;
-//            CloudServerName cloudName = CloudServerName.DIKLA_WIN_USER;
-//     CloudServerName cloudName = CloudServerName.ARIEL_WIN_ADMIN;
-    //        CloudServerName cloudName = CloudServerName.YORAM;
-//        CloudServerName cloudName = CloudServerName.MASTER_CLOUD;
-     CloudServerName cloudName = CloudServerName.QA_SECURE_USER;
+    //         private  CloudServerName cloudName = CloudServerName.ARIEL_MAC_PRO_ADMIN;
+//     private  CloudServerName cloudName = CloudServerName.ARIEL_MAC_ADMIN;
+//             private  CloudServerName cloudName = CloudServerName.DIKLA_WIN_USER;
+//      private  CloudServerName cloudName = CloudServerName.ARIEL_WIN_ADMIN;
+    //         private  CloudServerName cloudName = CloudServerName.YORAM;
+//         private  CloudServerName cloudName = CloudServerName.MASTER_CLOUD;
+    private CloudServerName cloudName = CloudServerName.QA_SECURE_USER;
 
     static {
         //Ariel Windows keystore
@@ -38,14 +39,12 @@ public class Configuration {
 
     }
 
-    static ExecutorService executorReport = Executors.newFixedThreadPool(3);
-
-
     protected Configuration() {
         updateServerCredentials(cloudName);
     }
 
-    protected void setDC() {
+
+    void setDC() {
         setURL();
 //        dc.setCapability("seleniumScreenshot", false);
 //        dc.setCapability(CapabilityType.TAKES_SCREENSHOT, false);//takesScreenshot

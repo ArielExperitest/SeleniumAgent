@@ -9,7 +9,7 @@ public class Credentials {
     public static boolean SECURE, REPORTER_SECURE;
 
     public enum CloudServerName {
-        NAVOT, STAGE_CLOUD_ADMIN, VM, MIRRON, PUBLIC, EYAl, QA_Not_Secured, ARIEL_WIN_ADMIN, ARIEL_WIN_SECURE_ADMIN, ARIEL_WIN_PRO_ADMIN, ARIEL_WIN_USER, ARIEL_MAC_ADMIN, ARIEL_MAC_PRO_ADMIN, ARIEL_MAC_USER, YEHUDA, RELEASE_CLOUD, MASTER_CLOUD, QA_SECURE_USER, QA_SECURE_ADMIN, QA_SECURE_PRO, SHELI, IGAL, SELENIUM, YORAM, ARIEL_MAC_SECURE_PRO_ADMIN, ARIEL_MAC_SECURE_USER, ARIEL_MAC_SECURE_ADMIN, DIKLA_WIN_ADMIN, DIKLA_MAC_ADMIN, DEEP_TESTING_CLOUD_ADMIN, DIKLA_WIN_USER;
+        NAVOT, STAGE_CLOUD_ADMIN, VM, MIRRON, PUBLIC, EYAl, QA_Not_Secured, ARIEL_WIN_ADMIN, ARIEL_WIN_SECURE_ADMIN, ARIEL_WIN_PRO_ADMIN, ARIEL_WIN_USER, ARIEL_MAC_ADMIN, ARIEL_MAC_PRO_ADMIN, ARIEL_MAC_USER, YEHUDA, RELEASE_CLOUD, MASTER_CLOUD, QA_SECURE_USER, QA_SECURE_ADMIN, QA_SECURE_PRO, SHELI, IGAL, SELENIUM, YORAM, ARIEL_MAC_SECURE_PRO_ADMIN, ARIEL_MAC_SECURE_USER, ARIEL_MAC_SECURE_ADMIN, DIKLA_WIN_ADMIN, DIKLA_MAC_ADMIN, DEEP_TESTING_CLOUD_ADMIN, DIKLA_WIN_USER
     }
 
     public static void updateServerCredentials(CloudServerName cloudName) {
@@ -314,8 +314,8 @@ public class Credentials {
                 PROJECT = "arielP";
                 PASS = "G123l321";
                 SECURE = true;
-                REPORTER_HOST = "";
-                REPORTER_PORT = "";
+                REPORTER_HOST = "192.168.2.168";
+                REPORTER_PORT = "9000";
                 REPORTER_SECURE = false;
                 AK = "eyJ4cC51IjoyNjkxLCJ4cC5wIjoyLCJ4cC5tIjoiTVRRNU9UTTFNVE16TkRrNE5nIiwiYWxnIjoiSFMyNTYifQ.eyJleHAiOjQ2NzIxOTU0MDAsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.XUOSiX6WGh8sF-l86TuTemYHES1s7QXD2UBKKKUUEqI";
                 break;
@@ -380,14 +380,14 @@ public class Credentials {
                 AK = "";
                 break;
             case MASTER_CLOUD:
-                HOST = "192.168.1.64";
-                PORT = "80";
+                HOST = "mastercloud.experitest.com";
+                PORT = "443";
                 USER = "ariel";
                 PROJECT = "Default";
                 PASS = "Experitest2012";
-                SECURE = false;
-                REPORTER_HOST = "";
-                REPORTER_PORT = "";
+                SECURE = true;
+                REPORTER_HOST = "192.168.2.20";
+                REPORTER_PORT = "8080";
                 REPORTER_SECURE = false;
                 AK = "eyJ4cC51IjozLCJ4cC5wIjoyLCJ4cC5tIjoiTVRVd09UVXlNVFl6TVRFMk9RIiwiYWxnIjoiSFMyNTYifQ.eyJleHAiOjE4MzgyNzIxOTIsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.0RjegPr5KyKsIr65N2wSkMDCEFo49icXxD4kj7s5HNY";
 

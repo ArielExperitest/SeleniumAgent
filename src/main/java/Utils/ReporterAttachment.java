@@ -15,16 +15,29 @@ import static FrameWork.Credentials.*;
 public class ReporterAttachment implements Runnable {
 
     private boolean isReportNull = false;
-    private String url, fileName;
+    private String baseURL, fileName;
+
+    public ReporterAttachment(String fileName, String reportUrl) {
+        if (Objects.isNull(reportUrl) || reportUrl.contains("Can't get")) {
+            isReportNull = true;
+        } else {
+            String testID = reportUrl.split("/")[5];
+
+            baseURL = "http://" + REPORTER_HOST + ":" + REPORTER_PORT + "/api/" + PROJECT + "/" + testID + "/attachments-name";
+            if (REPORTER_SECURE)
+                baseURL = "https://" + REPORTER_HOST + ":" + REPORTER_PORT + "/api/" + PROJECT + "/" + testID + "/attachments-name";
+            this.fileName = "reports/attachment/" + fileName;
+        }
+    }
 
     @Override
     public void run() {
         if (!isReportNull) {
             try {
-                HttpResponse<InputStream> response = Unirest.get(url)
+                Unirest.setTimeouts(5 * 60 * 1000, 5 * 60 * 1000);
+                HttpResponse<InputStream> response = Unirest.get(baseURL)
                         .basicAuth(USER, PASS).asBinary();
                 InputStream is = response.getBody();
-
                 FileOutputStream fos = new FileOutputStream(new File(fileName));
                 int inByte;
                 while ((inByte = is.read()) != -1)
@@ -36,18 +49,6 @@ public class ReporterAttachment implements Runnable {
                 e.printStackTrace();
             }
         }
-    }
-
-    public ReporterAttachment(int testIndex, String reportUrl, long START_TEST_TIME) {
-        if (Objects.isNull(reportUrl) || reportUrl.contains("Can't get")) {
-            isReportNull = true;
-        } else {
-            String testID = reportUrl.split("/")[5];
-
-            url = "http://" + REPORTER_HOST + ":" + REPORTER_PORT + "/api/" + PROJECT + "/" + testID + "/attachments-name";
-            if (REPORTER_SECURE)
-                url = "https://" + REPORTER_HOST + ":" + REPORTER_PORT + "/api/" + PROJECT + "/" + testID + "/attachments-name";
-            fileName = "reports/attachment/" + (testIndex + 1) + "_" + START_TEST_TIME + ".zip";
-        }
+        System.out.println("Finish download " + baseURL);
     }
 }

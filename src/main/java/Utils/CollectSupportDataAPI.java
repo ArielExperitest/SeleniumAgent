@@ -3,53 +3,63 @@ package Utils;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import sun.security.timestamp.Timestamper;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 import static FrameWork.Credentials.*;
 
 public class CollectSupportDataAPI implements Runnable {
+    private final Logger log = Logger.getLogger(this.getClass().getName());
 
     private static final String API_V2_CONFIGURATION_COLLECT_SUPPORT_DATA = "/api/v2/configuration/collect-support-data/false/false/-1/-1";
     private static final String API_V2_SELENIUM_AGENTS = "/api/v2/selenium-agents";
     private String baseURL, fileName;
 
-    public CollectSupportDataAPI() {
 
+    public CollectSupportDataAPI(String fileName) {
+        log.info("Starting download Collect Support Data" + fileName);
+
+        this.fileName = fileName;
+        baseURL = "http://";
+        if (SECURE)
+            baseURL = "https://";
+
+        baseURL += HOST + ":" + PORT + API_V2_CONFIGURATION_COLLECT_SUPPORT_DATA + getSupportedIDs();
+    }
+
+    public CollectSupportDataAPI() {
+        new CollectSupportDataAPI(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date()));
     }
 
     @Override
     public void run() {
         try {
+            Unirest.setTimeouts(5 * 60 * 1000, 5 * 60 * 1000);
             HttpResponse<InputStream> response = Unirest.get(baseURL)
                     .basicAuth(USER, PASS).asBinary();
             InputStream is = response.getBody();
-
-            FileOutputStream fos = new FileOutputStream(new File(fileName));
+            FileOutputStream fos = new FileOutputStream(new File("reports/CSD/" + fileName));
             int inByte;
             while ((inByte = is.read()) != -1)
                 fos.write(inByte);
 
             is.close();
             fos.close();
+            log.info("Finish download " + fileName);
         } catch (IOException | UnirestException e) {
             e.printStackTrace();
+            log.info("Can't download " + fileName);
         }
-    }
-
-    public CollectSupportDataAPI(int testIndex, long START_TEST_TIME) {
-        fileName = "reports/CSD/" + testIndex + "_" + START_TEST_TIME + ".zip";
-        baseURL = "http://" + HOST + ":" + PORT;
-        if (SECURE) {
-            baseURL = "https://" + HOST + ":" + PORT;
-        }
-        baseURL += API_V2_CONFIGURATION_COLLECT_SUPPORT_DATA + getSupportedIDs();
     }
 
 
@@ -88,4 +98,6 @@ public class CollectSupportDataAPI implements Runnable {
         }
         return seleniumIDs.substring(0, seleniumIDs.length() - 1);
     }
+
+
 }

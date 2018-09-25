@@ -8,28 +8,26 @@ import org.openqa.selenium.remote.BrowserType;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static FrameWork.Configuration.executorReport;
-
 
 public class Suits {
     private static final Logger log = Logger.getLogger("Suits");
 
     public static void main(String[] args) {
-//        checkAllBrowsers(150, 20);
+//        checkAllBrowsers(1, 5);
 
 //        testAgent(3, 10);
 //        test(12, 10, 15, BrowserType.SAFARI);
 //        testManual(4, 5, 3, BrowserType.CHROME);
 //        testSuit(10);
 //        testSuit(3, 2, BrowserType.CHROME);
-//        testAgent(3, 2);
+        testAgent(30, 3);
     }
 
     private static void checkAllBrowsers(int numOfSetReturns, int numOfSet) {
 
         for (int i = 0; i < numOfSetReturns; i++) {
             for (int j = 0; j < numOfSet; j++) {
-                new VersionCheckOneByOne();
+                new VersionCheckOneByOne(3);
             }
             log.info("=========Finish Agent Suits #" + i + "=========");
         }
@@ -60,7 +58,7 @@ public class Suits {
         for (int j = 0; j < numOfSetReturns; j++) {
             executor = Executors.newFixedThreadPool(numOfThreads);
             for (i = 0; i < numOfSet; i++) {
-                executor.execute(new PerformanceTest("", browserType));
+                executor.execute(new PerformanceTest(browserType));
             }
             executor.shutdown();
             while (true) {
@@ -85,7 +83,7 @@ public class Suits {
             for (int j = 0; j < numOfSet; j++) {
 //                executor.execute(new PerformanceTest(BrowserType.CHROME, "67"));
                 executor.execute(new PerformanceTest(BrowserType.CHROME));
-//                executor.execute(new PerformanceTest(BrowserType.SAFARI));
+                executor.execute(new PerformanceTest(BrowserType.SAFARI));
                 executor.execute(new PerformanceTest(BrowserType.FIREFOX));
             }
 //            executor.execute(new PerformanceTest(BrowserType.IE));
@@ -99,7 +97,6 @@ public class Suits {
 
         }
         log.info("-------Finished all threads-------");
-        executorReport.shutdown();
     }
 
     public static void testSuit(int numOfThreads, int numOfSetReturns, String browserType) {
@@ -113,7 +110,7 @@ public class Suits {
             executor.execute(new PassTest(browserType));
             executor.execute(new FailTest(browserType));
             executor.execute(new MinimumCapabilityTest(browserType));
-            new VersionCheckOneByOne();
+            new VersionCheckOneByOne(1);
 
             executor.shutdown();
             while (true) {

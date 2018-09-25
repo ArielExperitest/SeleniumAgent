@@ -26,10 +26,10 @@ public class VersionCheckOneByOne extends Configuration {
     private final Logger log = Logger.getLogger(this.getClass().getName());
 
 
-    public VersionCheckOneByOne() {
+    public VersionCheckOneByOne(int numOfThreads) {
         super();
         jsonNodes = getAvailableBrowser();
-        ExecutorService executor = Executors.newFixedThreadPool(2);
+        ExecutorService executor = Executors.newFixedThreadPool(numOfThreads);
 
         for (JSONObject jsonObject : jsonNodes) {
 
@@ -38,6 +38,10 @@ public class VersionCheckOneByOne extends Configuration {
             if (browserName.equals(BrowserType.CHROME)) browserVersion = browserVersion.split("\\.")[0];
 
             executor.execute(new VersionCheck(browserName, browserVersion));
+        }
+        executor.shutdown();
+        while (true) {
+            if (executor.isTerminated()) break;
         }
     }
 
