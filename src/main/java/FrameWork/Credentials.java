@@ -12,7 +12,7 @@ public class Credentials {
         NAVOT, STAGE_CLOUD_ADMIN, VM, MIRRON, PUBLIC, EYAl, QA_Not_Secured, ARIEL_WIN_ADMIN, ARIEL_WIN_SECURE_ADMIN, ARIEL_WIN_PRO_ADMIN, ARIEL_WIN_USER, ARIEL_MAC_ADMIN, ARIEL_MAC_PRO_ADMIN, ARIEL_MAC_USER, YEHUDA, RELEASE_CLOUD, MASTER_CLOUD, QA_SECURE_USER, QA_SECURE_ADMIN, QA_SECURE_PRO, SHELI, IGAL, SELENIUM, YORAM, ARIEL_MAC_SECURE_PRO_ADMIN, ARIEL_MAC_SECURE_USER, ARIEL_MAC_SECURE_ADMIN, DIKLA_WIN_ADMIN, DIKLA_MAC_ADMIN, DEEP_TESTING_CLOUD_ADMIN, DIKLA_WIN_USER
     }
 
-    public static void updateServerCredentials(CloudServerName cloudName) {
+    protected static void updateServerCredentials(CloudServerName cloudName) {
         switch (cloudName) {
             case NAVOT:
                 HOST = "192.168.2.13";

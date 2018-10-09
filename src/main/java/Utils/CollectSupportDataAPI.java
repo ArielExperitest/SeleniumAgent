@@ -44,7 +44,7 @@ public class CollectSupportDataAPI implements Runnable {
     @Override
     public void run() {
         try {
-            Unirest.setTimeouts(5 * 60 * 1000, 5 * 60 * 1000);
+            Unirest.setTimeouts(50 * 60 * 1000, 50 * 60 * 1000);
             HttpResponse<InputStream> response = Unirest.get(baseURL)
                     .basicAuth(USER, PASS).asBinary();
             InputStream is = response.getBody();
@@ -56,9 +56,12 @@ public class CollectSupportDataAPI implements Runnable {
             is.close();
             fos.close();
             log.info("Finish download " + fileName);
-        } catch (IOException | UnirestException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-            log.info("Can't download " + fileName);
+            log.info("IOException - Can't download " + fileName);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+            log.info("UnirestException - Can't download " + fileName);
         }
     }
 

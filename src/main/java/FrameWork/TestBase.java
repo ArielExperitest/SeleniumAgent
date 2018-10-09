@@ -1,12 +1,11 @@
 package FrameWork;
 
 import Utils.CollectSupportDataAPI;
-import Utils.ReporterAttachment;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.BrowserType;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -15,7 +14,7 @@ public abstract class TestBase extends Configuration implements Runnable {
 
     private final Logger log = Logger.getLogger(this.getClass().getName());
     private static int testIndex = 0;
-
+    static ArrayList<Node> excList = new ArrayList<>();
     private boolean isTestPass = true;
     private Exception exception = null;
 
@@ -59,7 +58,7 @@ public abstract class TestBase extends Configuration implements Runnable {
     //Passed
     private void writeToLog() {
         testIndex++;
-        log.info("Result - #" + testIndex + ". " + " PASS " + platform + " " + testName + " reportPath=" + reportUrl);
+        log.info("Result - #" + testIndex + ". " + " @PASS " + platform + " " + testName + " reportPath=" + reportUrl);
     }
 
     //Failed
@@ -72,14 +71,32 @@ public abstract class TestBase extends Configuration implements Runnable {
 //        executorReport.submit(new ReporterAttachment(reportPath, reportUrl));
 
 
-        log.error("Result - #" + testIndex + "  FAIL " + sessionId + " " + platform + " " + testName + " reportUrl=" + reportUrl + " CSDZip=" + CSDPath + " reportZip=" + reportPath);
+        log.error("Result - #" + testIndex + " @FAIL " + sessionId + " " + platform + " " + testName + " reportUrl=" + reportUrl + " CSDZip=" + CSDPath + " reportZip=" + reportPath);
         if (Objects.nonNull(capabilities))
             log.error("capabilities - " + "-------- " + capabilities + "");
         else
             log.error("Result - " + "capabilities are null");
         log.error("Result - " + "----------Exception ", exception);
+
+        countExc(exception.getMessage().split("\n")[0]);
+
         log.error(exception.getMessage().split("\n")[0]);
 
+    }
+
+    private synchronized void countExc(String message) {
+        boolean find = false;
+        for (Node node :
+                excList) {
+
+            if (node.message.equals(message)) {
+                node.count++;
+                find = true;
+            }
+            if (find) break;
+        }
+        if (!find)
+            excList.add(new Node(1, message));
     }
 
     protected void sleep(int time) {
@@ -97,5 +114,15 @@ public abstract class TestBase extends Configuration implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+}
+
+class Node {
+    int count;
+    String message;
+
+    Node(int count, String message) {
+        this.count = count;
+        this.message = message;
     }
 }

@@ -1,7 +1,7 @@
 package FrameWork;
 
 import Test.grid.Basic;
-import Test.grid.VersionCheckOneByOne;
+import Test.grid.PerformanceTest;
 import org.openqa.selenium.remote.BrowserType;
 
 
@@ -11,7 +11,7 @@ public class Runner {
     public static void main(String[] args) {
 
         int j = 0;
-        while (j < 1) {
+        while (j < 6) {
 //            new Thread(new WatchCloudTest(BrowserType.CHROME, "admin", "Experitest2012")).start();
 
 //            new Thread(new WatchCloudTest(BrowserType.FIREFOX, "https://qa-win2016.experitest.com", "diklaLDAP", "Experitest2012")).start();
@@ -25,9 +25,11 @@ public class Runner {
 //            new Thread(new PerformanceTest(BrowserType.CHROME)).start();
 //            new Thread(new FaileTest2(BrowserType.FIREFOX)).start();
 //            new Thread(new FaileTest2(BrowserType.CHROME)).start();
-//            new Thread(new Basic(BrowserType.CHROME)).start();
+            new Thread(new PerformanceTest(BrowserType.SAFARI)).start();
 
-            new VersionCheckOneByOne(3);
+
+//            new VersionCheckOneByOne(3);
+//            new Thread(new PassTest("MicrosoftEdge")).start();
 
 //            new Thread(new VersionCheckOneByOne()).start();
 //            new Thread(new CheckAllBrowserVersion()).start();
