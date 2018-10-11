@@ -8,8 +8,6 @@ import org.openqa.selenium.remote.BrowserType;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static FrameWork.TestBase.excList;
-
 
 public class Suits {
     private static final Logger log = Logger.getLogger("Suits");
@@ -22,7 +20,7 @@ public class Suits {
 //        testManual(4, 5, 3, BrowserType.CHROME);
 //        testSuit(10);
 //        testSuit(3, 2, BrowserType.CHROME);
-        testAgent(100, 4);
+        testAgent(800, 5);
     }
 
     private static void checkAllBrowsers(int numOfSetReturns, int numOfSet) {
@@ -33,7 +31,6 @@ public class Suits {
             }
             log.info("=========Finish Agent Suits #" + i + "=========");
         }
-        printExcList();
     }
 
     private static void testManual(int numOfThreads, int numOfSetReturns, int numOfSet, String browserType) {
@@ -70,7 +67,6 @@ public class Suits {
             log.info("=========Finish Safari Suits #" + i + "=========");
         }
         log.info("Finished all threads");
-        printExcList();
     }
 
     private static void testAgent(int numOfSetReturns, int numOfSet) {
@@ -96,10 +92,8 @@ public class Suits {
                 if (executor.isTerminated()) break;
             }
             log.info("=========Finish Agent Suits #" + i + "=========");
-
         }
         log.info("-------Finished all threads-------");
-        printExcList();
     }
 
     public static void testSuit(int numOfThreads, int numOfSetReturns, String browserType) {
@@ -122,12 +116,6 @@ public class Suits {
             log.info("=========Finish Safari Suits #" + j + "=========");
         }
         log.info("Finished all threads");
-        printExcList();
     }
 
-    private static void printExcList() {
-        for (Node anExcList : excList) {
-            log.info(anExcList.count + " " + anExcList.message);
-        }
-    }
 }

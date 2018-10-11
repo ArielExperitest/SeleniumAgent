@@ -11,7 +11,7 @@ public class Runner {
     public static void main(String[] args) {
 
         int j = 0;
-        while (j < 6) {
+        while (j < 1) {
 //            new Thread(new WatchCloudTest(BrowserType.CHROME, "admin", "Experitest2012")).start();
 
 //            new Thread(new WatchCloudTest(BrowserType.FIREFOX, "https://qa-win2016.experitest.com", "diklaLDAP", "Experitest2012")).start();

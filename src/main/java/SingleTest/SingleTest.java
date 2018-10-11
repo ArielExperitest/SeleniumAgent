@@ -28,7 +28,8 @@ public class SingleTest {
 //
 //    }
 
-    @Before
+
+    //    @Before
     public void setUp() {
 
         try {

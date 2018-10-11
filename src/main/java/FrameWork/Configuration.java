@@ -14,12 +14,12 @@ public class Configuration {
     long START_TEST_TIME = System.currentTimeMillis();
 
     //         private  CloudServerName cloudName = CloudServerName.ARIEL_MAC_PRO_ADMIN;
-//     private  CloudServerName cloudName = CloudServerName.ARIEL_MAC_ADMIN;
+     private  CloudServerName cloudName = CloudServerName.ARIEL_MAC_ADMIN;
 //             private  CloudServerName cloudName = CloudServerName.DIKLA_WIN_USER;
 //      private  CloudServerName cloudName = CloudServerName.ARIEL_WIN_ADMIN;
     //         private  CloudServerName cloudName = CloudServerName.YORAM;
 //         private  CloudServerName cloudName = CloudServerName.MASTER_CLOUD;
-    private CloudServerName cloudName = CloudServerName.QA_SECURE_USER;
+//    private CloudServerName cloudName = CloudServerName.QA_SECURE_USER;
 
     static {
         //Ariel Windows keystore

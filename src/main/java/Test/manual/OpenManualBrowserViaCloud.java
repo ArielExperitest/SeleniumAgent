@@ -1,10 +1,7 @@
 package Test.manual;
 
 import FrameWork.TestBase;
-import Test.manual.POM.BrowsersPage;
-import Test.manual.POM.Cards.ChromeCard;
 import org.apache.log4j.Logger;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -25,36 +22,11 @@ public class OpenManualBrowserViaCloud extends TestBase {
     @Override
     protected void test() throws Exception {
         driver = new RemoteWebDriver(url, dc);
-        BrowsersPage browsersPage = new BrowsersPage(driver);
-        checkCardVersion(browsersPage.getChromeCard());
+
 //        checkCardVersionAndOS(browsersPage.getChromeCard());
         driver.quit();
     }
 
-    private void checkCardVersion(ChromeCard chromeCard) throws Exception {
-        if (chromeCard.isCardVisible()) {
-            int versionSelectorSize = chromeCard.getVersionSelector().size();
-            chromeCard.hideSelector();
-            log.info("Start the for loop");
-            for (int i = 0; i < versionSelectorSize; i++) {
-                chromeCard.hideSelector();
-                log.info("Click on selector in " + i);
-                chromeCard.getVersionSelector().get(i).click();
-
-                log.info("Click on button");
-                String versionName = chromeCard.getVersionField().getText();
-                chromeCard.getButton().click();
-
-                log.info("<<<<<checkNewWindow");
-                if (i == 0)
-                    versionName = versionName.split(" ")[0];
-                checkNewWindow(versionName);
-                log.info("checkNewWindow>>>>>>>>>");
-            }
-        } else {
-            log.info("Agent is offline");
-        }
-    }
 
     private void checkNewWindow(String windowTitle) throws Exception {
         //Wait to manual browser to open

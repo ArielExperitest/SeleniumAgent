@@ -7,6 +7,8 @@ import org.openqa.selenium.remote.BrowserType;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 
 public abstract class TestBase extends Configuration implements Runnable {
@@ -79,9 +81,6 @@ public abstract class TestBase extends Configuration implements Runnable {
         log.error("Result - " + "----------Exception ", exception);
 
         countExc(exception.getMessage().split("\n")[0]);
-
-        log.error(exception.getMessage().split("\n")[0]);
-
     }
 
     private synchronized void countExc(String message) {
@@ -97,6 +96,11 @@ public abstract class TestBase extends Configuration implements Runnable {
         }
         if (!find)
             excList.add(new Node(1, message));
+
+        log.info("############## Exception summary #####################");
+        for (Node anExcList : excList)
+            log.info(anExcList.count + " " + anExcList.message);
+        log.info("###################################");
     }
 
     protected void sleep(int time) {
