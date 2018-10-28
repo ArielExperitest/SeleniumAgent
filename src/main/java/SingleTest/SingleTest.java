@@ -12,6 +12,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
+
 
 public class SingleTest {
     private static final long TIMEOUT = 2000;
@@ -19,75 +21,47 @@ public class SingleTest {
     private boolean SECURE = false;
 
     protected URL url;
-    protected WebDriver driver;
+    protected RemoteWebDriver driver;
     protected DesiredCapabilities dc = new DesiredCapabilities();
 
-//    static {
-//        System.getProperties().setProperty("javax.net.ssl.trustStore","C:\\Program Files (x86)\\Experitest\\Ariel_Mac_Keystore.jks");
-//        System.getProperties().setProperty("javax.net.ssl.trustStorePassword","");
-//
-//    }
-
-
-    //    @Before
+    @Before
     public void setUp() {
 
         try {
-            url = new URL("http://192.168.2.108:4444/wd/hub");
+//            url = new URL("https://qacloud.experitest.com/wd/hub");
+            url = new URL("http://192.168.1.59:8090/wd/hub");
 //            url = new URL("https://ariel-mac.experitest.local/wd/hub");
-            if (SECURE)
-                url = new URL("https://192.168.2.91:443");
+//                url = new URL("https://192.168.2.91:443");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        dc.setCapability("testName", "FireFox Tes111111111111111t");
-//        dc.setCapability("username", "ariel-user");
-//        dc.setCapability("username", "admin");
-//        dc.setCapability("password", "Experitest2012");
+//        dc.setCapability("testName", "FireFox Tes111111111111111t");
+        dc.setCapability("username", "admin");
+        dc.setCapability("password", "Experitest2012");
 //        dc.setCapability("projectName", "Test@ariel.com"); //only required if your user has several projects assigned to it. Otherwise, exclude this capability.
-//        dc.setCapability("projectName", "Default"); //only required if your user has several projects assigned to it. Otherwise, exclude this capability.
-//        dc.setCapability("projectName", "Default"); //only required if your user has several projects assigned to it. Otherwise, exclude this capability.
+        dc.setCapability("projectName", "Default"); //only required if your user has several projects assigned to it. Otherwise, exclude this capability.
 //        dc.setCapability("accessKey", accessKey);
+        dc.setCapability("newSessionWaitTimeout", "600");//default is 300
 
-
-//        dc.setCapability("generateReport", true);
-//        dc.setCapability(CapabilityType.TAKES_SCREENSHOT, true);
-        dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.IE);
-//        dc.setCapability(CapabilityType.BROWSER_VERSION, "11");
 
         driver = new RemoteWebDriver(url, dc);
+        System.out.println(driver.getCapabilities().getCapability("reportUrl"));
     }
 
     @Test
     public void test1() {
+        driver.get("https://lnx-candyland.pcfdev.atb.atb.com");
+        try {
+            presenceOfElementLocated(By.id("lst-ib"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 //        driver.get("https://www.ynet.co.il");
 //        driver.get("https://www.experitest.com");
 //        driver.get("https://www.cnn.com");
-        driver.get("https://www.google.com");
-        try {
-            Thread.sleep(60 * 1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         driver.quit();
-    }
-
-    //@Test
-    public void LoginToCloud() {
-        driver.get("http://192.168.1.64");
-        driver.findElement(By.xpath("//*[@name='username']")).sendKeys("ariel");
-        driver.findElement(By.xpath("//*[@name='password']")).sendKeys("Experitest2012");
-        driver.findElement(By.xpath("//*[@name='login']")).click();
-        driver.findElement(By.xpath("//*[@href='#/launchpad']")).click();
-        driver.findElement(By.xpath("//*[@id=\"side-menu\"]/li[4]")).click();
-        int i = 0;
-        while (i < 20) {
-            driver.findElement(By.xpath("//*[@class='icon icon-smartphone']")).click();
-            driver.findElement(By.xpath("//*[@id=\"side-menu\"]/li[4]")).click();
-            i++;
-        }
-
     }
 
     protected void setAK() {

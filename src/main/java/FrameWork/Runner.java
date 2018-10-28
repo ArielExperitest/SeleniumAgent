@@ -1,7 +1,6 @@
 package FrameWork;
 
 import Test.grid.Basic;
-import Test.grid.PerformanceTest;
 import org.openqa.selenium.remote.BrowserType;
 
 
@@ -25,7 +24,8 @@ public class Runner {
 //            new Thread(new PerformanceTest(BrowserType.CHROME)).start();
 //            new Thread(new FaileTest2(BrowserType.FIREFOX)).start();
 //            new Thread(new FaileTest2(BrowserType.CHROME)).start();
-            new Thread(new PerformanceTest(BrowserType.SAFARI)).start();
+//            new Thread(new Basic(BrowserType.SAFARI)).start();
+            new Thread(new Basic(BrowserType.SAFARI)).start();
 
 
 //            new VersionCheckOneByOne(3);

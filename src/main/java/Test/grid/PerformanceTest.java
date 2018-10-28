@@ -42,6 +42,7 @@ public class PerformanceTest extends TestBase {
     @Override
     protected void test() {
         driver = new RemoteWebDriver(url, dc);
+        browserVersion = driver.getCapabilities().getVersion();
         platform = String.valueOf(driver.getCapabilities().getPlatform());
         reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
         sessionId = (String) driver.getCapabilities().getCapability("sessionId");
@@ -51,7 +52,7 @@ public class PerformanceTest extends TestBase {
 //            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 //            driver.manage().timeouts().pageLoadTimeout(90, TimeUnit.SECONDS);
         }
-        sleepSafari(10 * 1000);
+        sleepSafari(5 * 1000);
         driver.get("https://qacloud.experitest.com");
         sleep(3 * 1000);
 
@@ -74,7 +75,7 @@ public class PerformanceTest extends TestBase {
             i++;
         }
         //Wikipedia
-        sleepSafari(10 * 1000);
+        sleepSafari(5 * 1000);
         driver.get("https://en.wikipedia.org/wiki/Special:Random");
 
         sleep(2 * 1000);
@@ -82,7 +83,7 @@ public class PerformanceTest extends TestBase {
         driver.findElement(By.xpath("//*[@id=\"searchInput\"]")).sendKeys("Experitest");
 
         int j = 0;
-        sleepSafari(10 * 1000);
+        sleepSafari(5 * 1000);
         driver.get("http://the-internet.herokuapp.com");
         sleep(2 * 1000);
         driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[5]/a")).click();
@@ -98,7 +99,7 @@ public class PerformanceTest extends TestBase {
         if (!browserType.equals(BrowserType.SAFARI)) {
             driver.navigate().back();
             driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[9]/a")).click();
-            sleepSafari(10 * 1000);
+            sleepSafari(5 * 1000);
             driver.get("http://the-internet.herokuapp.com/dropdown");
             WebElement dropdown = driver.findElement(By.xpath("//*[@id=\"dropdown\"]"));
             dropdown.click();
@@ -111,8 +112,8 @@ public class PerformanceTest extends TestBase {
             jse.executeScript("scroll(0, -250);");//Up
             jse.executeScript("scroll(0, -600);");//Up
         }
-        sleepSafari(10 * 1000);
-        sleepSafari(10 * 1000);
+        sleepSafari(5 * 1000);
+        sleepSafari(5 * 1000);
         driver.get("https://www.google.com");
         sleep(2 * 1000);
         WebElement searchBar = driver.findElement(By.xpath("//*[@id=\"lst-ib\"]"));
@@ -121,7 +122,7 @@ public class PerformanceTest extends TestBase {
 
         //uploadFile
 
-        sleepSafari(10 * 1000);
+        sleepSafari(5 * 1000);
 //            driver.get("http://www.csm-testcenter.org/test?do=show&subdo=common&test=file_upload");
 //            driver.findElement(By.xpath("//*[@type=\"file\"]")).sendKeys("C:\\SeleniumAgent\\SeleniumAgent\\Selenium\\Example_File.txt");
 //            driver.findElement(By.xpath("//*[@name=\"http_submit\"]")).click();
@@ -150,7 +151,7 @@ public class PerformanceTest extends TestBase {
 //        if (!browserType.equals(BrowserType.SAFARI)) {
 //            for (String logTypes :
 //                    driver.manage().logs().getAvailableLogTypes()) {
-//        sleepSafari(210* 1000);
+//        sleepSafari(25* 1000);
 //                driver.manage().logs().get(logTypes);
 //            }
 //        }

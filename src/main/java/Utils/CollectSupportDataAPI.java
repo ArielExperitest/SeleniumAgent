@@ -65,7 +65,6 @@ public class CollectSupportDataAPI implements Runnable {
         }
     }
 
-
     private String getAllSeleniumAPI() {
         String baseURL = "http://" + HOST + ":" + PORT;
         if (SECURE) {
@@ -101,6 +100,4 @@ public class CollectSupportDataAPI implements Runnable {
         }
         return seleniumIDs.substring(0, seleniumIDs.length() - 1);
     }
-
-
 }

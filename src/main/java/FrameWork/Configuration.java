@@ -13,41 +13,21 @@ public class Configuration {
     protected boolean USE_AK_Flag = false;
     long START_TEST_TIME = System.currentTimeMillis();
 
-    //         private  CloudServerName cloudName = CloudServerName.ARIEL_MAC_PRO_ADMIN;
-     private  CloudServerName cloudName = CloudServerName.ARIEL_MAC_ADMIN;
-//             private  CloudServerName cloudName = CloudServerName.DIKLA_WIN_USER;
-//      private  CloudServerName cloudName = CloudServerName.ARIEL_WIN_ADMIN;
-    //         private  CloudServerName cloudName = CloudServerName.YORAM;
-//         private  CloudServerName cloudName = CloudServerName.MASTER_CLOUD;
-//    private CloudServerName cloudName = CloudServerName.QA_SECURE_USER;
-
-    static {
-        //Ariel Windows keystore
-//        System.getProperties().setProperty("javax.net.ssl.trustStore", "C:\\Users\\ariel.hazan\\Desktop\\Key\\truststore.jks");
-//        System.getProperties().setProperty("javax.net.ssl.trustStorePassword", "123456");
-
-        //Ariel Mac keystore
-//        System.getProperties().setProperty("javax.net.ssl.trustStore", "C:\\Users\\ariel.hazan\\Desktop\\Key\\Ariel_Mac_Keystore.jks");
-//        System.getProperties().setProperty("javax.net.ssl.trustStorePassword", "");
-
-        //Dikla keystore
-//        System.getProperties().setProperty("javax.net.ssl.trustStore", "C:\\Users\\ariel.hazan\\Downloads\\trust_store.jks");
-//        System.getProperties().setProperty("javax.net.ssl.trustStorePassword", "");
-
-
-    }
-
     protected Configuration() {
-        updateServerCredentials(cloudName);
+        updateServerCredentials(CloudServerName.RND_VM_CLOUD);
+//        updateServerCredentials(CloudServerName.QA_SECURE_ADMIN);
+//        updateServerCredentials(CloudServerName.ARIEL_MAC_ADMIN);
+//        updateServerCredentials(CloudServerName.ARIEL_MAC_PRO_ADMIN);
+//        updateServerCredentials(CloudServerName.ARIEL_MAC_USER);
     }
-
 
     void setDC() {
         setURL();
-//        dc.setCapability("seleniumScreenshot", false);
-//        dc.setCapability(CapabilityType.TAKES_SCREENSHOT, false);//takesScreenshot
-//        dc.setCapability("takeScreenshots", false);
-//        dc.setCapability("generateReport", false);
+//        dc.setCapability(CapabilityType.TAKES_SCREENSHOT, false);//takesScreenshot - not supporting
+
+        dc.setCapability("seleniumScreenshot", false);
+        dc.setCapability("takeScreenshots", true);
+        dc.setCapability("generateReport", true);
         dc.setCapability("newCommandTimeout", "300");//default is 300
         dc.setCapability("newSessionWaitTimeout", "300");//default is 300
 //        dc.setCapability(CapabilityType.BROWSER_VERSION, "53.0.3");
@@ -75,13 +55,22 @@ public class Configuration {
         }
     }
 
-    protected void setMinimumDC() {
-        setURL();
-    }
-
     protected URL url;
     protected RemoteWebDriver driver;
     protected DesiredCapabilities dc = new DesiredCapabilities();
-    public static String collectSupportDataPath = "reports/CSD/";
-    public static String attachmentPath = "reports/attachment/";
+
+
+    static {
+        //Ariel Windows keystore
+//        System.getProperties().setProperty("javax.net.ssl.trustStore", "C:\\Users\\ariel.hazan\\Desktop\\Key\\truststore.jks");
+//        System.getProperties().setProperty("javax.net.ssl.trustStorePassword", "123456");
+
+        //Ariel Mac keystore
+//        System.getProperties().setProperty("javax.net.ssl.trustStore", "C:\\Users\\ariel.hazan\\Desktop\\Key\\Ariel_Mac_Keystore.jks");
+//        System.getProperties().setProperty("javax.net.ssl.trustStorePassword", "");
+
+        //Dikla keystore
+//        System.getProperties().setProperty("javax.net.ssl.trustStore", "C:\\Users\\ariel.hazan\\Downloads\\trust_store.jks");
+//        System.getProperties().setProperty("javax.net.ssl.trustStorePassword", "");
+    }
 }

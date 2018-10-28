@@ -1,27 +1,27 @@
 package FrameWork;
 
 import Utils.CollectSupportDataAPI;
+import Utils.ReporterAttachment;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.BrowserType;
 
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.*;
 
 
 public abstract class TestBase extends Configuration implements Runnable {
     protected abstract void test() throws Exception;
 
-    private final Logger log = Logger.getLogger(this.getClass().getName());
+    protected final Logger log = Logger.getLogger(this.getClass().getName());
     private static int testIndex = 0;
-    static ArrayList<Node> excList = new ArrayList<>();
+    private static List<Node> excList = new ArrayList<>();
+    private static int failCount = 0;
     private boolean isTestPass = true;
     private Exception exception = null;
 
     protected String testName = "testName";
     protected String browserType = "";
+    protected String browserVersion = "";
     protected String platform = null;
     protected String reportUrl = "Can't get report URL";
     protected String sessionId = null;
@@ -69,9 +69,11 @@ public abstract class TestBase extends Configuration implements Runnable {
         String CSDPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
         String reportPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
 
-        new Thread(new CollectSupportDataAPI(CSDPath), testIndex + "_" + testName + "_" + START_TEST_TIME).start();
-//        executorReport.submit(new ReporterAttachment(reportPath, reportUrl));
 
+        if (testIndex % 3 == 0) {
+            new Thread(new CollectSupportDataAPI(CSDPath), testIndex + "_" + testName + "_" + START_TEST_TIME).start();
+//            new Thread(new ReporterAttachment(reportPath, reportUrl)).start();
+        }
 
         log.error("Result - #" + testIndex + " @FAIL " + sessionId + " " + platform + " " + testName + " reportUrl=" + reportUrl + " CSDZip=" + CSDPath + " reportZip=" + reportPath);
         if (Objects.nonNull(capabilities))
@@ -80,7 +82,7 @@ public abstract class TestBase extends Configuration implements Runnable {
             log.error("Result - " + "capabilities are null");
         log.error("Result - " + "----------Exception ", exception);
 
-        countExc(exception.getMessage().split("\n")[0]);
+        countExc(browserType + " " + browserVersion + " - " + exception.getMessage().split("\n")[0]);
     }
 
     private synchronized void countExc(String message) {
@@ -96,8 +98,11 @@ public abstract class TestBase extends Configuration implements Runnable {
         }
         if (!find)
             excList.add(new Node(1, message));
-
+        if (excList.size() % 5 == 0)
+            excList.sort(Comparator.comparingInt(left -> left.count));
         log.info("############## Exception summary #####################");
+        log.info("Number of fail tests: " + (++failCount));
+
         for (Node anExcList : excList)
             log.info(anExcList.count + " " + anExcList.message);
         log.info("###################################");
@@ -112,12 +117,8 @@ public abstract class TestBase extends Configuration implements Runnable {
     }
 
     protected void sleepSafari(int time) {
-        try {
-            if (browserType.equals(BrowserType.SAFARI))
-                Thread.sleep(time);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        if (browserType.equals(BrowserType.SAFARI))
+            sleep(time);
     }
 }
 
