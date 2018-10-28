@@ -13,6 +13,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by ariel.hazan on 02-Jan-18.
@@ -49,8 +50,8 @@ public class PerformanceTest extends TestBase {
         log.info("driver= " + platform + " - " + sessionId + " - " + reportUrl + " - " + driver.getCapabilities().getVersion() + " - " + driver.getCapabilities());
 
         if (!browserType.equals(BrowserType.IE)) {
-//            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-//            driver.manage().timeouts().pageLoadTimeout(90, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+            driver.manage().timeouts().pageLoadTimeout(90, TimeUnit.SECONDS);
         }
         sleepSafari(5 * 1000);
         driver.get("https://qacloud.experitest.com");

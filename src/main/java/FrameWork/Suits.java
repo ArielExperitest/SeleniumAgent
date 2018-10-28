@@ -20,7 +20,7 @@ public class Suits {
 //        testManual(4, 5, 3, BrowserType.CHROME);
 //        testSuit(10);
 //        testSuit(3, 2, BrowserType.CHROME);
-        testAgent(1, 20);
+        testAgent(10, 4);
     }
 
     private static void checkAllBrowsers(int numOfSetReturns, int numOfSet) {
