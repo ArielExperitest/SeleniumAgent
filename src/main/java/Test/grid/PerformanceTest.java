@@ -2,12 +2,10 @@ package Test.grid;
 
 import FrameWork.TestBase;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
@@ -22,10 +20,8 @@ public class PerformanceTest extends TestBase {
     private final Logger log = Logger.getLogger(this.getClass().getName());
 
     public PerformanceTest(String browserType, String browserVersion) {
+        super(null);
         config(browserType);
-
-        if (Objects.nonNull(browserVersion))
-            dc.setCapability(CapabilityType.BROWSER_VERSION, browserVersion);
     }
 
 
@@ -33,16 +29,27 @@ public class PerformanceTest extends TestBase {
         config(browserType);
     }
 
+    public PerformanceTest(String browserType, DesiredCapabilities desiredCapabilities) {
+        super(desiredCapabilities);
+        config(browserType);
+    }
+
+
     private void config(String browserType) {
         this.browserType = browserType;
         testName = this.getClass().getSimpleName() + " " + browserType;
         dc.setCapability("testName", testName);
         dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
+
     }
 
     @Override
     protected void test() {
+
         driver = new RemoteWebDriver(url, dc);
+//        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(1920, 1080));
+        sleep(1000);
         browserVersion = driver.getCapabilities().getVersion();
         platform = String.valueOf(driver.getCapabilities().getPlatform());
         reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");

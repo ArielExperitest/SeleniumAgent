@@ -1,5 +1,7 @@
 package FrameWork;
 
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -9,6 +11,12 @@ import java.net.URL;
 import static FrameWork.Credentials.*;
 
 public class Configuration {
+
+    protected DesiredCapabilities desiredCapabilities = null;
+
+    public Configuration(DesiredCapabilities desiredCapabilities) {
+        this.desiredCapabilities = desiredCapabilities;
+    }
 
     protected boolean USE_AK_Flag = false;
     long START_TEST_TIME = System.currentTimeMillis();
@@ -30,7 +38,7 @@ public class Configuration {
         dc.setCapability("generateReport", true);
         dc.setCapability("newCommandTimeout", "300");//default is 300
         dc.setCapability("newSessionWaitTimeout", "300");//default is 300
-//        dc.setCapability(CapabilityType.BROWSER_VERSION, "53.0.3");
+//        dc.setCapability(CapabilityType.BROWSER_VERSION, "63.0.1");
 //        dc.setCapability(CapabilityType.PLATFORM, Platform.WIN10);
 //        dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.FIREFOX);
     }
@@ -46,9 +54,12 @@ public class Configuration {
                 url = new URL("http://" + HOST + ":" + PORT + "/wd/hub");
                 if (SECURE)
                     url = new URL("https://" + HOST + ":" + PORT + "/wd/hub");
-                dc.setCapability("username", USER);
-                dc.setCapability("password", PASS);
-                dc.setCapability("projectName", PROJECT); //only required if your user has several projects assigned to it. Otherwise, exclude this capability.
+                if (desiredCapabilities == null) {
+                    dc.setCapability("username", USER);
+                    dc.setCapability("password", PASS);
+                    dc.setCapability("projectName", PROJECT); //only required if your user has several projects assigned to it. Otherwise, exclude this capability.
+                } else
+                    dc.merge(desiredCapabilities);
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();

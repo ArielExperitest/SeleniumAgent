@@ -1,15 +1,18 @@
 package FrameWork;
 
 import Utils.CollectSupportDataAPI;
-import Utils.ReporterAttachment;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.*;
 
 
 public abstract class TestBase extends Configuration implements Runnable {
+    protected TestBase() {
+    }
+
     protected abstract void test() throws Exception;
 
     protected final Logger log = Logger.getLogger(this.getClass().getName());
@@ -26,9 +29,14 @@ public abstract class TestBase extends Configuration implements Runnable {
     protected String reportUrl = "Can't get report URL";
     protected String sessionId = null;
 
+    public TestBase(DesiredCapabilities desiredCapabilities) {
+        super(desiredCapabilities);
+    }
+
     @Override
     public void run() {
         setDC();
+
         try {
             log.info("Start test - " + dc);
             test();
@@ -70,7 +78,7 @@ public abstract class TestBase extends Configuration implements Runnable {
         String reportPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
 
 
-        if (testIndex % 3 == 0) {
+        if (testIndex % 5 == 0) {
             new Thread(new CollectSupportDataAPI(CSDPath), testIndex + "_" + testName + "_" + START_TEST_TIME).start();
 //            new Thread(new ReporterAttachment(reportPath, reportUrl)).start();
         }

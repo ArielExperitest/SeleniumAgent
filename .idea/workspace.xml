@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9eaa665f-4669-4664-b4b6-67a33ae89705" name="Default" comment="Add specific browser to count">
+    <list default="true" id="9eaa665f-4669-4664-b4b6-67a33ae89705" name="Default" comment="Update">
+      <change afterPath="$PROJECT_DIR$/ChromeExtension/extension_35_4_5_0.crx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/FrameWork/RoleRun.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SingleTest/FirefoxExtension.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Test/grid/LongTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FrameWork/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FrameWork/Configuration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FrameWork/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FrameWork/Runner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FrameWork/Suits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FrameWork/Suits.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FrameWork/TestBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FrameWork/TestBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SingleTest/ParallelDeviceTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SingleTest/SingleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SingleTest/SingleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Test/grid/Basic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/grid/Basic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Test/grid/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/grid/PerformanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/Visual-Testing_v1.20.crx" beforeDir="false" afterPath="$PROJECT_DIR$/ChromeExtension/Visual-Testing_v1.20.crx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FrameWork/Configuration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FrameWork/Configuration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FrameWork/Runner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FrameWork/Runner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FrameWork/Suits.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FrameWork/Suits.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FrameWork/TestBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FrameWork/TestBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SingleTest/ParallelDeviceTests$arielTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SingleTest/ParallelDeviceTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SingleTest/SingleTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SingleTest/SingleTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -25,51 +42,62 @@
     <session id="1173616279">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="14" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.28" value="2" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.38" value="2" />
-          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.4" value="2" />
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.43" value="1" />
+          <entry key="project.open.time.48" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.53" value="1" />
           <entry key="project.open.time.71" value="1" />
+          <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.82" value="1" />
-          <entry key="project.opened" value="18" />
+          <entry key="project.opened" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1978" />
-          <entry key="txt" value="88" />
+          <entry key="java" value="5261" />
+          <entry key="txt" value="94" />
           <entry key="vmoptions" value="8" />
+          <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1978" />
-          <entry key="PLAIN_TEXT" value="96" />
+          <entry key="JAVA" value="5261" />
+          <entry key="PLAIN_TEXT" value="102" />
+          <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="5" />
-          <entry key="java" value="38" />
+          <entry key="java" value="97" />
+          <entry key="log" value="1" />
+          <entry key="properties" value="1" />
           <entry key="vmoptions" value="2" />
-          <entry key="xml" value="1" />
+          <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="ANSI Aware" value="1" />
           <entry key="CLASS" value="5" />
-          <entry key="JAVA" value="38" />
+          <entry key="JAVA" value="97" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="XML" value="1" />
+          <entry key="Properties" value="1" />
+          <entry key="XML" value="2" />
         </counts>
       </usages-collector>
     </session>
@@ -77,65 +105,17 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Runner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Suits.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+            <state relative-caret-position="107">
+              <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#checkAllBrowsers#0;class#Suits#0" />
                 <element signature="method#testManual#0;class#Suits#0" />
+                <element signature="method#test#0;class#Suits#0" />
+                <element signature="method#testEdge#0;class#Suits#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Utils/CollectSupportDataAPI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/TestBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/SingleTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Credentials.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -143,8 +123,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Configuration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+            <state relative-caret-position="169">
+              <caret line="39" column="73" selection-start-line="39" selection-start-column="73" selection-end-line="39" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -153,27 +133,53 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/PerformanceTest.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/SingleTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="459">
-              <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="679">
+              <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/ChromeExtension.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="508">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
               <folding>
-                <element signature="docComment;class#PerformanceTest#0" />
-                <element signature="e#918#919#0" expanded="true" />
-                <element signature="e#953#954#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/Basic.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/PerformanceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="23" column="65" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="65" />
+            <state relative-caret-position="260">
+              <caret line="90" column="8" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="64" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#788#789#0" expanded="true" />
+                <element signature="e#823#824#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/FirefoxExtension.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -190,16 +196,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>PASS</find>
-      <find>pool-1-thread-22</find>
-      <find>FAIL</find>
-      <find>.id</find>
-      <find>[pool-1-thread-15] ERROR</find>
-      <find>pool-1-thread-12</find>
-      <find>pool-1-thread-1]</find>
-      <find>pool-1-thread-2]</find>
-      <find>pool-1-thread-4]</find>
-      <find>username</find>
       <find>Test request was canceled</find>
       <find>dc``</find>
       <find>Fail</find>
@@ -208,7 +204,6 @@
       <find>time</find>
       <find>safari</find>
       <find>download</find>
-      <find>@Fail</find>
       <find>There is not enough space on the disk</find>
       <find>start</find>
       <find>UnirestException</find>
@@ -220,9 +215,21 @@
       <find>TAKES_SCREENSHOT</find>
       <find>###</find>
       <find>###################################</find>
+      <find>numOfSetReturns</find>
+      <find>projectNam</find>
+      <find>create</find>
+      <find>createP</find>
+      <find>projectName</find>
+      <find>newProjectAriel123456</find>
+      <find>Ariel123456</find>
+      <find>@Pass</find>
+      <find>@Fail</find>
+      <find>java heap space</find>
+      <find>wiki</find>
     </findStrings>
     <replaceStrings>
       <replace>log.info</replace>
+      <replace>numOfReturns</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -239,18 +246,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Test/manual/POM2/Cards/POM/OpenManualBrowserViaCloud2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/manual/POM2/Cards/POM/Cards/SafariCard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/manual/POM2/Cards/POM/Cards/BrowserCard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/manual/POM2/Cards/POM/BrowsersPage2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/manual/POM2/Cards/POM/BrowsersPage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/manual/OpenManualBrowserViaCloud2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/manual/POM/Cards/BrowserCard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/manual/POM/Cards/FirefoxCard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/manual/POM/Cards/IECard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/manual/POM/Cards/SafariCard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/manual/POM/Cards/ChromeCard.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/src/main/java/Utils/ReoprterAttachment.java" />
         <option value="$PROJECT_DIR$/reports/overallReport.txt" />
@@ -279,17 +274,29 @@
         <option value="$PROJECT_DIR$/src/main/java/Test/grid/UploadApplicationUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/Test/manual/OpenManualBrowserViaCloud.java" />
         <option value="$APPLICATION_CONFIG_DIR$/idea64.exe.vmoptions" />
-        <option value="$PROJECT_DIR$/src/main/java/SingleTest/SingleTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/grid/Basic.java" />
         <option value="$PROJECT_DIR$/src/main/java/Test/grid/ChromeExtensionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Test/grid/PassTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/FrameWork/Credentials.java" />
         <option value="$PROJECT_DIR$/src/main/java/Utils/CollectSupportDataAPI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/FrameWork/TestBase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Test/grid/LongTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/FrameWork/UserCredentials.java" />
         <option value="$PROJECT_DIR$/src/main/java/FrameWork/Runner.java" />
-        <option value="$PROJECT_DIR$/src/main/java/FrameWork/Configuration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/FrameWork/Suits.java" />
+        <option value="$PROJECT_DIR$/src/main/java/FrameWork/TestBase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Test/grid/Basic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Test/grid/SA24891.java" />
+        <option value="$PROJECT_DIR$/src/main/java/FrameWork/RoleRun.java" />
+        <option value="$PROJECT_DIR$/src/main/java/SingleTest/ChromeExtention.java" />
         <option value="$PROJECT_DIR$/src/main/java/Test/grid/PerformanceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/SingleTest/ParallelDeviceTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/SingleTest/ChromeExtension.java" />
+        <option value="$PROJECT_DIR$/src/main/java/FrameWork/Suits.java" />
+        <option value="$PROJECT_DIR$/src/main/java/FrameWork/Configuration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/SingleTest/FirefoxExtension.java" />
+        <option value="$PROJECT_DIR$/src/main/java/SingleTest/SingleTestD.java" />
+        <option value="$PROJECT_DIR$/src/main/java/SingleTest/Test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/SingleTest/asdad222.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/SingleTest/SingleTest.java" />
       </list>
     </option>
   </component>
@@ -303,7 +310,7 @@
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="SeleniumAgent" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
         </path>
       </expand>
       <select />
@@ -321,7 +328,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -332,7 +338,18 @@
             <path>
               <item name="SeleniumAgent" type="b2602c69:ProjectViewProjectNode" />
               <item name="SeleniumAgent" type="462c0819:PsiDirectoryNode" />
+              <item name="ChromeExtension" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SeleniumAgent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SeleniumAgent" type="462c0819:PsiDirectoryNode" />
               <item name="reports" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SeleniumAgent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SeleniumAgent" type="462c0819:PsiDirectoryNode" />
+              <item name="reports" type="462c0819:PsiDirectoryNode" />
+              <item name="CSD" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SeleniumAgent" type="b2602c69:ProjectViewProjectNode" />
@@ -366,23 +383,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="OutsidTest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SeleniumAgent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SeleniumAgent" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="OutsidTest" type="462c0819:PsiDirectoryNode" />
-              <item name="TimeTestYoram.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="SeleniumAgent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SeleniumAgent" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="SingleTest" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -400,50 +400,19 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Test" type="462c0819:PsiDirectoryNode" />
-              <item name="API" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SeleniumAgent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SeleniumAgent" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Test" type="462c0819:PsiDirectoryNode" />
               <item name="grid" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SeleniumAgent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SeleniumAgent" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Test" type="462c0819:PsiDirectoryNode" />
-              <item name="manual" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SeleniumAgent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SeleniumAgent" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SeleniumAgent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SeleniumAgent" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="chromeCar&#9;FILE&#9;file://C:/IntellijProjects/SeleniumAgent/src/main/java/Test/manual/POM/Cards/ChromeCard.java&#10;request&#9;PSI&#9;JAVA://org.omg.CORBA.portable.Delegate#request&#10;getCapa&#9;PSI&#9;JAVA://java.awt.image.BufferStrategy#getCapabilities&#10;ReporterAttachment&#9;PSI&#9;JAVA://Utils.ReporterAttachment&#10;chrome&#9;FILE&#9;file://C:/IntellijProjects/SeleniumAgent/src/main/java/Test/manual/POM/Cards/ChromeCard.java&#10;ChromeCard&#9;PSI&#9;JAVA://Test.manual.POM.Cards.ChromeCard#CHROME_CARD&#10;sys&#9;PSI&#9;JAVA://java.lang.System" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540729030373" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541601653185" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/Test/manual" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Automation/regressionstable/build.gradle" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -452,23 +421,28 @@
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\IntellijProjects\SeleniumAgent\ChromeExtension" />
+      <recent name="C:\IntellijProjects\SeleniumAgent\src\main\resources" />
+      <recent name="C:\IntellijProjects\SeleniumAgent\src\main\java\Utils" />
+      <recent name="C:\Users\ariel.hazan\Downloads\java.webdriver-master\SeleniumAgent\reports" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="FrameWork" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="SingleTest" />
+      <recent name="Test.grid" />
+      <recent name="FrameWork" />
+      <recent name="Test.manual.POM2.Cards.POM" />
+      <recent name="Test.manual.POM" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\IntellijProjects\SeleniumAgent\src\main\java\Utils" />
       <recent name="C:\IntellijProjects\SeleniumAgent\reports" />
       <recent name="C:\IntellijProjects\SeleniumAgent\src\main\java\Test\manual\POM2\Cards" />
       <recent name="C:\Users\ariel.hazan\Downloads\java.webdriver-master\SeleniumAgent" />
       <recent name="C:\Users\ariel.hazan\Downloads\java.webdriver-master\SeleniumAgent\src\main\java" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="Test.grid" />
-      <recent name="SingleTest" />
-      <recent name="FrameWork" />
-      <recent name="Test.manual.POM2.Cards.POM" />
-      <recent name="Test.manual.POM" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\IntellijProjects\SeleniumAgent\src\main\java\Utils" />
-      <recent name="C:\Users\ariel.hazan\Downloads\java.webdriver-master\SeleniumAgent\reports" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -483,24 +457,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Suits">
+  <component name="RunManager" selected="JUnit.SingleTest.name">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <output_file path="$PROJECT_DIR$/reports/Renner.log" is_save="true" />
-      <option name="MAIN_CLASS_NAME" value="FrameWork.Runner" />
-      <module name="SeleniumAgent" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="FrameWork.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -526,7 +485,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SingleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ChromeExtension" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SeleniumAgent" />
       <extension name="coverage">
         <pattern>
@@ -535,13 +494,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="SingleTest" />
-      <option name="MAIN_CLASS_NAME" value="SingleTest.SingleTest" />
+      <option name="MAIN_CLASS_NAME" value="SingleTest.ChromeExtension" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SingleTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ChromeExtension.name" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SeleniumAgent" />
       <extension name="coverage">
         <pattern>
@@ -550,15 +509,15 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="SingleTest" />
-      <option name="MAIN_CLASS_NAME" value="SingleTest.SingleTest" />
-      <option name="METHOD_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="SingleTest.ChromeExtension" />
+      <option name="METHOD_NAME" value="name" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SingleTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SingleTest.name" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SeleniumAgent" />
       <extension name="coverage">
         <pattern>
@@ -568,7 +527,24 @@
       </extension>
       <option name="PACKAGE_NAME" value="SingleTest" />
       <option name="MAIN_CLASS_NAME" value="SingleTest.SingleTest" />
-      <option name="METHOD_NAME" value="test1" />
+      <option name="METHOD_NAME" value="name" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SingleTest.testExperitest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SeleniumAgent" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SingleTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="SingleTest" />
+      <option name="MAIN_CLASS_NAME" value="SingleTest.SingleTest" />
+      <option name="METHOD_NAME" value="testExperitest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -600,18 +576,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Suits" />
-      <item itemvalue="Application.Runner" />
-      <item itemvalue="JUnit.SingleTest.test" />
-      <item itemvalue="JUnit.SingleTest.test1" />
-      <item itemvalue="JUnit.SingleTest" />
+      <item itemvalue="JUnit.ChromeExtension.name" />
+      <item itemvalue="JUnit.ChromeExtension" />
+      <item itemvalue="JUnit.SingleTest.testExperitest" />
+      <item itemvalue="JUnit.SingleTest.name" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SingleTest.name" />
+        <item itemvalue="JUnit.SingleTest.testExperitest" />
         <item itemvalue="Application.Suits" />
-        <item itemvalue="Application.Runner" />
-        <item itemvalue="JUnit.SingleTest.test1" />
-        <item itemvalue="JUnit.SingleTest" />
-        <item itemvalue="JUnit.SingleTest.test" />
+        <item itemvalue="JUnit.ChromeExtension" />
+        <item itemvalue="JUnit.ChromeExtension.name" />
       </list>
     </recent_temporary>
   </component>
@@ -710,39 +686,46 @@
       <option name="project" value="LOCAL" />
       <updated>1540713951428</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Update">
+      <created>1540729081272</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1540729081272</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SingleTest_test1 - 2018.10.16 at 18h 30m 38s.xml">
-      <configuration name="SingleTest.test1" configurationId="JUnit" />
+    <history-entry file="SingleTest_name - 2018.11.07 at 16h 02m 27s.xml">
+      <configuration name="SingleTest.name" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SingleTest_test1 - 2018.10.16 at 18h 42m 50s.xml">
-      <configuration name="SingleTest.test1" configurationId="JUnit" />
+    <history-entry file="SingleTest_name - 2018.11.07 at 16h 05m 17s.xml">
+      <configuration name="SingleTest.name" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SingleTest - 2018.10.17 at 17h 08m 11s.xml">
-      <configuration name="SingleTest" configurationId="JUnit" />
+    <history-entry file="SingleTest_name - 2018.11.07 at 16h 07m 22s.xml">
+      <configuration name="SingleTest.name" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SingleTest - 2018.10.17 at 17h 10m 38s.xml">
-      <configuration name="SingleTest" configurationId="JUnit" />
+    <history-entry file="SingleTest_name - 2018.11.07 at 16h 10m 42s.xml">
+      <configuration name="SingleTest.name" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SingleTest_test1 - 2018.10.17 at 17h 20m 33s.xml">
-      <configuration name="SingleTest.test1" configurationId="JUnit" />
+    <history-entry file="SingleTest_name - 2018.11.07 at 16h 13m 54s.xml">
+      <configuration name="SingleTest.name" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SingleTest - 2018.10.23 at 14h 38m 36s.xml">
-      <configuration name="SingleTest" configurationId="JUnit" />
+    <history-entry file="SingleTest_name - 2018.11.07 at 16h 15m 21s.xml">
+      <configuration name="SingleTest.name" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SingleTest - 2018.10.23 at 14h 39m 04s.xml">
-      <configuration name="SingleTest" configurationId="JUnit" />
+    <history-entry file="SingleTest_name - 2018.11.07 at 16h 22m 32s.xml">
+      <configuration name="SingleTest.name" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SingleTest - 2018.10.23 at 14h 39m 53s.xml">
-      <configuration name="SingleTest" configurationId="JUnit" />
+    <history-entry file="SingleTest_name - 2018.11.07 at 16h 24m 23s.xml">
+      <configuration name="SingleTest.name" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SingleTest_test1 - 2018.10.23 at 14h 40m 18s.xml">
-      <configuration name="SingleTest.test1" configurationId="JUnit" />
+    <history-entry file="SingleTest_name - 2018.11.07 at 16h 30m 02s.xml">
+      <configuration name="SingleTest.name" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SingleTest_test1 - 2018.10.23 at 14h 43m 09s.xml">
-      <configuration name="SingleTest.test1" configurationId="JUnit" />
+    <history-entry file="SingleTest_name - 2018.11.07 at 16h 32m 19s.xml">
+      <configuration name="SingleTest.name" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -764,15 +747,15 @@
       <window_info id="UI Designer" order="3" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.21162046" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.16950959" />
       <window_info id="Structure" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.505295" side_tool="true" weight="0.42517006" />
-      <window_info anchor="bottom" id="Messages" order="1" weight="0.6207483" />
+      <window_info anchor="bottom" id="Messages" order="1" weight="0.62" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.3288889" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.32963374" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.3288889" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.494705" visible="true" weight="0.53333336" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.494705" weight="0.27444443" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.46836847" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -826,10 +809,10 @@
     <MESSAGE value="Fixed open manual via Cloud UI test" />
     <MESSAGE value="Add Log4j for logs." />
     <MESSAGE value="Add WatchCloudTest." />
-    <MESSAGE value="Update" />
     <MESSAGE value="Add class the will count all the exception of the fail test" />
     <MESSAGE value="Add specific browser to count" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add specific browser to count" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -853,104 +836,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/awt/image/BufferStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="142" column="54" selection-start-line="142" selection-start-column="39" selection-end-line="142" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-api/3.8.1/selenium-api-3.8.1.jar!/org/openqa/selenium/Platform.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
-          <caret line="21" column="83" lean-forward="true" selection-start-line="21" selection-start-column="83" selection-end-line="21" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/FaileTest2.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/API.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/API/LimitSessionsApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/org/omg/CORBA/portable/Delegate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="114" column="28" selection-start-line="114" selection-start-column="28" selection-end-line="114" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/ParallelBrowserTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-850">
-          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/ParallelBrowserTests2.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/ParallelBrowserTests3.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/WatchCloudTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reports/SuitRun.log">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="215" column="219" lean-forward="true" selection-start-line="211" selection-start-column="66" selection-end-line="215" selection-end-column="219" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-api/3.8.1/selenium-api-3.8.1.jar!/org/openqa/selenium/Keys.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/SingleTestSAFARI.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-api/3.8.1/selenium-api-3.8.1.jar!/org/openqa/selenium/WebDriver.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="102" column="27" selection-start-line="102" selection-start-column="27" selection-end-line="102" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/CheckAllBrowserVersion.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/manual/POM/Cards/ChromeCard.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/VersionCheckOneByOne.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" column="9" selection-start-line="33" selection-start-column="6" selection-end-line="44" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/FailTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="747" selection-start-line="747" selection-end-line="747" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/io/PrintStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="803" column="16" selection-start-line="803" selection-start-column="16" selection-end-line="803" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/jre/lib/rt.jar!/sun/security/timestamp/Timestamper.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -959,13 +844,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Utils/GetLogs.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/VersionCheck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -996,20 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/manual/OpenManualBrowserViaCloud.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/idea64.exe.vmoptions">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1021,20 +885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="114" column="48" selection-start-line="114" selection-start-column="48" selection-end-line="114" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ideaLibSources/selenium-support-3.8.1-sources.jar!/org/openqa/selenium/support/ui/ExpectedCondition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="37" column="17" selection-start-line="37" selection-start-column="17" selection-end-line="37" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ideaLibSources/selenium-support-3.8.1-sources.jar!/org/openqa/selenium/support/ui/ExpectedConditions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-145">
-          <caret line="225" column="84" selection-start-line="225" selection-start-column="52" selection-end-line="225" selection-end-column="84" />
         </state>
       </provider>
     </entry>
@@ -1052,20 +902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/AccessKeyTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="45" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/SeleniumScreenshot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-remote-driver/3.8.1/selenium-remote-driver-3.8.1.jar!/org/openqa/selenium/remote/CapabilityType.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1073,9 +909,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/ChromeExtensionTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/ChromeExtensionTest.java" />
+    <entry file="jar://$USER_HOME$/.ideaLibSources/selenium-support-3.8.1-sources.jar!/org/openqa/selenium/support/ui/ExpectedConditions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="2465">
+          <caret line="180" column="25" selection-start-line="180" selection-start-column="25" selection-end-line="180" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ideaLibSources/selenium-support-3.8.1-sources.jar!/org/openqa/selenium/support/ui/ExpectedCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="37" column="17" selection-start-line="37" selection-start-column="17" selection-end-line="37" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Utils/CollectSupportDataAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="71" column="9" lean-forward="true" selection-start-line="68" selection-start-column="7" selection-end-line="71" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/UserCredentials.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/function/Consumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Runner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
           <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1083,68 +955,163 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Credentials.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/SeleniumScreenshot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/SpeedTestGenerateReport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/WatchCloudTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/PassTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="280">
           <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Utils/CollectSupportDataAPI.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/MinimumCapabilityTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
+        <state relative-caret-position="104">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Credentials.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/IncompleteTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/FailTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/AccessKeyTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <caret line="9" column="45" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/SingleTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/VersionCheckOneByOne.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
+        <state relative-caret-position="408">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/TestBase.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/VersionCheck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="13" />
+        <state relative-caret-position="173">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/SpeedTestScreenshots.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/SA24891.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/RoleRun.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="9" lean-forward="true" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#createUser#0;class#RoleRun#0" />
+            <element signature="method#createAdmin#0;class#RoleRun#0" />
+            <element signature="method#createProjectAdmin#0;class#RoleRun#0" />
+            <element signature="method#deleteProject#0;class#RoleRun#0" />
+            <element signature="class#UserCredentials#0;class#RoleRun#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/Basic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="23" column="65" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="65" />
+        <state relative-caret-position="272">
+          <caret line="26" column="67" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/manual/OpenManualBrowserViaCloud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Configuration.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+        <state relative-caret-position="141">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Runner.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/ParallelBrowserTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        <state relative-caret-position="323">
+          <caret line="42" column="11" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reports/Renner.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/ParallelDeviceTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/LongTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-238">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1153,24 +1120,84 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Suits.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        <state relative-caret-position="107">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#checkAllBrowsers#0;class#Suits#0" />
             <element signature="method#testManual#0;class#Suits#0" />
+            <element signature="method#test#0;class#Suits#0" />
+            <element signature="method#testEdge#0;class#Suits#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/SingleTestD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="45" column="89" lean-forward="true" selection-start-line="43" selection-end-line="45" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/FirefoxExtension.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/PerformanceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+        <state relative-caret-position="260">
+          <caret line="90" column="8" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="64" />
           <folding>
-            <element signature="docComment;class#PerformanceTest#0" />
-            <element signature="e#918#919#0" expanded="true" />
-            <element signature="e#953#954#0" expanded="true" />
+            <element signature="e#788#789#0" expanded="true" />
+            <element signature="e#823#824#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/ChromeExtension.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="39" column="73" selection-start-line="39" selection-start-column="73" selection-end-line="39" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/as.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="679">
+          <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/SingleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
         </state>
       </provider>
     </entry>

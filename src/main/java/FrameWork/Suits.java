@@ -20,12 +20,13 @@ public class Suits {
 //        testManual(4, 5, 3, BrowserType.CHROME);
 //        testSuit(10);
 //        testSuit(3, 2, BrowserType.CHROME);
-        testAgent(10, 4);
+        testAgent(100, 5);
+//        testEdge(1, 1, 1);
     }
 
-    private static void checkAllBrowsers(int numOfSetReturns, int numOfSet) {
+    private static void checkAllBrowsers(int numOfReturns, int numOfSet) {
 
-        for (int i = 0; i < numOfSetReturns; i++) {
+        for (int i = 0; i < numOfReturns; i++) {
             for (int j = 0; j < numOfSet; j++) {
                 new VersionCheckOneByOne(3);
             }
@@ -33,10 +34,10 @@ public class Suits {
         }
     }
 
-    private static void testManual(int numOfThreads, int numOfSetReturns, int numOfSet, String browserType) {
+    private static void testManual(int numOfThreads, int numOfReturns, int numOfSet, String browserType) {
         ExecutorService executor;
         int i;
-        for (int j = 0; j < numOfSetReturns; j++) {
+        for (int j = 0; j < numOfReturns; j++) {
             executor = Executors.newFixedThreadPool(numOfThreads);
             for (i = 0; i < numOfSet; i++) {
                 executor.execute(new OpenManualBrowserViaCloud(browserType));
@@ -52,10 +53,10 @@ public class Suits {
     }
 
 
-    public static void test(int numOfThreads, int numOfSetReturns, int numOfSet, String browserType) {
+    public static void test(int numOfThreads, int numOfReturns, int numOfSet, String browserType) {
         ExecutorService executor;
         int i;
-        for (int j = 0; j < numOfSetReturns; j++) {
+        for (int j = 0; j < numOfReturns; j++) {
             executor = Executors.newFixedThreadPool(numOfThreads);
             for (i = 0; i < numOfSet; i++) {
                 executor.execute(new PerformanceTest(browserType));
@@ -69,22 +70,41 @@ public class Suits {
         log.info("Finished all threads");
     }
 
-    private static void testAgent(int numOfSetReturns, int numOfSet) {
-        testAgent(numOfSet * 3 + 1, numOfSetReturns, numOfSet);
+    private static void testAgent(int numOfReturns, int numOfSet) {
+        testAgent(numOfSet * 3 + 1, numOfReturns, numOfSet);
     }
 
-    private static void testAgent(int numOfThreads, int numOfSetReturns, int numOfSet) {
+    private static void testEdge(int numOfThreads, int numOfReturns, int numOfSet) {
         ExecutorService executor;
 
-        for (int i = 0; i < numOfSetReturns; i++) {
+        for (int i = 0; i < numOfReturns; i++) {
+            executor = Executors.newFixedThreadPool(numOfThreads);
+
+            for (int j = 0; j < numOfSet; j++) {
+                new Thread(new PerformanceTest(BrowserType.EDGE)).start();
+            }
+            executor.shutdown();
+            while (true) {
+                if (executor.isTerminated()) break;
+            }
+            log.info("=========Finish Agent Suits #" + i + "=========");
+        }
+        log.info("-------Finished all threads-------");
+    }
+
+
+    private static void testAgent(int numOfThreads, int numOfReturns, int numOfSet) {
+        ExecutorService executor;
+
+        for (int i = 0; i < numOfReturns; i++) {
             executor = Executors.newFixedThreadPool(numOfThreads);
 
             for (int j = 0; j < numOfSet; j++) {
                 executor.execute(new PerformanceTest(BrowserType.CHROME));
-                executor.execute(new PassTest(BrowserType.SAFARI));
+                executor.execute(new PerformanceTest(BrowserType.SAFARI));
                 executor.execute(new PerformanceTest(BrowserType.FIREFOX));
-//                executor.execute(new PerformanceTest(BrowserType.EDGE));
             }
+            executor.execute(new PerformanceTest(BrowserType.EDGE));
 //            executor.execute(new PerformanceTest(BrowserType.IE));
 //            executor.execute(new PerformanceTest(BrowserType.IE));
 
@@ -97,10 +117,10 @@ public class Suits {
         log.info("-------Finished all threads-------");
     }
 
-    public static void testSuit(int numOfThreads, int numOfSetReturns, String browserType) {
+    public static void testSuit(int numOfThreads, int numOfReturns, String browserType) {
         ExecutorService executor;
         int i;
-        for (int j = 0; j < numOfSetReturns; j++) {
+        for (int j = 0; j < numOfReturns; j++) {
             executor = Executors.newFixedThreadPool(numOfThreads);
 
 //            executor.execute(new PerformanceTest("", browserType));
