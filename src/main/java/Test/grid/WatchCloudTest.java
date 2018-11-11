@@ -26,7 +26,6 @@ public class WatchCloudTest extends TestBase {
         this.cloudPassword = cloudPassword;
     }
 
-
     @Override
     public void test() {
         driver = new RemoteWebDriver(url, dc);
@@ -39,7 +38,7 @@ public class WatchCloudTest extends TestBase {
         while (i < 5000) {
             sleep(60 * 1000);
             i++;
-            driver.navigate().refresh();
+            driver.findElement(By.xpath("//*[@id=\"hourglass\"]")).click();
             log.info("Refresh " + i + " times");
         }
     }

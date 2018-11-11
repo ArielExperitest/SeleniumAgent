@@ -1,7 +1,5 @@
 package FrameWork;
 
-import org.openqa.selenium.remote.BrowserType;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -12,7 +10,7 @@ import static FrameWork.Credentials.*;
 
 public class Configuration {
 
-    protected DesiredCapabilities desiredCapabilities = null;
+    private DesiredCapabilities desiredCapabilities = null;
 
     public Configuration(DesiredCapabilities desiredCapabilities) {
         this.desiredCapabilities = desiredCapabilities;
@@ -31,8 +29,8 @@ public class Configuration {
 
     void setDC() {
         setURL();
-//        dc.setCapability(CapabilityType.TAKES_SCREENSHOT, false);//takesScreenshot - not supporting
 
+//        dc.setCapability(CapabilityType.TAKES_SCREENSHOT, false);//takesScreenshot - not supporting
         dc.setCapability("seleniumScreenshot", false);
         dc.setCapability("takeScreenshots", true);
         dc.setCapability("generateReport", true);

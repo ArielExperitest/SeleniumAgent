@@ -20,7 +20,7 @@ public class Suits {
 //        testManual(4, 5, 3, BrowserType.CHROME);
 //        testSuit(10);
 //        testSuit(3, 2, BrowserType.CHROME);
-        testAgent(100, 5);
+        testAgent(3, 5);
 //        testEdge(1, 1, 1);
     }
 

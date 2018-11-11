@@ -28,34 +28,31 @@ public class SingleTest {
     protected RemoteWebDriver driver;
     protected DesiredCapabilities dc = new DesiredCapabilities();
 
-        @Before
+    @Before
     public void setUp() {
 
         try {
-            url = new URL("https://qacloud.experitest.com/wd/hub");
+            url = new URL("http://192.168.2.91/wd/hub");
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        dc.setCapability("username", "ariel");
+        dc.setCapability("username", "admin");
         dc.setCapability("password", "Experitest2012");
 
-        //        dc.setCapability("accessKey", accessKey);
-
-        dc.setCapability("deviceQuery", "os='ios'");//default is 300
-        dc.setCapability("newSessionWaitTimeout", "60");//default is 300
+        dc.setCapability("newSessionWaitTimeout", "20");//default is 300
         dc.setCapability("newCommandTimeout", "30");//default is 300
+        dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.EDGE);
 
-        driver = new RemoteWebDriver(url, dc);
-        System.out.println(driver.getCapabilities().getCapability("reportUrl"));
     }
 
 
     @Test
-    public void testExperitest() {
-
-        driver.get("https://lnx-candyland.pcfdev.atb.atb.com");
+    public void testExperitest() throws InterruptedException {
+        driver = new RemoteWebDriver(url, dc);
+        driver.get("https://www.google.com");
         System.out.println((String) driver.getCapabilities().getCapability("reportUrl"));
+//        Thread.sleep(50000);
     }
 
     @After

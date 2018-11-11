@@ -47,8 +47,12 @@ public class PerformanceTest extends TestBase {
     protected void test() {
 
         driver = new RemoteWebDriver(url, dc);
-//        driver.manage().window().maximize();
-        driver.manage().window().setSize(new Dimension(1920, 1080));
+
+        try {
+            driver.manage().window().maximize();
+        } catch (Exception e) {
+            log.info("Fail to resize window.");
+        }
         sleep(1000);
         browserVersion = driver.getCapabilities().getVersion();
         platform = String.valueOf(driver.getCapabilities().getPlatform());
