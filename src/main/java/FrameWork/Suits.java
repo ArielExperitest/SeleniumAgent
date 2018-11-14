@@ -20,7 +20,7 @@ public class Suits {
 //        testManual(4, 5, 3, BrowserType.CHROME);
 //        testSuit(10);
 //        testSuit(3, 2, BrowserType.CHROME);
-        testAgent(3, 5);
+        testAgent(3, 10);
 //        testEdge(1, 1, 1);
     }
 
@@ -104,7 +104,7 @@ public class Suits {
                 executor.execute(new PerformanceTest(BrowserType.SAFARI));
                 executor.execute(new PerformanceTest(BrowserType.FIREFOX));
             }
-            executor.execute(new PerformanceTest(BrowserType.EDGE));
+//            executor.execute(new PerformanceTest(BrowserType.EDGE));
 //            executor.execute(new PerformanceTest(BrowserType.IE));
 //            executor.execute(new PerformanceTest(BrowserType.IE));
 

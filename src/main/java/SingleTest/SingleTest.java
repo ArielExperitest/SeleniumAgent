@@ -32,16 +32,16 @@ public class SingleTest {
     public void setUp() {
 
         try {
-            url = new URL("http://192.168.2.91/wd/hub");
+            url = new URL("https://qacloud.experitest.com/wd/hub");
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        dc.setCapability("username", "admin");
+        dc.setCapability("username", "ariel");
         dc.setCapability("password", "Experitest2012");
 
-        dc.setCapability("newSessionWaitTimeout", "20");//default is 300
-        dc.setCapability("newCommandTimeout", "30");//default is 300
+        dc.setCapability("newSessionWaitTimeout", 30);//default is 300
+        dc.setCapability("newCommandTimeout", 30);//default is 300
         dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.EDGE);
 
     }
@@ -52,11 +52,12 @@ public class SingleTest {
         driver = new RemoteWebDriver(url, dc);
         driver.get("https://www.google.com");
         System.out.println((String) driver.getCapabilities().getCapability("reportUrl"));
-//        Thread.sleep(50000);
+        Thread.sleep(40_000);
+        driver.get("https://www.google.com");
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         driver.quit();
     }
 

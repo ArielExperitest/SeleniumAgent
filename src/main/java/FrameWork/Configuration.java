@@ -34,8 +34,8 @@ public class Configuration {
         dc.setCapability("seleniumScreenshot", false);
         dc.setCapability("takeScreenshots", true);
         dc.setCapability("generateReport", true);
-        dc.setCapability("newCommandTimeout", "300");//default is 300
-        dc.setCapability("newSessionWaitTimeout", "300");//default is 300
+        dc.setCapability("newCommandTimeout", "1000");//default is 300
+        dc.setCapability("newSessionWaitTimeout", "1000");//default is 300
 //        dc.setCapability(CapabilityType.BROWSER_VERSION, "63.0.1");
 //        dc.setCapability(CapabilityType.PLATFORM, Platform.WIN10);
 //        dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.FIREFOX);

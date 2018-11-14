@@ -1,6 +1,8 @@
 package FrameWork;
 
 import Test.grid.PassTest;
+import Test.grid.VersionCheck;
+import Test.grid.VersionCheckOneByOne;
 import org.openqa.selenium.remote.BrowserType;
 
 
@@ -26,7 +28,7 @@ public class Runner {
 //            new Thread(new FaileTest2(BrowserType.CHROME)).start();
 //            new Thread(new Basic(BrowserType.SAFARI)).start();
 //            new Thread(new LongTest(BrowserType.EDGE)).start();
-            new Thread(new PassTest(BrowserType.SAFARI)).start();
+            new VersionCheckOneByOne(5);
 
 
 //            new VersionCheckOneByOne(3);

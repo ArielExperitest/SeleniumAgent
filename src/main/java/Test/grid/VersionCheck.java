@@ -35,33 +35,30 @@ public class VersionCheck extends TestBase {
         platform = String.valueOf(driver.getCapabilities().getPlatform());
         reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
         sessionId = (String) driver.getCapabilities().getCapability("sessionId");
-
-        WebElement ver = null;
-        switch (browserType) {
-            case BrowserType.FIREFOX: {
-                driver.get("about:support");
-                ver = driver.findElement(By.xpath("//*[@id=\"version-box\"]"));
-                break;
-            }
-            case BrowserType.IE: {
-                driver.get("http://www.whatversion.net/internet-explorer/");
-                ver = driver.findElement(By.xpath("//*[@id=\"browser-info\"]")); //Your IE version is 11.0
-                break;
-            }
-
-            case BrowserType.SAFARI: {
-                driver.get("http://www.whatversion.net/safari/");
-                ver = driver.findElement(By.xpath("//*[@id=\"browser-info\"]/h2")); //Your IE version is 11.0\
-                break;
-            }
-            case BrowserType.CHROME: {
-                driver.get("chrome://version");
-                ver = driver.findElement(By.xpath("//*[@id=\"version\"]/span[1]"));
-                break;
-            }
-        }
-
+        driver.get("http://www.whatversion.net" + getBrowserUrl());
+        WebElement ver = driver.findElement(By.xpath("//*[@id=\"browser-info\"]")); //Your IE version is 11.0
         if (Objects.nonNull(ver) && !ver.getText().contains(versionToCheck))
             log.error("Check for version " + versionToCheck + " get " + ver.getText());
+    }
+
+    private String getBrowserUrl() {
+        switch (browserType) {
+            case BrowserType.FIREFOX: {
+                return "/firefox/";
+            }
+            case BrowserType.IE: {
+                return "/internet-explorer/";
+            }
+            case BrowserType.SAFARI: {
+                return "/safari/";
+            }
+            case BrowserType.CHROME: {
+                return "/safari/";
+            }
+            case BrowserType.EDGE: {
+                return "/edge/";
+            }
+        }
+        return null;
     }
 }

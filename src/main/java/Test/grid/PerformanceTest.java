@@ -45,14 +45,8 @@ public class PerformanceTest extends TestBase {
 
     @Override
     protected void test() {
-
         driver = new RemoteWebDriver(url, dc);
 
-        try {
-            driver.manage().window().maximize();
-        } catch (Exception e) {
-            log.info("Fail to resize window.");
-        }
         sleep(1000);
         browserVersion = driver.getCapabilities().getVersion();
         platform = String.valueOf(driver.getCapabilities().getPlatform());
@@ -124,8 +118,8 @@ public class PerformanceTest extends TestBase {
             jse.executeScript("scroll(0, -250);");//Up
             jse.executeScript("scroll(0, -600);");//Up
         }
-        sleepSafari(5 * 1000);
-        sleepSafari(5 * 1000);
+
+        sleepSafari(10_000);
         driver.get("https://www.google.com");
         sleep(2 * 1000);
         WebElement searchBar = driver.findElement(By.xpath("//*[@id=\"lst-ib\"]"));
