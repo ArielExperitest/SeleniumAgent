@@ -20,7 +20,6 @@ public abstract class TestBase extends Configuration implements Runnable {
     private static List<Node> excList = new ArrayList<>();
     private static int failCount = 0;
     private boolean isTestPass = true;
-    private Exception exception = null;
 
     protected String testName = "testName";
     protected String browserType = "";
@@ -40,27 +39,21 @@ public abstract class TestBase extends Configuration implements Runnable {
         try {
             log.info("Start test - " + dc);
             test();
-            log.info("End test - " + sessionId + " " + dc);
-
+            writeToLog();
         } catch (Exception e) {
-            exception = e;
             if (!e.getMessage().contains("Go To Fail Test!!!")) {
-                isTestPass = false;
+
+                if (driver != null) {
+                    writeToLog(driver.getCapabilities(), e);
+                } else {
+                    writeToLog(null, e);
+                }
             }
         } finally {
-            if (Objects.nonNull(driver)) {
-                try {
-                    driver.quit();
-                } catch (Exception e) {
-                    log.info("Fail to preform quit: " + platform + " " + testName + " " + reportUrl + " exceptionMsg= " + e.getMessage());
-                }
-                if (isTestPass) {
-                    writeToLog();
-                } else {
-                    writeToLog(driver.getCapabilities());
-                }
-            } else {
-                writeToLog(null);
+            try {
+                driver.quit();
+            } catch (Exception e) {
+                log.info("Fail to preform quit: " + platform + " " + sessionId + " " + testName + " " + reportUrl + " exceptionMsg= " + e.getMessage());
             }
         }
     }
@@ -68,29 +61,30 @@ public abstract class TestBase extends Configuration implements Runnable {
     //Passed
     private void writeToLog() {
         testIndex++;
-        log.info("Result - #" + testIndex + ". " + " @PASS " + platform + " " + testName + " reportPath=" + reportUrl);
+        log.info("Result - #" + testIndex + ". " + " @PASS " + sessionId + " " + platform + " " + testName + " reportPath=" + reportUrl);
     }
 
     //Failed
-    private void writeToLog(Capabilities capabilities) {
+    private void writeToLog(Capabilities capabilities, Exception exception) {
         testIndex++;
-        String CSDPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
-        String reportPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
+        log.error("Result - #" + testIndex + " @FAIL " + sessionId + " " + platform + " " + testName + " reportUrl=" + reportUrl);
 
+        if (capabilities != null)
+            log.error("--------- capabilities " + capabilities + "", exception);
+        else
+            log.error("--------- capabilities are null", exception);
+
+        countExc(platform + " " + browserType + " " + browserVersion + " - " + exception.getMessage().split("\n")[0]);
 
         if (testIndex % 5 == 0) {
+            String CSDPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
+            String reportPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
             new Thread(new CollectSupportDataAPI(CSDPath), testIndex + "_" + testName + "_" + START_TEST_TIME).start();
+            log.info("Start downloading Collect Support Data =" + CSDPath);
+//            log.info("Start downloading report =" + reportPath);
 //            new Thread(new ReporterAttachment(reportPath, reportUrl)).start();
         }
 
-        log.error("Result - #" + testIndex + " @FAIL " + sessionId + " " + platform + " " + testName + " reportUrl=" + reportUrl + " CSDZip=" + CSDPath + " reportZip=" + reportPath);
-        if (Objects.nonNull(capabilities))
-            log.error("capabilities - " + "-------- " + capabilities + "");
-        else
-            log.error("Result - " + "capabilities are null");
-        log.error("Result - " + "----------Exception ", exception);
-
-        countExc(browserType + " " + browserVersion + " - " + exception.getMessage().split("\n")[0]);
     }
 
     private synchronized void countExc(String message) {
@@ -109,7 +103,7 @@ public abstract class TestBase extends Configuration implements Runnable {
         if (excList.size() % 5 == 0)
             excList.sort(Comparator.comparingInt(left -> left.count));
         log.info("############## Exception summary #####################");
-        log.info("Number of fail tests: " + (++failCount));
+        log.info("Number of fail tests: " + (++failCount) + " of " + testIndex);
 
         for (Node anExcList : excList)
             log.info(anExcList.count + " " + anExcList.message);
@@ -127,6 +121,13 @@ public abstract class TestBase extends Configuration implements Runnable {
     protected void sleepSafari(int time) {
         if (browserType.equals(BrowserType.SAFARI))
             sleep(time);
+    }
+
+    protected void initProperty() {
+        this.browserVersion = this.driver.getCapabilities().getVersion();
+        this.platform = String.valueOf(this.driver.getCapabilities().getPlatform());
+        this.reportUrl = (String) this.driver.getCapabilities().getCapability("reportUrl");
+        this.sessionId = (String) this.driver.getCapabilities().getCapability("sessionId");
     }
 }
 

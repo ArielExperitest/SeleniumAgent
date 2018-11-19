@@ -4,20 +4,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
+import java.util.Arrays;
 
 
 public class SingleTest {
@@ -40,9 +36,9 @@ public class SingleTest {
         dc.setCapability("username", "ariel");
         dc.setCapability("password", "Experitest2012");
 
-        dc.setCapability("newSessionWaitTimeout", 30);//default is 300
-        dc.setCapability("newCommandTimeout", 30);//default is 300
-        dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.EDGE);
+        dc.setCapability("newSessionWaitTimeout", 300);//default is 300
+        dc.setCapability("newCommandTimeout", 300);//default is 300
+//        dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.EDGE);
 
     }
 
@@ -50,10 +46,10 @@ public class SingleTest {
     @Test
     public void testExperitest() throws InterruptedException {
         driver = new RemoteWebDriver(url, dc);
-        driver.get("https://www.google.com");
         System.out.println((String) driver.getCapabilities().getCapability("reportUrl"));
-        Thread.sleep(40_000);
         driver.get("https://www.google.com");
+        driver.findElement(By.xpath("aaaaaa"));
+
     }
 
     @After

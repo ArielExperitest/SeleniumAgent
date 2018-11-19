@@ -20,8 +20,8 @@ public class Configuration {
     long START_TEST_TIME = System.currentTimeMillis();
 
     protected Configuration() {
-//        updateServerCredentials(CloudServerName.RND_VM_CLOUD);
-        updateServerCredentials(CloudServerName.QA_SECURE_ADMIN);
+        updateServerCredentials(CloudServerName.RND_VM_CLOUD);
+//        updateServerCredentials(CloudServerName.QA_SECURE_ADMIN);
 //        updateServerCredentials(CloudServerName.ARIEL_MAC_ADMIN);
 //        updateServerCredentials(CloudServerName.ARIEL_MAC_PRO_ADMIN);
 //        updateServerCredentials(CloudServerName.ARIEL_MAC_USER);
@@ -31,7 +31,7 @@ public class Configuration {
         setURL();
 
 //        dc.setCapability(CapabilityType.TAKES_SCREENSHOT, false);//takesScreenshot - not supporting
-        dc.setCapability("seleniumScreenshot", false);
+//        dc.setCapability("seleniumScreenshot", false);
         dc.setCapability("takeScreenshots", true);
         dc.setCapability("generateReport", true);
         dc.setCapability("newCommandTimeout", "1000");//default is 300

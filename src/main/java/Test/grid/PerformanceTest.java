@@ -48,10 +48,8 @@ public class PerformanceTest extends TestBase {
         driver = new RemoteWebDriver(url, dc);
 
         sleep(1000);
-        browserVersion = driver.getCapabilities().getVersion();
-        platform = String.valueOf(driver.getCapabilities().getPlatform());
-        reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
-        sessionId = (String) driver.getCapabilities().getCapability("sessionId");
+        initProperty();
+
         log.info("driver= " + platform + " - " + sessionId + " - " + reportUrl + " - " + driver.getCapabilities().getVersion() + " - " + driver.getCapabilities());
 
         if (!browserType.equals(BrowserType.IE)) {
@@ -68,7 +66,9 @@ public class PerformanceTest extends TestBase {
         driver.findElement(By.xpath("//*[@name=\"login\"]")).click();
         sleep(2 * 1000);
         //Firefox open a new tab when try to click on log in button
-        if (driver.getWindowHandles().size() > 1 || !driver.getCurrentUrl().contains("qacloud.experitest.com")) {
+        if (platform.equals(BrowserType.FIREFOX) &&
+                (driver.getWindowHandles().size() > 1 ||
+                        !driver.getCurrentUrl().contains("qacloud.experitest.com"))) {
             driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.TAB);
             driver.findElement(By.xpath("//*[@name=\"password\"]")).sendKeys(Keys.ENTER);
 
@@ -122,7 +122,7 @@ public class PerformanceTest extends TestBase {
         sleepSafari(10_000);
         driver.get("https://www.google.com");
         sleep(2 * 1000);
-        WebElement searchBar = driver.findElement(By.xpath("//*[@id=\"lst-ib\"]"));
+        WebElement searchBar = driver.findElement(By.xpath("//*[@name=\"q\"]"));
         searchBar.click();
         searchBar.sendKeys("Jerusalem wiki");
 
