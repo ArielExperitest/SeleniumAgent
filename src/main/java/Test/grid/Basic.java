@@ -17,10 +17,8 @@ import java.util.concurrent.TimeUnit;
  * Created by ariel.hazan on 11-Feb-18.
  */
 public class Basic extends TestBase {
-    DesiredCapabilities desiredCapabilities = null;
 
-    public Basic(String browserType, DesiredCapabilities desiredCapabilities) {
-        super(desiredCapabilities);
+    public Basic(String browserType) {
         this.browserType = browserType;
         testName = this.getClass().getSimpleName() + " Test " + browserType;
         dc.setCapability("testName", testName);
@@ -29,11 +27,8 @@ public class Basic extends TestBase {
 
     @Override
     public void test() {
-        try {
-            driver = new RemoteWebDriver(url, dc);
-            driver.get("https://www.google.com");
-        } finally {
-            System.out.println("--------------" + dc);
-        }
+
+        driver.get("https://www.google.com");
+//        sleep(5 * 60 * 1000);
     }
 }

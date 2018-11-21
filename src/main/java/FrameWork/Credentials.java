@@ -9,7 +9,7 @@ public class Credentials {
     public static boolean SECURE, REPORTER_SECURE;
 
     public enum CloudServerName {
-        NAVOT, STAGE_CLOUD_ADMIN, VM, MIRRON, PUBLIC, EYAl, QA_Not_Secured, ARIEL_WIN_ADMIN, ARIEL_WIN_SECURE_ADMIN, ARIEL_WIN_PRO_ADMIN, ARIEL_WIN_USER, ARIEL_MAC_ADMIN, ARIEL_MAC_PRO_ADMIN, ARIEL_MAC_USER, YEHUDA, RELEASE_CLOUD, MASTER_CLOUD, QA_SECURE_USER, QA_SECURE_ADMIN, QA_SECURE_PRO, SHELI, IGAL, SELENIUM, YORAM, ARIEL_MAC_SECURE_PRO_ADMIN, ARIEL_MAC_SECURE_USER, ARIEL_MAC_SECURE_ADMIN, DIKLA_WIN_ADMIN, DIKLA_MAC_ADMIN, DEEP_TESTING_CLOUD_ADMIN, DIKLA_WIN_USER, RND_VM_CLOUD
+        NAVOT, STAGE_CLOUD_ADMIN, VM, MIRRON, PUBLIC, EYAl, QA_Not_Secured, ARIEL_WIN_ADMIN, ARIEL_WIN_SECURE_ADMIN, ARIEL_WIN_PRO_ADMIN, ARIEL_WIN_USER, ARIEL_MAC_ADMIN, ARIEL_MAC_PRO_ADMIN, ARIEL_MAC_USER, YEHUDA, RELEASE_CLOUD, MASTER_CLOUD, QA_SECURE_USER, QA_SECURE_ADMIN, QA_SECURE_PRO, SHELI, IGAL, SELENIUM, YORAM, ARIEL_MAC_SECURE_PRO_ADMIN, ARIEL_MAC_SECURE_USER, ARIEL_MAC_SECURE_ADMIN, DIKLA_WIN_ADMIN, DIKLA_MAC_ADMIN, DEEP_TESTING_CLOUD_ADMIN, DIKLA_WIN_USER, RND_VM_CLOUD, DEEP_TESTING_CLOUD_PROJECT_ADMIN
     }
 
     protected static void updateServerCredentials(CloudServerName cloudName) {
@@ -40,9 +40,22 @@ public class Credentials {
                 break;
             case DEEP_TESTING_CLOUD_ADMIN:
                 HOST = "qa-win2016.experitest.com";
+//                HOST = "desktop-mh24oe5.experitest.local";
                 PORT = "443";
                 USER = "admin";
                 PROJECT = "Default";
+                PASS = "Experitest2012";
+                SECURE = true;
+                REPORTER_HOST = "";
+                REPORTER_PORT = "";
+                REPORTER_SECURE = false;
+                AK = "";
+                break;
+            case DEEP_TESTING_CLOUD_PROJECT_ADMIN:
+                HOST = "qa-win2016.experitest.com";
+                PORT = "443";
+                USER = "ariel_p";
+                PROJECT = "CCB-Digital";
                 PASS = "Experitest2012";
                 SECURE = true;
                 REPORTER_HOST = "";

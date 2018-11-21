@@ -2,17 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9eaa665f-4669-4664-b4b6-67a33ae89705" name="Default" comment="Update">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Test/grid/ExecuteScriptTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FrameWork/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FrameWork/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FrameWork/Credentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FrameWork/Credentials.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FrameWork/RoleRun.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FrameWork/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FrameWork/Runner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FrameWork/StressTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FrameWork/StressTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FrameWork/TestBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FrameWork/TestBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SingleTest/SingleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SingleTest/SingleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Test/grid/Basic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/grid/Basic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Test/grid/ExecuteScriptTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/grid/ExecuteScriptTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Test/grid/PassTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/grid/PassTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Test/grid/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/grid/PerformanceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/FrameWork/Configuration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FrameWork/Configuration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FrameWork/TestBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FrameWork/TestBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SingleTest/SingleTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SingleTest/SingleTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FrameWork/Credentials$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FrameWork/Credentials$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FrameWork/Credentials$CloudServerName.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FrameWork/Credentials$CloudServerName.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FrameWork/Credentials.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FrameWork/Credentials.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FrameWork/Runner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FrameWork/Runner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FrameWork/TestBase.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -57,7 +63,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="7240" />
+          <entry key="java" value="7662" />
           <entry key="txt" value="94" />
           <entry key="vmoptions" value="8" />
           <entry key="xml" value="2" />
@@ -65,7 +71,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7240" />
+          <entry key="JAVA" value="7662" />
           <entry key="PLAIN_TEXT" value="102" />
           <entry key="XML" value="2" />
         </counts>
@@ -73,12 +79,12 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="7" />
-          <entry key="java" value="149" />
+          <entry key="java" value="163" />
           <entry key="log" value="2" />
           <entry key="png" value="1" />
           <entry key="properties" value="1" />
           <entry key="vmoptions" value="3" />
-          <entry key="xml" value="3" />
+          <entry key="xml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -86,10 +92,10 @@
           <entry key="ANSI Aware" value="2" />
           <entry key="CLASS" value="7" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="149" />
+          <entry key="JAVA" value="163" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="Properties" value="1" />
-          <entry key="XML" value="3" />
+          <entry key="XML" value="4" />
         </counts>
       </usages-collector>
     </session>
@@ -99,8 +105,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/StressTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="561">
+              <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Runner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,8 +126,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/PerformanceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="31" column="45" lean-forward="true" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+            <state relative-caret-position="272">
+              <caret line="41" column="26" lean-forward="true" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
               <folding>
                 <element signature="e#788#789#0" expanded="true" />
                 <element signature="e#823#824#0" expanded="true" />
@@ -119,13 +137,30 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/Basic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="314">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/PassTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Configuration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="24" column="46" lean-forward="true" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
+            <state relative-caret-position="425">
+              <caret line="49" column="27" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
               <folding>
-                <element signature="e#385#386#0" expanded="true" />
-                <element signature="e#447#448#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -134,13 +169,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/TestBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="74" column="33" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
+            <state relative-caret-position="540">
+              <caret line="125" column="9" selection-start-line="125" selection-start-column="9" selection-end-line="125" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1031#1032#0" expanded="true" />
-                <element signature="e#1073#1074#0" expanded="true" />
                 <element signature="method#countExc#0;class#TestBase#0" />
+                <element signature="method#sleep#0;class#TestBase#0" />
+                <element signature="method#sleepSafari#0;class#TestBase#0" />
+                <element signature="method#Node#0;class#Node#0" />
               </folding>
             </state>
           </provider>
@@ -158,10 +194,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>There is not enough space on the disk</find>
-      <find>start</find>
-      <find>UnirestException</find>
-      <find>####</find>
       <find>Returned value cannot be converted to WebElement: A session with id = '1E12B1F4-D752-4847-B315-F3EDEFDA2709' was not found.</find>
       <find>report</find>
       <find>##</find>
@@ -188,6 +220,10 @@
       <find>@FA</find>
       <find>seconds</find>
       <find>writeToLog</find>
+      <find>Can't download</find>
+      <find>DEEP</find>
+      <find>quit</find>
+      <find>reportUrl</find>
     </findStrings>
     <replaceStrings>
       <replace>log.info</replace>
@@ -230,12 +266,9 @@
         <option value="$PROJECT_DIR$/src/main/java/Test/manual/OpenManualBrowserViaCloud.java" />
         <option value="$APPLICATION_CONFIG_DIR$/idea64.exe.vmoptions" />
         <option value="$PROJECT_DIR$/src/main/java/Test/grid/ChromeExtensionTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/FrameWork/Credentials.java" />
         <option value="$PROJECT_DIR$/src/main/java/Utils/CollectSupportDataAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/FrameWork/UserCredentials.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/grid/Basic.java" />
         <option value="$PROJECT_DIR$/src/main/java/Test/grid/SA24891.java" />
-        <option value="$PROJECT_DIR$/src/main/java/FrameWork/RoleRun.java" />
         <option value="$PROJECT_DIR$/src/main/java/SingleTest/ChromeExtention.java" />
         <option value="$PROJECT_DIR$/src/main/java/SingleTest/ParallelDeviceTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/SingleTest/ChromeExtension.java" />
@@ -247,17 +280,20 @@
         <option value="$PROJECT_DIR$/src/main/java/Test/grid/WatchCloudTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/FrameWork/Suits.java" />
         <option value="$PROJECT_DIR$/src/main/java/FrameWork/Stresstest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/FrameWork/Runner.java" />
         <option value="$PROJECT_DIR$/src/main/java/Test/grid/VersionCheck.java" />
         <option value="$PROJECT_DIR$/src/main/java/SingleTest/FirefoxExtension.java" />
         <option value="$PROJECT_DIR$/src/main/java/SingleTest/AllowNotificationsTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Test/grid/executeScriptTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/grid/ExecuteScriptTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/SingleTest/SingleTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/grid/PassTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/grid/PerformanceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/FrameWork/RoleRun.java" />
+        <option value="$PROJECT_DIR$/src/main/java/FrameWork/Credentials.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Test/grid/ExecuteScriptTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/FrameWork/Configuration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Test/grid/PassTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Test/grid/Basic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/FrameWork/Runner.java" />
         <option value="$PROJECT_DIR$/src/main/java/FrameWork/StressTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Test/grid/PerformanceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/FrameWork/TestBase.java" />
       </list>
     </option>
@@ -279,10 +315,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="250" />
-    <option name="y" value="-14" />
-    <option name="width" value="980" />
-    <option name="height" value="484" />
+    <option name="x" value="-77" />
+    <option name="y" value="172" />
+    <option name="width" value="1382" />
+    <option name="height" value="740" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -363,7 +399,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="chromeCar&#9;FILE&#9;file://C:/IntellijProjects/SeleniumAgent/src/main/java/Test/manual/POM/Cards/ChromeCard.java&#10;request&#9;PSI&#9;JAVA://org.omg.CORBA.portable.Delegate#request&#10;getCapa&#9;PSI&#9;JAVA://java.awt.image.BufferStrategy#getCapabilities&#10;ReporterAttachment&#9;PSI&#9;JAVA://Utils.ReporterAttachment&#10;chrome&#9;FILE&#9;file://C:/IntellijProjects/SeleniumAgent/src/main/java/Test/manual/POM/Cards/ChromeCard.java&#10;ChromeCard&#9;PSI&#9;JAVA://Test.manual.POM.Cards.ChromeCard#CHROME_CARD&#10;sys&#9;PSI&#9;JAVA://java.lang.System" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542646763574" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542798352783" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/Test/manual" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Automation/regressionstable/build.gradle" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -408,9 +444,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.StressTest">
+  <component name="RunManager" selected="Application.Runner">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FrameWork.Runner" />
+      <module name="SeleniumAgent" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="FrameWork.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -431,21 +481,6 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AllowNotificationsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SeleniumAgent" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="SingleTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="SingleTest" />
-      <option name="MAIN_CLASS_NAME" value="SingleTest.AllowNotificationsTest" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -528,16 +563,16 @@
       <item itemvalue="Application.StressTest" />
       <item itemvalue="JUnit.AllowNotificationsTest.chrome" />
       <item itemvalue="JUnit.AllowNotificationsTest.firefox" />
-      <item itemvalue="JUnit.AllowNotificationsTest" />
       <item itemvalue="JUnit.SingleTest.testExperitest" />
+      <item itemvalue="Application.Runner" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Runner" />
         <item itemvalue="Application.StressTest" />
         <item itemvalue="JUnit.SingleTest.testExperitest" />
         <item itemvalue="JUnit.AllowNotificationsTest.firefox" />
         <item itemvalue="JUnit.AllowNotificationsTest.chrome" />
-        <item itemvalue="JUnit.AllowNotificationsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -664,7 +699,14 @@
       <option name="project" value="LOCAL" />
       <updated>1542206515916</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Update">
+      <created>1542646784627</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1542646784627</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -726,7 +768,7 @@
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.32963374" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.3288889" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.494705" visible="true" weight="0.17908788" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.494705" visible="true" weight="0.11902113" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4682981" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -883,21 +925,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/SA24891.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/RoleRun.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="9" lean-forward="true" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#createUser#0;class#RoleRun#0" />
-            <element signature="method#createAdmin#0;class#RoleRun#0" />
-            <element signature="method#createProjectAdmin#0;class#RoleRun#0" />
-            <element signature="method#deleteProject#0;class#RoleRun#0" />
-            <element signature="class#UserCredentials#0;class#RoleRun#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Test/manual/OpenManualBrowserViaCloud.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -948,13 +975,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/WatchCloudTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -967,13 +987,6 @@
         <state relative-caret-position="-2462" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Credentials.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/concurrent/ExecutorService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -983,16 +996,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reports/images/screenshot_1541953755990.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Runner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="38" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/VersionCheckOneByOne.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1060,13 +1063,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/FailTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/FirefoxExtension.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -1098,23 +1094,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/Basic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="37" column="5" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="37" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/ExecuteScriptTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/SingleTest/SingleTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
@@ -1132,24 +1111,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/PassTest.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="50" column="23" selection-start-line="48" selection-end-line="52" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/RoleRun.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-969">
+          <caret line="74" column="17" lean-forward="true" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#createUser#0;class#RoleRun#0" />
+            <element signature="method#createAdmin#0;class#RoleRun#0" />
+            <element signature="method#createProjectAdmin#0;class#RoleRun#0" />
+            <element signature="method#deleteProject#0;class#RoleRun#0" />
+            <element signature="class#UserCredentials#0;class#RoleRun#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Credentials.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="43" column="29" lean-forward="true" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/ExecuteScriptTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/FailTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="20" column="81" lean-forward="true" selection-start-line="19" selection-end-line="20" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Configuration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
-          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+          <caret line="49" column="27" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/Basic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Runner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/StressTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="561">
+          <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/PassTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Test/grid/PerformanceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="31" column="45" lean-forward="true" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+        <state relative-caret-position="272">
+          <caret line="41" column="26" lean-forward="true" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
           <folding>
             <element signature="e#788#789#0" expanded="true" />
             <element signature="e#823#824#0" expanded="true" />
@@ -1157,26 +1209,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="24" column="46" lean-forward="true" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
-          <folding>
-            <element signature="e#385#386#0" expanded="true" />
-            <element signature="e#447#448#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/FrameWork/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="74" column="33" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
+        <state relative-caret-position="540">
+          <caret line="125" column="9" selection-start-line="125" selection-start-column="9" selection-end-line="125" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1031#1032#0" expanded="true" />
-            <element signature="e#1073#1074#0" expanded="true" />
             <element signature="method#countExc#0;class#TestBase#0" />
+            <element signature="method#sleep#0;class#TestBase#0" />
+            <element signature="method#sleepSafari#0;class#TestBase#0" />
+            <element signature="method#Node#0;class#Node#0" />
           </folding>
         </state>
       </provider>

@@ -10,18 +10,13 @@ import static FrameWork.Credentials.*;
 
 public class Configuration {
 
-    private DesiredCapabilities desiredCapabilities = null;
-
-    public Configuration(DesiredCapabilities desiredCapabilities) {
-        this.desiredCapabilities = desiredCapabilities;
-    }
-
     protected boolean USE_AK_Flag = false;
     long START_TEST_TIME = System.currentTimeMillis();
 
     protected Configuration() {
         updateServerCredentials(CloudServerName.RND_VM_CLOUD);
 //        updateServerCredentials(CloudServerName.QA_SECURE_ADMIN);
+//        updateServerCredentials(CloudServerName.DEEP_TESTING_CLOUD_PROJECT_ADMIN);
 //        updateServerCredentials(CloudServerName.ARIEL_MAC_ADMIN);
 //        updateServerCredentials(CloudServerName.ARIEL_MAC_PRO_ADMIN);
 //        updateServerCredentials(CloudServerName.ARIEL_MAC_USER);
@@ -34,11 +29,13 @@ public class Configuration {
 //        dc.setCapability("seleniumScreenshot", false);
         dc.setCapability("takeScreenshots", true);
         dc.setCapability("generateReport", true);
-        dc.setCapability("newCommandTimeout", "1000");//default is 300
-        dc.setCapability("newSessionWaitTimeout", "1000");//default is 300
+        dc.setCapability("newCommandTimeout", 1000);//default is 300
+        dc.setCapability("newSessionWaitTimeout", 1000);//default is 300
 //        dc.setCapability(CapabilityType.BROWSER_VERSION, "63.0.1");
 //        dc.setCapability(CapabilityType.PLATFORM, Platform.WIN10);
 //        dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.FIREFOX);
+
+//        dc.setCapability("Deep Selenium", "1.1");
     }
 
     private void setURL() {
@@ -52,12 +49,9 @@ public class Configuration {
                 url = new URL("http://" + HOST + ":" + PORT + "/wd/hub");
                 if (SECURE)
                     url = new URL("https://" + HOST + ":" + PORT + "/wd/hub");
-                if (desiredCapabilities == null) {
-                    dc.setCapability("username", USER);
-                    dc.setCapability("password", PASS);
-                    dc.setCapability("projectName", PROJECT); //only required if your user has several projects assigned to it. Otherwise, exclude this capability.
-                } else
-                    dc.merge(desiredCapabilities);
+                dc.setCapability("username", USER);
+                dc.setCapability("password", PASS);
+                dc.setCapability("projectName", PROJECT); //only required if your user has several projects assigned to it. Otherwise, exclude this capability.
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -70,6 +64,12 @@ public class Configuration {
 
 
     static {
+
+
+        //Mirron keystore
+//        System.getProperties().setProperty("javax.net.ssl.trustStore", "C:\\Users\\ariel.hazan\\Downloads\\truststore.jks");
+//        System.getProperties().setProperty("javax.net.ssl.trustStorePassword", "");
+
         //Ariel Windows keystore
 //        System.getProperties().setProperty("javax.net.ssl.trustStore", "C:\\Users\\ariel.hazan\\Desktop\\Key\\truststore.jks");
 //        System.getProperties().setProperty("javax.net.ssl.trustStorePassword", "123456");

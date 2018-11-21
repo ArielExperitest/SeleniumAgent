@@ -4,9 +4,10 @@ import Utils.CollectSupportDataAPI;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.BrowserType;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 
 public abstract class TestBase extends Configuration implements Runnable {
@@ -28,18 +29,16 @@ public abstract class TestBase extends Configuration implements Runnable {
     protected String reportUrl = "Can't get report URL";
     protected String sessionId = null;
 
-    public TestBase(DesiredCapabilities desiredCapabilities) {
-        super(desiredCapabilities);
-    }
-
     @Override
     public void run() {
         setDC();
 
         try {
             log.info("Start test - " + dc);
+            initDriver();
             test();
-            writeToLog();
+            testIndex++;
+            log.info("Result - #" + testIndex + " @PASS " + sessionId + " " + platform + " " + browserVersion + " reportUrl: " + reportUrl);
         } catch (Exception e) {
             if (!e.getMessage().contains("Go To Fail Test!!!")) {
 
@@ -53,26 +52,16 @@ public abstract class TestBase extends Configuration implements Runnable {
             try {
                 driver.quit();
             } catch (Exception e) {
-                log.info("Fail to preform quit: " + platform + " " + sessionId + " " + testName + " " + reportUrl + " exceptionMsg= " + e.getMessage());
+                log.info("Fail to preform quit: " + sessionId + " " + platform + " " + browserVersion + " reportUrl: " + reportUrl + " exceptionMsg= " + e.getMessage());
             }
         }
-    }
-
-    //Passed
-    private void writeToLog() {
-        testIndex++;
-        log.info("Result - #" + testIndex + ". " + " @PASS " + sessionId + " " + platform + " " + testName + " reportPath=" + reportUrl);
     }
 
     //Failed
     private void writeToLog(Capabilities capabilities, Exception exception) {
         testIndex++;
-        log.error("Result - #" + testIndex + " @FAIL " + sessionId + " " + platform + " " + testName + " reportUrl=" + reportUrl);
-
-        if (capabilities != null)
-            log.error("--------- capabilities " + capabilities + "", exception);
-        else
-            log.error("--------- capabilities are null", exception);
+        log.error("Result - #" + testIndex + " @FAIL " + sessionId + " " + platform + " reportUrl=" + reportUrl);
+        log.error("--------- capabilities: " + capabilities, exception);
 
         countExc(platform + " " + browserType + " " + browserVersion + " - " + exception.getMessage().split("\n")[0]);
 
@@ -123,12 +112,21 @@ public abstract class TestBase extends Configuration implements Runnable {
             sleep(time);
     }
 
-    protected void initProperty() {
+    private void initDriver() {
+        driver = new RemoteWebDriver(url, dc);
         this.browserVersion = this.driver.getCapabilities().getVersion();
         this.platform = String.valueOf(this.driver.getCapabilities().getPlatform());
         this.reportUrl = (String) this.driver.getCapabilities().getCapability("reportUrl");
         this.sessionId = (String) this.driver.getCapabilities().getCapability("sessionId");
+        this.browserType = this.driver.getCapabilities().getBrowserName();
+        if (!browserType.equals(BrowserType.IE)) {
+            driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+            driver.manage().timeouts().pageLoadTimeout(90, TimeUnit.SECONDS);
+            driver.manage().timeouts().setScriptTimeout(90, TimeUnit.SECONDS);
+        }
+        log.info("Finish init driver - " + sessionId + " " + platform + " " + browserVersion + " reportUrl: " + reportUrl);
     }
+
 }
 
 class Node {

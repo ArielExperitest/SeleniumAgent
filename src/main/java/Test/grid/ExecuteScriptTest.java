@@ -10,8 +10,7 @@ import java.io.StringWriter;
 
 public class ExecuteScriptTest extends TestBase {
 
-    public ExecuteScriptTest(String browserType, DesiredCapabilities desiredCapabilities) {
-        super(desiredCapabilities);
+    public ExecuteScriptTest(String browserType) {
         this.browserType = browserType;
         testName = this.getClass().getSimpleName() + " Test " + browserType;
         dc.setCapability("testName", testName);

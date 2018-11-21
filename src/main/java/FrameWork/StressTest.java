@@ -17,9 +17,9 @@ public class StressTest {
     public static void main(String[] args) {
         strings = new ArrayList<>();
 
-        tester(92, 300);
+        tester(102, 800);
 
-        System.out.println(strings.toString());
+//        System.out.println(strings.toString());
     }
 
     private static void tester(int numOfThreads, int numOfTest) {
@@ -30,15 +30,15 @@ public class StressTest {
             executorService.submit(new PerformanceTest(BrowserType.CHROME));
             executorService.submit(new PerformanceTest(BrowserType.FIREFOX));
 
-            if (i % 5 == 0) {
-                executorService.submit(new PerformanceTest(BrowserType.EDGE));
+            if (i % 100 == 0) {
+//                executorService.submit(new PerformanceTest(BrowserType.EDGE));
             }
-            if (i % 10 == 0)
-                executorService.submit(new PerformanceTest(BrowserType.SAFARI));
+            if (i % 10 == 0) {
+//                executorService.submit(new PerformanceTest(BrowserType.SAFARI));
+            }
         }
-//        executorService.submit(new PerformanceTest(BrowserType.IE));
-//        executorService.submit(new PerformanceTest(BrowserType.EDGE));
-//        executorService.submit(new PerformanceTest(BrowserType.IE));
+        executorService.submit(new PassTest(BrowserType.IE));
+        executorService.submit(new PassTest(BrowserType.IE));
         log.info("=========Finish upload tests");
         long startTime = System.currentTimeMillis();
 
