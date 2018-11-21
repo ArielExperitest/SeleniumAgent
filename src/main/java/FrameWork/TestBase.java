@@ -11,69 +11,53 @@ import java.util.concurrent.TimeUnit;
 
 
 public abstract class TestBase extends Configuration implements Runnable {
-    protected TestBase() {
-    }
 
     protected abstract void test() throws Exception;
 
-    protected final Logger log = Logger.getLogger(this.getClass().getName());
-    private static int testIndex = 0;
+    private final Logger log = Logger.getLogger(this.getClass().getName());
     private static List<Node> excList = new ArrayList<>();
-    private static int failCount = 0;
-    private boolean isTestPass = true;
-
-    protected String testName = "testName";
-    protected String browserType = "";
-    protected String browserVersion = "";
-    protected String platform = null;
-    protected String reportUrl = "Can't get report URL";
-    protected String sessionId = null;
+    private static int failCount = 0, testIndex = 0;
+    private String sessionId = null, browserVersion = "", testName = "testName", browserType = "", platform = null, reportUrl = "Can't get report URL";
 
     @Override
     public void run() {
         setDC();
-
         try {
             log.info("Start test - " + dc);
             initDriver();
             test();
-            testIndex++;
-            log.info("Result - #" + testIndex + " @PASS " + sessionId + " " + platform + " " + browserVersion + " reportUrl: " + reportUrl);
+            log.info("Result - #" + (++testIndex) + " @PASS " + getSessionDetails());
         } catch (Exception e) {
-            if (!e.getMessage().contains("Go To Fail Test!!!")) {
-
-                if (driver != null) {
-                    writeToLog(driver.getCapabilities(), e);
-                } else {
-                    writeToLog(null, e);
-                }
+            if (driver != null) {
+                writeToLog(driver.getCapabilities(), e);
+            } else {
+                writeToLog(dc, e);
             }
         } finally {
             try {
-                driver.quit();
+                if (driver != null) {
+                    driver.quit();
+                }
             } catch (Exception e) {
-                log.info("Fail to preform quit: " + sessionId + " " + platform + " " + browserVersion + " reportUrl: " + reportUrl + " exceptionMsg= " + e.getMessage());
+                log.info("Fail to preform quit: " + getSessionDetails() + " exceptionMsg: " + e.getMessage());
             }
         }
     }
 
     //Failed
     private void writeToLog(Capabilities capabilities, Exception exception) {
-        testIndex++;
-        log.error("Result - #" + testIndex + " @FAIL " + sessionId + " " + platform + " reportUrl=" + reportUrl);
-        log.error("--------- capabilities: " + capabilities, exception);
+        log.error("Result - #" + (++testIndex) + " @FAIL " + getSessionDetails() + " " + capabilities, exception);
 
         countExc(platform + " " + browserType + " " + browserVersion + " - " + exception.getMessage().split("\n")[0]);
-
         if (testIndex % 5 == 0) {
             String CSDPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
-            String reportPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
-            new Thread(new CollectSupportDataAPI(CSDPath), testIndex + "_" + testName + "_" + START_TEST_TIME).start();
+            new Thread(new CollectSupportDataAPI(CSDPath), CSDPath).start();
             log.info("Start downloading Collect Support Data =" + CSDPath);
+            //Download report from reporter
+//            String reportPath = testIndex + "_" + testName + "_" + START_TEST_TIME + ".zip";
 //            log.info("Start downloading report =" + reportPath);
 //            new Thread(new ReporterAttachment(reportPath, reportUrl)).start();
         }
-
     }
 
     private synchronized void countExc(String message) {
@@ -101,15 +85,13 @@ public abstract class TestBase extends Configuration implements Runnable {
 
     protected void sleep(int time) {
         try {
-            Thread.sleep(time);
+            if (browserType.equals(BrowserType.SAFARI))
+                Thread.sleep(3 * time);
+            else
+                Thread.sleep(time);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    protected void sleepSafari(int time) {
-        if (browserType.equals(BrowserType.SAFARI))
-            sleep(time);
     }
 
     private void initDriver() {
@@ -124,9 +106,12 @@ public abstract class TestBase extends Configuration implements Runnable {
             driver.manage().timeouts().pageLoadTimeout(90, TimeUnit.SECONDS);
             driver.manage().timeouts().setScriptTimeout(90, TimeUnit.SECONDS);
         }
-        log.info("Finish init driver - " + sessionId + " " + platform + " " + browserVersion + " reportUrl: " + reportUrl);
+        log.info("Done init driver - " + getSessionDetails());
     }
 
+    private String getSessionDetails() {
+        return platform + " " + browserVersion + " " + sessionId + " reportUrl: " + reportUrl;
+    }
 }
 
 class Node {

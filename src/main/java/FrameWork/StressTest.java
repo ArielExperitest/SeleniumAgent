@@ -17,7 +17,7 @@ public class StressTest {
     public static void main(String[] args) {
         strings = new ArrayList<>();
 
-        tester(102, 800);
+        tester(102, 100);
 
 //        System.out.println(strings.toString());
     }
