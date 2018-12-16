@@ -31,7 +31,6 @@ public class OpenManualBrowserViaCloud extends TestBase {
     private void checkNewWindow(String windowTitle) throws Exception {
         //Wait to manual browser to open
         while (true) {
-            sleep(10 * 1000);
             if (driver.getWindowHandles().size() > 1) {
                 log.info("Found it!");
                 break;

@@ -1,19 +1,19 @@
 package FrameWork;
 
-import Test.grid.Basic;
+import Test.grid.NativePopupsTest;
+import Test.grid.PassTest;
+import Test.grid.UploadFile;
 import org.openqa.selenium.remote.BrowserType;
 
 
 public class Runner {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         int j = 0;
-        while (j < 100) {
-//            new Thread(new WatchCloudTest(BrowserType.CHROME, "admin", "Experitest2012")).start();
-//            new Thread(new WatchCloudTest(BrowserType.FIREFOX, "https://qa-win2016.experitest.com", "diklaLDAP", "Experitest2012")).start();
-
+        while (j < 10) {
+//            new Thread(new PassTest(BrowserType.CHROME)).start();
 //            CollectSupportDataAPI collectSupportDataAPI = new CollectSupportDataAPI();
 //            collectSupportDataAPI.downloadCSD(1,"aaa","166");
 //            new Thread(new OpenManualBrowserViaCloud(BrowserType.CHROME)).start();
@@ -21,12 +21,12 @@ public class Runner {
 //            new Thread(new PerformanceTest(BrowserType.IE)).start();
 //            new Thread(new PerformanceTest(BrowserType.FIREFOX)).start();
 //            new Thread(new PerformanceTest(BrowserType.CHROME)).start();
-//            new Thread(new PassTest(BrowserType.EDGE)).start();
 //            new Thread(new FaileTest2(BrowserType.CHROME)).start();
-            new Thread(new Basic(BrowserType.IE)).start();
+//            new Thread(new UploadFile(BrowserType.SAFARI)).start();
+//            new Thread(new NativePopupsTest(BrowserType.IE)).start();
+            new Thread(new NativePopupsTest(BrowserType.IE)).start();
 //            new Thread(new LongTest(BrowserType.EDGE)).start();
 //            new VersionCheckOneByOne(1);
-
 
 //            new VersionCheckOneByOne(3);
 //            new Thread(new PassTest("MicrosoftEdge")).start();
@@ -35,7 +35,6 @@ public class Runner {
 //            new Thread(new CheckAllBrowserVersion()).start();
 
 //            new Thread(new VersionCheck(BrowserType.CHROME,"67")).start();
-//            new Thread(new PassTest(BrowserType.SAFARI)).start();
 
 //            new Thread(new VersionCheck.Firefox()).start();
 
@@ -45,22 +44,8 @@ public class Runner {
 //            new Thread(new VersionCheck.IE("11")).start();
 //            new Thread(new TimeTestYoram()).start();
 
-//            new Thread(new Basic(BrowserType.FIREFOX)).start();
-
-//            new Thread(new PerformanceTest(BrowserType.CHROME)).start();
-//
-//            new Thread(new AccessKeyTest(BrowserType.FIREFOX)).start();
-//
-//            new Thread(new PassTest(BrowserType.CHROME)).start();
-
-//            new Thread(new PerformanceTest(BrowserType.CHROME)).start();
-
             System.out.println(">>>>>>>>>>>>>>>>> Test #" + j + " <<<<<<<<<<<<<<<<<<<<<<<");
             j++;
-
-
-//            if (j % 3 == 0)
-//                Thread.sleep(5 * 60 * 1000);
         }
     }
 }

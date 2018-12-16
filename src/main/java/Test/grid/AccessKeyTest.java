@@ -14,7 +14,7 @@ public class AccessKeyTest extends TestBase {
         testName = this.getClass().getSimpleName() + " Test " + browserType;
         dc.setCapability("testName", testName);
         dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
-        USE_AK_Flag = true;
+        USE_ACCESS_KEY = true;
     }
 
 

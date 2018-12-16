@@ -2,7 +2,6 @@ package Test.grid;
 
 import FrameWork.TestBase;
 import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.PrintWriter;

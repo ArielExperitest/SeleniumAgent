@@ -29,14 +29,12 @@ public class WatchCloudTest extends TestBase {
     @Override
     public void test() {
         driver = new RemoteWebDriver(url, dc);
-        sleep(3 * 1000);
         loginTOCloud();
         int randomIndex = new Random().nextInt(cloudPages.length);
         int i = 0;
         driver.get(cloudUrl + INDEX_HTML + cloudPages[randomIndex]);
         log.info("Go to " + cloudPages[randomIndex] + " page");
         while (i < 5000) {
-            sleep(60 * 1000);
             i++;
             driver.findElement(By.xpath("//*[@id=\"hourglass\"]")).click();
             log.info("Refresh " + i + " times");
@@ -46,12 +44,10 @@ public class WatchCloudTest extends TestBase {
     private void loginTOCloud() {
         log.info("Start to login to Cloud");
         driver.get(cloudUrl);
-        sleep(3 * 1000);
         WebElement username = driver.findElement(By.xpath("//*[@name=\"username\"]"));
         username.sendKeys(cloudUser);
         driver.findElement(By.xpath("//*[@name=\"password\"]")).sendKeys(cloudPassword);
         driver.findElement(By.xpath("//*[@name=\"login\"]")).click();
-        sleep(3 * 1000);
         //Firefox open a new tab when try to click on log in button
         if (driver.getWindowHandles().size() > 1) {
             driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.TAB);

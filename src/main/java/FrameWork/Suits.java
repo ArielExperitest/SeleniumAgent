@@ -117,7 +117,7 @@ public class Suits {
         log.info("-------Finished all threads-------");
     }
 
-    public static void testSuit(int numOfThreads, int numOfReturns, String browserType) {
+    public static void testSuit(int numOfThreads, int numOfReturns, String browserType) throws InterruptedException {
         ExecutorService executor;
         int i;
         for (int j = 0; j < numOfReturns; j++) {

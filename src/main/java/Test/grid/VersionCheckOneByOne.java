@@ -1,6 +1,5 @@
 package Test.grid;
 
-import FrameWork.Configuration;
 import FrameWork.Credentials;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -20,7 +19,7 @@ import static FrameWork.Credentials.*;
 /**
  * Created by ariel.hazan on 04-Dec-17
  */
-public class VersionCheckOneByOne extends Configuration {
+public class VersionCheckOneByOne {
 
     private ArrayList<JSONObject> jsonNodes;
     private final Logger log = Logger.getLogger(this.getClass().getName());
