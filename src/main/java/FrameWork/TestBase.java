@@ -23,8 +23,8 @@ public abstract class TestBase implements Runnable {
     protected boolean USE_ACCESS_KEY = false;
 
     protected TestBase() {
-        updateServerCredentials(CloudServerName.RND_VM_CLOUD);
-//        updateServerCredentials(CloudServerName.QA_SECURE_ADMIN);
+//        updateServerCredentials(CloudServerName.RND_VM_CLOUD);
+        updateServerCredentials(CloudServerName.QA_SECURE_ADMIN);
 //        updateServerCredentials(CloudServerName.MASTER_CLOUD);
 //        updateServerCredentials(CloudServerName.DEEP_TESTING_CLOUD_PROJECT_ADMIN);
 //        updateServerCredentials(CloudServerName.ARIEL_MAC_ADMIN);
@@ -34,8 +34,8 @@ public abstract class TestBase implements Runnable {
 
     @Override
     public void run() {
-        setDC();
         try {
+            setDC();
             log.info("Start test - " + dc);
             initDriver();
             test();
@@ -57,7 +57,7 @@ public abstract class TestBase implements Runnable {
     private void writeToLog(Capabilities capabilities, Exception exception) {
         log.error("Result - #" + (++testIndex) + " @FAIL " + getSessionDetails() + " \n" + capabilities, exception);
 
-        countExc(platform + " " + browserType + " " + browserVersion + " - " + exception.getMessage().split("\n")[0]);
+        countExc(platform + " " + browserName + " " + browserVersion + " - " + exception.getMessage().split("\n")[0]);
         if (failCount % 15 == 0) {
             String CSDPath = String.valueOf(testIndex) + "_" + testName + "_" + System.currentTimeMillis() + ".zip";
             new Thread(new CollectSupportDataAPI(CSDPath), CSDPath).start();
@@ -89,44 +89,40 @@ public abstract class TestBase implements Runnable {
 
     private void initDriver() {
         driver = new RemoteWebDriver(url, dc);
-        this.browserVersion = this.driver.getCapabilities().getVersion();
-        this.platform = String.valueOf(this.driver.getCapabilities().getPlatform());
-        this.reportUrl = (String) this.driver.getCapabilities().getCapability("reportUrl");
-        this.sessionId = (String) this.driver.getCapabilities().getCapability("sessionId");
-        this.browserType = this.driver.getCapabilities().getBrowserName();
+        Capabilities capabilities = this.driver.getCapabilities();
 
-        if (!browserType.equals(BrowserType.IE)) {//https://github.com/theintern/leadfoot/issues/134
-            driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
-            driver.manage().timeouts().pageLoadTimeout(90, TimeUnit.SECONDS);
-            driver.manage().timeouts().setScriptTimeout(90, TimeUnit.SECONDS);
+        this.browserVersion = capabilities.getVersion();
+        this.platform = String.valueOf(capabilities.getPlatform());
+        this.reportUrl = (String) capabilities.getCapability("reportUrl");
+        this.sessionId = (String) capabilities.getCapability("sessionId");
+        this.browserName = capabilities.getBrowserName();
+
+        if (!browserName.equals(BrowserType.IE)) {//https://github.com/theintern/leadfoot/issues/134
+            driver.manage().timeouts()
+                    .implicitlyWait(90, TimeUnit.SECONDS)
+                    .pageLoadTimeout(90, TimeUnit.SECONDS)
+                    .setScriptTimeout(90, TimeUnit.SECONDS);
         }
-        String msg = "Done init driver..";
-        if (this.reportUrl == null)
-            msg += " - Report is null ";
-        log.info(msg);
+        log.info(this.reportUrl != null ? "Done init driver.." : "Done init driver - Report is null");
     }
 
     private String getSessionDetails() {
         return platform + " " + browserVersion + " " + sessionId + " reportUrl: " + reportUrl;
     }
 
-    void setDC() {
-        try {
-            if (USE_ACCESS_KEY) {
-                url = new URL("http://:" + AK + "@" + HOST + ":" + PORT + "/wd/hub");
+    private void setDC() throws MalformedURLException {
+        String urlBase = "http://";
+        if (SECURE)
+            urlBase = "https://";
 
-                if (SECURE)
-                    url = new URL("https://:" + AK + "@" + HOST + ":" + PORT + "/wd/hub");
-            } else {
-                url = new URL("http://" + HOST + ":" + PORT + "/wd/hub");
-                if (SECURE)
-                    url = new URL("https://" + HOST + ":" + PORT + "/wd/hub");
-                dc.setCapability("username", USER);
-                dc.setCapability("password", PASS);
-                dc.setCapability("projectName", PROJECT); //only required if your user has several projects assigned to it. Otherwise, exclude this capability.
-            }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+        if (USE_ACCESS_KEY) {
+            url = new URL(urlBase + ":" + AK + "@" + HOST + ":" + PORT + "/wd/hub");
+        } else {
+            url = new URL(urlBase + HOST + ":" + PORT + "/wd/hub");
+
+            dc.setCapability("username", USER);
+            dc.setCapability("password", PASS);
+            dc.setCapability("projectName", PROJECT); //only required if your user has several projects assigned to it. Otherwise, exclude this capability.
         }
 //        dc.setCapability(CapabilityType.TAKES_SCREENSHOT, false);//takesScreenshot - not supporting
 //        dc.setCapability("seleniumScreenshot", false);
@@ -142,7 +138,7 @@ public abstract class TestBase implements Runnable {
     private final Logger log = Logger.getLogger(this.getClass().getName());
     private static List<Node> excList = new ArrayList<>();
     private static int failCount = 0, testIndex = 0;
-    protected String sessionId = "", browserVersion = "", testName = "", browserType = "", platform = "", reportUrl = "";
+    protected String sessionId = "", browserVersion = "", testName = "", browserName = "", platform = "", reportUrl = "";
     protected URL url;
     protected RemoteWebDriver driver;
     protected DesiredCapabilities dc = new DesiredCapabilities();

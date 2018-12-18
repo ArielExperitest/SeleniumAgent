@@ -18,7 +18,7 @@ public class WatchCloudTest extends TestBase {
 
     public WatchCloudTest(String browserType, String cloudUrl, String cloudUser, String cloudPassword) {
         cloudPages = new String[]{"dashboard", "users", "testrequests", "applications", "projects"};
-        this.browserType = browserType;
+        this.browserName = browserType;
         testName = this.getClass().getSimpleName() + " on " + browserType;
         dc.setCapability("testName", testName);
         this.cloudUrl = cloudUrl;

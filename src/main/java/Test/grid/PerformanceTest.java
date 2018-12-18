@@ -7,8 +7,6 @@ import org.openqa.selenium.remote.*;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by ariel.hazan on 02-Jan-18.
@@ -21,7 +19,6 @@ public class PerformanceTest extends TestBase {
         dc.setCapability("testName", testName);
         dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
     }
-
 
     @Override
     protected void test() {
@@ -37,7 +34,6 @@ public class PerformanceTest extends TestBase {
                         !driver.getCurrentUrl().contains("qacloud.experitest.com"))) {
             driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.TAB);
             driver.findElement(By.xpath("//*[@name=\"password\"]")).sendKeys(Keys.ENTER);
-
         }
         driver.findElement(By.xpath("//*[@id=\"side-menu\"]/li[5]")).click();
         int i = 0;
@@ -46,6 +42,7 @@ public class PerformanceTest extends TestBase {
             driver.findElement(By.xpath("//*[@id=\"side-menu\"]/li[4]")).click();
             i++;
         }
+
         //Wikipedia
         driver.get("https://en.wikipedia.org/wiki/Special:Random");
 
@@ -63,7 +60,7 @@ public class PerformanceTest extends TestBase {
             }
             j++;
         }
-        if (!browserType.equals(BrowserType.SAFARI)) {
+        if (!browserName.equals(BrowserType.SAFARI)) {
             driver.navigate().back();
             driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[9]/a")).click();
             driver.get("http://the-internet.herokuapp.com/dropdown");
@@ -113,12 +110,11 @@ public class PerformanceTest extends TestBase {
         driver.manage().deleteAllCookies();
 
         //How to get HPROF file :)
-//        if (!browserType.equals(BrowserType.SAFARI)) {
+//        if (!browserName.equals(BrowserType.SAFARI)) {
 //            for (String logTypes :
 //                    driver.manage().logs().getAvailableLogTypes()) {
 //                driver.manage().logs().get(logTypes);
 //            }
 //        }
-        driver.getTitle();
     }
 }

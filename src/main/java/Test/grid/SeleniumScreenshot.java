@@ -2,7 +2,6 @@ package Test.grid;
 
 import FrameWork.TestBase;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -14,7 +13,7 @@ import java.io.IOException;
 public class SeleniumScreenshot extends TestBase {
 
     public SeleniumScreenshot(String browserType) {
-        this.browserType = browserType;
+        this.browserName = browserType;
         testName = this.getClass().getSimpleName() + " Test " + browserType;
         dc.setCapability("testName", testName);
         dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
@@ -32,7 +31,7 @@ public class SeleniumScreenshot extends TestBase {
         driver.get("https://www.google.com");
         try {
             BufferedImage bufferedImage = ImageIO.read(scrFile);
-            ImageIO.write(bufferedImage, "png", new File("reports/images/screenshot_" + browserType + "_" + System.currentTimeMillis() + ".png"));
+            ImageIO.write(bufferedImage, "png", new File("reports/images/screenshot_" + browserName + "_" + System.currentTimeMillis() + ".png"));
 
         } catch (IOException e) {
             e.printStackTrace();

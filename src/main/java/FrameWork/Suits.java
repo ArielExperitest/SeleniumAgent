@@ -123,7 +123,7 @@ public class Suits {
         for (int j = 0; j < numOfReturns; j++) {
             executor = Executors.newFixedThreadPool(numOfThreads);
 
-//            executor.execute(new PerformanceTest("", browserType));
+//            executor.execute(new PerformanceTest("", browserName));
             executor.execute(new AccessKeyTest(browserType));
             executor.execute(new PassTest(browserType));
             executor.execute(new FailTest(browserType));

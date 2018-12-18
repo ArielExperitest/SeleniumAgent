@@ -20,7 +20,7 @@ public class VersionCheck extends TestBase {
     private final Logger log = Logger.getLogger(this.getClass().getName());
 
     public VersionCheck(String browserType, String versionToCheck) {
-        this.browserType = browserType;
+        this.browserName = browserType;
         this.versionToCheck = versionToCheck;
         testName = this.getClass().getSimpleName() + " Test " + browserType + " " + versionToCheck;
         dc.setCapability("testName", testName);
@@ -42,7 +42,7 @@ public class VersionCheck extends TestBase {
     }
 
     private String getBrowserUrl() {
-        switch (browserType) {
+        switch (browserName) {
             case BrowserType.FIREFOX: {
                 return "/firefox/";
             }

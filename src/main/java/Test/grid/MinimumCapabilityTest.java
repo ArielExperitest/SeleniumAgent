@@ -20,7 +20,7 @@ public class MinimumCapabilityTest extends TestBase {
         desiredCapabilities.setCapability("username", USER);
         desiredCapabilities.setCapability("password", PASS);
         desiredCapabilities.setCapability("projectName", PROJECT);
-        this.browserType = browserType;
+        this.browserName = browserType;
         testName = this.getClass().getSimpleName() + " Test " + browserType;
         desiredCapabilities.setCapability("testName", testName);
         desiredCapabilities.setCapability(CapabilityType.BROWSER_NAME, browserType);

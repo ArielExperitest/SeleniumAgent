@@ -13,7 +13,7 @@ public class OpenManualBrowserViaCloud extends TestBase {
 
 
     public OpenManualBrowserViaCloud(String browserType) {
-        this.browserType = browserType;
+        this.browserName = browserType;
         testName = this.getClass().getSimpleName() + " Test " + browserType;
         dc.setCapability("testName", testName);
         dc.setCapability(CapabilityType.BROWSER_NAME, browserType);

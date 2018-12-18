@@ -4,7 +4,6 @@ import Test.grid.*;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.remote.BrowserType;
 
-import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -14,9 +13,8 @@ public class ContinuesTest {
 
 
     public static void main(String[] args) {
-        tester(45, 300);
-//        singleTest(15, 300, BrowserType.EDGE);
-//        singleTest(4, 50 , BrowserType.IE);
+//        tester(10, 30);
+        singlePerformanceTest(10,30, BrowserType.FIREFOX);
 //        System.out.println(strings.toString());
     }
 
@@ -39,36 +37,26 @@ public class ContinuesTest {
                 executorService.submit(new PerformanceTest(BrowserType.IE));
             }
         }
-//        executorService.submit(new PerformanceTest(BrowserType.IE));
         log.info("=========Finish upload tests");
-        long startTime = System.currentTimeMillis();
-
 
         executorService.shutdown();
         while (true) {
             if (executorService.isTerminated()) break;
         }
-        long endTime = System.currentTimeMillis();
-
-        System.out.println("That took " + (endTime - startTime) / 1000 + " seconds");
         log.info("-------Finished all threads-------");
     }
 
-    private static void singleTest(int numOfThreads, int numOfTest, String browserType) {
+    private static void singlePerformanceTest(int numOfThreads, int numOfTest, String browserName) {
         executorService = Executors.newFixedThreadPool(numOfThreads);
         log.info("=========Finish Create Executor Service");
 
         for (int i = 0; i < numOfTest; i++) {
-            executorService.submit(new NativePopupsTest(browserType));
+            executorService.submit(new PerformanceTest(browserName));
         }
         log.info("=========Finish upload tests");
-        long startTime = System.currentTimeMillis();
         executorService.shutdown();
 
         while (true) if (executorService.isTerminated()) break;
-        long endTime = System.currentTimeMillis();
-
-        System.out.println("That took " + (endTime - startTime) / 1000 + " seconds");
         log.info("-------Finished all threads-------");
     }
 }

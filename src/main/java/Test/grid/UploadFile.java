@@ -9,7 +9,7 @@ import org.openqa.selenium.remote.LocalFileDetector;
 public class UploadFile extends TestBase {
 
     public UploadFile(String browserType) {
-        this.browserType = browserType;
+        this.browserName = browserType;
         testName = this.getClass().getSimpleName() + " Test " + browserType;
         dc.setCapability("testName", testName);
         dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
