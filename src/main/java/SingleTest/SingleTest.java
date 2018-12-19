@@ -21,13 +21,13 @@ public class SingleTest {
     @Before
     public void setUp() {
         try {
-            url = new URL("https://qacloud.experitest.com/wd/hub");
+            url = new URL("http://192.168.2.197:8080/wd/hub");
 //            url = new URL("http://192.168.2.173/wd/hub");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        dc.setCapability("username", "ariel-user");
-        dc.setCapability("password", "G123l321");
+        dc.setCapability("username", "admin");
+        dc.setCapability("password", "Dd123456");
         dc.setCapability("projectName", "tag project");
 
         dc.setCapability("newSessionWaitTimeout", 30);//default is 300

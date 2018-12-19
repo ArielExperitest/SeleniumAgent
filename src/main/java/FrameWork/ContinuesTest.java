@@ -13,11 +13,11 @@ public class ContinuesTest {
 
 
     public static void main(String[] args) {
-//        tester(10, 30);
-        singlePerformanceTest(10,30, BrowserType.FIREFOX);
+//        tester(10, 1500);
+//        singlePerformanceTest(20, 20, BrowserType.FIREFOX);
+        singleBasicTest(15, 10000, BrowserType.FIREFOX);
 //        System.out.println(strings.toString());
     }
-
 
     private static void tester(int numOfThreads, int numOfTest) {
         executorService = Executors.newFixedThreadPool(numOfThreads);
@@ -27,13 +27,13 @@ public class ContinuesTest {
             executorService.submit(new PerformanceTest(BrowserType.CHROME));
             executorService.submit(new PerformanceTest(BrowserType.FIREFOX));
 
-            if (i % 100 == 0) {
-//                executorService.submit(new PerformanceTest(BrowserType.EDGE));
+            if (i % 10 == 0) {
+                executorService.submit(new PerformanceTest(BrowserType.EDGE));
             }
             if (i % 100 == 0) {
-                executorService.submit(new PerformanceTest(BrowserType.SAFARI));
+//                executorService.submit(new PerformanceTest(BrowserType.SAFARI));
             }
-            if (i % 100 == 0) {
+            if (i % 10 == 0) {
                 executorService.submit(new PerformanceTest(BrowserType.IE));
             }
         }
@@ -52,6 +52,20 @@ public class ContinuesTest {
 
         for (int i = 0; i < numOfTest; i++) {
             executorService.submit(new PerformanceTest(browserName));
+        }
+        log.info("=========Finish upload tests");
+        executorService.shutdown();
+
+        while (true) if (executorService.isTerminated()) break;
+        log.info("-------Finished all threads-------");
+    }
+
+    private static void singleBasicTest(int numOfThreads, int numOfTest, String browserName) {
+        executorService = Executors.newFixedThreadPool(numOfThreads);
+        log.info("=========Finish Create Executor Service");
+
+        for (int i = 0; i < numOfTest; i++) {
+            executorService.submit(new BasicTest(browserName));
         }
         log.info("=========Finish upload tests");
         executorService.shutdown();

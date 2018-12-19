@@ -1,5 +1,6 @@
 package FrameWork;
 
+import Test.grid.LongTest;
 import Test.grid.NativePopupsTest;
 import Test.grid.PassTest;
 import Test.grid.UploadFile;
@@ -12,7 +13,7 @@ public class Runner {
     public static void main(String[] args) throws InterruptedException {
 
         int j = 0;
-        while (j < 10) {
+        while (j < 1) {
 //            new Thread(new PassTest(BrowserType.CHROME)).start();
 //            CollectSupportDataAPI collectSupportDataAPI = new CollectSupportDataAPI();
 //            collectSupportDataAPI.downloadCSD(1,"aaa","166");
@@ -24,7 +25,7 @@ public class Runner {
 //            new Thread(new FaileTest2(BrowserType.CHROME)).start();
 //            new Thread(new UploadFile(BrowserType.SAFARI)).start();
 //            new Thread(new NativePopupsTest(BrowserType.IE)).start();
-            new Thread(new NativePopupsTest(BrowserType.IE)).start();
+            new Thread(new LongTest(BrowserType.CHROME)).start();
 //            new Thread(new LongTest(BrowserType.EDGE)).start();
 //            new VersionCheckOneByOne(1);
 

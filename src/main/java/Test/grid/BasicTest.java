@@ -7,10 +7,9 @@ import org.openqa.selenium.remote.CapabilityType;
 /**
  * Created by ariel.hazan on 11-Feb-18.
  */
-public class Basic extends TestBase {
+public class BasicTest extends TestBase {
 
-    public Basic(String browserType) {
-        this.browserName = browserType;
+    public BasicTest(String browserType) {
         testName = this.getClass().getSimpleName() + " Test " + browserType;
         dc.setCapability("testName", testName);
         dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
@@ -18,8 +17,8 @@ public class Basic extends TestBase {
 
     @Override
     public void test() {
-
-        driver.get("https://www.google.com");
+//        driver.get("https://www.google.com");
+        driver.getTitle();
 //        sleep(5 * 60 * 1000);
     }
 }

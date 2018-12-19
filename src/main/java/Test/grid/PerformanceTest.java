@@ -89,7 +89,7 @@ public class PerformanceTest extends TestBase {
         input.sendKeys("C:\\IntellijProjects\\SeleniumAgent\\src\\main\\java\\Utils\\simple.txt");
         submit.click();
 
-        //Basic Operations
+        //BasicTest Operations
         driver.getPageSource();
         driver.getTitle();
         driver.navigate().back();

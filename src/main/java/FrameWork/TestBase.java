@@ -23,8 +23,8 @@ public abstract class TestBase implements Runnable {
     protected boolean USE_ACCESS_KEY = false;
 
     protected TestBase() {
-//        updateServerCredentials(CloudServerName.RND_VM_CLOUD);
-        updateServerCredentials(CloudServerName.QA_SECURE_ADMIN);
+        updateServerCredentials(CloudServerName.RND_VM_CLOUD);
+//        updateServerCredentials(CloudServerName.QA_SECURE_ADMIN);
 //        updateServerCredentials(CloudServerName.MASTER_CLOUD);
 //        updateServerCredentials(CloudServerName.DEEP_TESTING_CLOUD_PROJECT_ADMIN);
 //        updateServerCredentials(CloudServerName.ARIEL_MAC_ADMIN);
@@ -43,12 +43,12 @@ public abstract class TestBase implements Runnable {
         } catch (Exception e) {
             writeToLog(driver.getCapabilities(), e);
         } finally {
-            try {
-                if (driver != null) {
+            if (driver != null) {
+                try {
                     driver.quit();
+                } catch (Exception e) {
+                    log.info("Fail to preform quit: " + getSessionDetails() + " exceptionMsg: " + e.getMessage());
                 }
-            } catch (Exception e) {
-                log.info("Fail to preform quit: " + getSessionDetails() + " exceptionMsg: " + e.getMessage());
             }
         }
     }
@@ -58,7 +58,7 @@ public abstract class TestBase implements Runnable {
         log.error("Result - #" + (++testIndex) + " @FAIL " + getSessionDetails() + " \n" + capabilities, exception);
 
         countExc(platform + " " + browserName + " " + browserVersion + " - " + exception.getMessage().split("\n")[0]);
-        if (failCount % 15 == 0) {
+        if (failCount % 10 == 0) {
             String CSDPath = String.valueOf(testIndex) + "_" + testName + "_" + System.currentTimeMillis() + ".zip";
             new Thread(new CollectSupportDataAPI(CSDPath), CSDPath).start();
             log.info("Start downloading Collect Support Data =" + CSDPath);
@@ -115,9 +115,8 @@ public abstract class TestBase implements Runnable {
         if (SECURE)
             urlBase = "https://";
 
-        if (USE_ACCESS_KEY) {
-            url = new URL(urlBase + ":" + AK + "@" + HOST + ":" + PORT + "/wd/hub");
-        } else {
+        url = new URL(urlBase + ":" + AK + "@" + HOST + ":" + PORT + "/wd/hub");
+        if (!USE_ACCESS_KEY) {
             url = new URL(urlBase + HOST + ":" + PORT + "/wd/hub");
 
             dc.setCapability("username", USER);
