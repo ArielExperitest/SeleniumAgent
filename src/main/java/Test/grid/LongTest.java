@@ -17,6 +17,7 @@ public class LongTest extends TestBase {
         while (i < 1000) {
             driver.get("https://www.google.com");
             Thread.sleep(4_000);
+            System.out.println(((double) (i * 4) / 60));
             i++;
         }
     }

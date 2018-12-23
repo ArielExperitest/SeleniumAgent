@@ -1,7 +1,6 @@
 package Test.grid;
 
 import FrameWork.TestBase;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.*;
 
@@ -12,8 +11,6 @@ import java.net.URL;
  * Created by ariel.hazan on 02-Jan-18.
  */
 public class PerformanceTest extends TestBase {
-    private final Logger log = Logger.getLogger(this.getClass().getName());
-
     public PerformanceTest(String browserType) {
         testName = this.getClass().getSimpleName() + " " + browserType;
         dc.setCapability("testName", testName);
@@ -86,7 +83,7 @@ public class PerformanceTest extends TestBase {
         driver.get("http://the-internet.herokuapp.com/upload");
         WebElement input = driver.findElement(By.id("file-upload"));
         WebElement submit = driver.findElement(By.id("file-submit"));
-        input.sendKeys("C:\\IntellijProjects\\SeleniumAgent\\src\\main\\java\\Utils\\simple.txt");
+        input.sendKeys("C:\\Users\\ariel.hazan\\Downloads\\java.webdriver-master\\Reporter\\SeleniumAgent\\src\\main\\java\\Utils\\simple.txt");
         submit.click();
 
         //BasicTest Operations
