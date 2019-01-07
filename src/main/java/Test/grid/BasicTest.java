@@ -17,8 +17,12 @@ public class BasicTest extends TestBase {
 
     @Override
     public void test() {
-//        driver.get("https://www.google.com");
-        driver.getTitle();
-//        sleep(5 * 60 * 1000);
+        driver.get("https://www.google.com");
+//        driver.getTitle();
+//        try {
+//            Thread.sleep(5 * 60 * 1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 }

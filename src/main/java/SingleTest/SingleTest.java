@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -21,27 +22,28 @@ public class SingleTest {
     @Before
     public void setUp() {
         try {
-            url = new URL("http://192.168.2.197:8080/wd/hub");
+            url = new URL("https://qacloud.experitest.com:443/wd/hub");
 //            url = new URL("http://192.168.2.173/wd/hub");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        dc.setCapability("username", "admin");
-        dc.setCapability("password", "Dd123456");
-        dc.setCapability("projectName", "tag project");
+        dc.setCapability("username", "ariel");
+        dc.setCapability("password", "Experitest2012");
+        dc.setCapability("projectName", "default");
+//        desiredCapabilities.setCapability("platform", Platform.MAC);
 
-        dc.setCapability("newSessionWaitTimeout", 30);//default is 300
-        dc.setCapability("newCommandTimeout", 300);//default is 300
-        dc.setCapability(CapabilityType.BROWSER_NAME, "firefox");
-        dc.setCapability("bbb", "firefox");
+//        dc.setCapability("newSessionWaitTimeout", 30);//default is 300
+        dc.setCapability("newCommandTimeout", 20);//default is 300
+//        dc.setCapability(CapabilityType.BROWSER_NAME, "firefox");
+//        dc.setCapability("bbb", "firefox");
 
-//        dc.setCapability(CapabilityType.BROWSER_VERSION, "52.6.0");
+//        dc.setCapability(CapabilityType.BROWSEzR_VERSION, "52.6.0");
 
     }
 
 
     @Test
-    public void testExperitest() throws InterruptedException {
+    public void testExperitest() {
         driver = new RemoteWebDriver(url, dc);
         System.out.println((String) driver.getCapabilities().getCapability("reportUrl"));
         System.out.println(driver.getCapabilities());
@@ -56,8 +58,8 @@ public class SingleTest {
 //        Thread.sleep(10_000);
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
+//    @After
+//    public void tearDown() {
+//        driver.quit();
+//    }
 }

@@ -7,7 +7,7 @@ import org.openqa.selenium.remote.BrowserType;
 public class SingleRunner {
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         int j = 0;
         while (j < 1) {
@@ -17,12 +17,13 @@ public class SingleRunner {
 //            new Thread(new OpenManualBrowserViaCloud(BrowserType.CHROME)).start();
 //            new Thread(new SeleniumScreenshot(BrowserType.FIREFOX)).start();
 //            new Thread(new PerformanceTest(BrowserType.IE)).start();
-//            new Thread(new PerformanceTest(BrowserType.FIREFOX)).start();
-//            new Thread(new PerformanceTest(BrowserType.CHROME)).start();
-//            new Thread(new FaileTest2(BrowserType.CHROME)).start();
+            new Thread(new BasicTest(BrowserType.FIREFOX)).start();
+//            new Thread(new MinimumCapabilityTest()).start();
+//            new VersionCheckOneByOne(10);
+//            new Thread(new AccessKeyTest(BrowserType.CHROME)).start();
 //            new Thread(new UploadFile(BrowserType.SAFARI)).start();
 //            new Thread(new NativePopupsTest(BrowserType.IE)).start();
-            new Thread(new BasicTest(BrowserType.CHROME)).start();
+//            new Thread(new BasicTest(BrowserType.CHROME)).start();
 //            new Thread(new LongTest(BrowserType.EDGE)).start();
 //            new VersionCheckOneByOne(1);
 
@@ -42,7 +43,7 @@ public class SingleRunner {
 //            new Thread(new VersionCheck.IE("11")).start();
 //            new Thread(new TimeTestYoram()).start();
 
-            System.out.println(">>>>>>>>>>>>>>>>> Test #" + j + " <<<<<<<<<<<<<<<<<<<<<<<");
+            System.out.println(">>>>>>>>>>>>>>>>> Loop #" + j + " <<<<<<<<<<<<<<<<<<<<<<<");
             j++;
         }
     }

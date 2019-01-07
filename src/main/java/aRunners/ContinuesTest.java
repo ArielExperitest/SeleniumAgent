@@ -13,15 +13,16 @@ public class ContinuesTest {
 
 
     public static void main(String[] args) {
-        tester(5, 50);
-//        singlePerformanceTest(5, 40, BrowserType.FIREFOX);
-//        singleBasicTest(15, 10000, BrowserType.FIREFOX);
+//        tester(20, 100);
+        singlePerformanceTest(20, 100, BrowserType.FIREFOX);
+//        singleBasicTest(15, 3000, BrowserType.FIREFOX);
+//        singleBasicTest(15, 3000, BrowserType.CHROME);
+//        singleLogTest(60, 1500, BrowserType.FIREFOX);
 //        System.out.println(strings.toString());
     }
 
     private static void tester(int numOfThreads, int numOfTest) {
-        executorService = Executors.newFixedThreadPool(numOfThreads);
-        log.info("=========Finish Create Executor Service");
+        before(numOfThreads);
 
         for (int i = 0; i < numOfTest; i++) {
             executorService.submit(new PerformanceTest(BrowserType.CHROME));
@@ -38,38 +39,45 @@ public class ContinuesTest {
             }
         }
         log.info("=========Finish upload tests");
+        after();
+    }
 
-        executorService.shutdown();
-        while (true) {
-            if (executorService.isTerminated()) break;
+    private static void singleLogTest(int numOfThreads, int numOfTest, String browserName) {
+        before(numOfThreads);
+        for (int i = 0; i < numOfTest; i++) {
+            executorService.submit(new LongTest(browserName));
         }
-        log.info("-------Finished all threads-------");
+        log.info("=========Finish upload tests");
+        after();
     }
 
     private static void singlePerformanceTest(int numOfThreads, int numOfTest, String browserName) {
-        executorService = Executors.newFixedThreadPool(numOfThreads);
-        log.info("=========Finish Create Executor Service");
-
+        before(numOfThreads);
         for (int i = 0; i < numOfTest; i++) {
             executorService.submit(new PerformanceTest(browserName));
         }
         log.info("=========Finish upload tests");
-        executorService.shutdown();
-
-        while (true) if (executorService.isTerminated()) break;
-        log.info("-------Finished all threads-------");
+        after();
     }
 
     private static void singleBasicTest(int numOfThreads, int numOfTest, String browserName) {
-        executorService = Executors.newFixedThreadPool(numOfThreads);
-        log.info("=========Finish Create Executor Service");
+        before(numOfThreads);
 
         for (int i = 0; i < numOfTest; i++) {
             executorService.submit(new BasicTest(browserName));
         }
-        log.info("=========Finish upload tests");
-        executorService.shutdown();
 
+        log.info("=========Finish upload tests");
+        after();
+    }
+
+    private static void before(int numOfThreads) {
+        executorService = Executors.newFixedThreadPool(numOfThreads);
+        log.info("=========Finish Create Executor Service");
+    }
+
+    private static void after() {
+        executorService.shutdown();
         while (true) if (executorService.isTerminated()) break;
         log.info("-------Finished all threads-------");
     }

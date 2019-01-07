@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.Objects;
 
@@ -26,19 +25,14 @@ public class VersionCheck extends TestBase {
         dc.setCapability("testName", testName);
         dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
         dc.setCapability(CapabilityType.BROWSER_VERSION, versionToCheck);
-
     }
 
     @Override
     public void test() {
-        driver = new RemoteWebDriver(url, dc);
-        platform = String.valueOf(driver.getCapabilities().getPlatform());
-        reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
-        sessionId = (String) driver.getCapabilities().getCapability("sessionId");
         driver.get("http://www.whatversion.net" + getBrowserUrl());
         WebElement ver = driver.findElement(By.xpath("//*[@id=\"browser-info\"]")); //Your IE version is 11.0
-        if (Objects.nonNull(ver) && !ver.getText().contains(versionToCheck))
-            log.error("Check for version " + versionToCheck + " get " + ver.getText());
+        if (ver != null && !ver.getText().contains(versionToCheck.split("\\.")[0]))
+            log.error(">>>>>>>>>>>>>>Check for version " + versionToCheck + " get " + ver.getText());
     }
 
     private String getBrowserUrl() {
@@ -53,7 +47,7 @@ public class VersionCheck extends TestBase {
                 return "/safari/";
             }
             case BrowserType.CHROME: {
-                return "/safari/";
+                return "/chrome/";
             }
             case BrowserType.EDGE: {
                 return "/edge/";

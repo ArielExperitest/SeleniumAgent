@@ -4,7 +4,6 @@ import FrameWork.Credentials;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.openqa.selenium.remote.BrowserType;
@@ -21,23 +20,19 @@ import static FrameWork.Credentials.*;
  */
 public class VersionCheckOneByOne {
 
-    private ArrayList<JSONObject> jsonNodes;
-    private final Logger log = Logger.getLogger(this.getClass().getName());
-
-
     public VersionCheckOneByOne(int numOfThreads) {
-        super();
-        jsonNodes = getAvailableBrowser();
+        updateServerCredentials(Credentials.CloudServerName.QA_ADMIN);
+
+        ArrayList<JSONObject> jsonNodes = getAvailableBrowser();
         ExecutorService executor = Executors.newFixedThreadPool(numOfThreads);
 
         for (JSONObject jsonObject : jsonNodes) {
-
             String browserVersion = jsonObject.getString("browserVersion");
             String browserName = jsonObject.getString("browserName");
             if (browserName.equals(BrowserType.CHROME)) browserVersion = browserVersion.split("\\.")[0];
-
             executor.execute(new VersionCheck(browserName, browserVersion));
         }
+
         executor.shutdown();
         while (true) {
             if (executor.isTerminated()) break;
@@ -62,13 +57,10 @@ public class VersionCheckOneByOne {
 
     private JsonNode seleniumAgentApi() {
         JsonNode response = null;
-        String strAPI = "/api/v2/selenium-agents";
-        String baseURL = "http://" + HOST;
-        if (Credentials.SECURE) {
-            baseURL = "https://" + HOST;
-        }
+        String baseURL = (SECURE ? "https://" : "http://") + HOST + ":" + PORT + "/api/v2/selenium-agents";
+
         try {
-            response = Unirest.get(baseURL + strAPI)
+            response = Unirest.get(baseURL)
                     .basicAuth(USER, PASS)
                     .asJson().getBody();
         } catch (UnirestException e) {

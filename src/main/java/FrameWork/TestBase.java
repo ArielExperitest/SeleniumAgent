@@ -26,9 +26,11 @@ public abstract class TestBase extends TestInitializer implements Runnable {
             setDC();
             log.info("Start test - " + dc);
             initDriver();
+            log.info((this.reportUrl != null ? "Done init driver.. " : "Done init driver - Report is null ") + sessionId + " viewUrl: " + viewUrl);
             test();
             log.info("Result - #" + (++testIndex) + " @PASS " + getSessionDetails());
         } catch (Exception e) {
+            e.printStackTrace();
             writeToLog(driver.getCapabilities(), e);
         } finally {
             if (driver != null) {
@@ -70,13 +72,13 @@ public abstract class TestBase extends TestInitializer implements Runnable {
         if (!find) excList.add(new Node(1, message));
         if (excList.size() % 5 == 0) excList.sort(Comparator.comparingInt(left -> left.count));
 
-        log.info("########## Number of fail tests: " + (++failCount) + " of " + testIndex + "##############");
+        log.info("########## Number of fail tests: " + (++failCount) + " of " + testIndex + " ##############");
         for (Node anExcList : excList) log.info(anExcList.count + " " + anExcList.message);
         log.info("###################################");
     }
 
     private String getSessionDetails() {
-        return platform + " " + browserVersion + " " + sessionId + " reportUrl: " + reportUrl;
+        return agentName + " " + platform + " " + browserVersion + " " + sessionId + " reportUrl: " + reportUrl;
     }
 
     private void initDriver() {
@@ -87,6 +89,8 @@ public abstract class TestBase extends TestInitializer implements Runnable {
         this.platform = String.valueOf(capabilities.getPlatform());
         this.reportUrl = (String) capabilities.getCapability("reportUrl");
         this.sessionId = (String) capabilities.getCapability("sessionId");
+        this.agentName = (String) capabilities.getCapability("agentName");
+        this.viewUrl = (String) capabilities.getCapability("viewUrl");
         this.browserName = capabilities.getBrowserName();
 
         if (!browserName.equals(BrowserType.IE)) {//https://github.com/theintern/leadfoot/issues/134
@@ -95,7 +99,6 @@ public abstract class TestBase extends TestInitializer implements Runnable {
                     .pageLoadTimeout(90, TimeUnit.SECONDS)
                     .setScriptTimeout(90, TimeUnit.SECONDS);
         }
-        log.info(this.reportUrl != null ? "Done init driver.." : "Done init driver - Report is null");
     }
 
     private void setDC() throws MalformedURLException {
@@ -109,7 +112,8 @@ public abstract class TestBase extends TestInitializer implements Runnable {
         }
     }
 
-    protected String sessionId = "", browserVersion = "", testName = "", browserName = "", platform = "", reportUrl = "";
+    protected String sessionId = "", browserVersion = "", testName = "", browserName = "", platform = "", reportUrl = "", agentName = "", viewUrl = null;
+
     private final Logger log = Logger.getLogger(this.getClass().getName());
     private static List<Node> excList = new ArrayList<>();
     private static int failCount = 0, testIndex = 0;

@@ -83,7 +83,7 @@ public class PerformanceTest extends TestBase {
         driver.get("http://the-internet.herokuapp.com/upload");
         WebElement input = driver.findElement(By.id("file-upload"));
         WebElement submit = driver.findElement(By.id("file-submit"));
-        input.sendKeys("C:\\Users\\ariel.hazan\\Downloads\\java.webdriver-master\\Reporter\\SeleniumAgent\\src\\main\\java\\Utils\\simple.txt");
+        input.sendKeys("C:\\IntelljiProject\\SeleniumAgent\\src\\main\\java\\Utils\\simple.txt");
         submit.click();
 
         //BasicTest Operations

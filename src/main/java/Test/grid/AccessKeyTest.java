@@ -11,7 +11,7 @@ public class AccessKeyTest extends TestBase {
 
     public AccessKeyTest(String browserType) {
         this.browserName = browserType;
-        testName = this.getClass().getSimpleName() + " Test " + browserType;
+        testName = this.getClass().getSimpleName() + " " + browserType;
         dc.setCapability("testName", testName);
         dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
         USE_ACCESS_KEY = true;
@@ -20,9 +20,6 @@ public class AccessKeyTest extends TestBase {
 
     @Override
     public void test() {
-        driver = new RemoteWebDriver(url, dc);
-        platform = String.valueOf(driver.getCapabilities().getPlatform());
-        reportUrl = (String) driver.getCapabilities().getCapability("reportUrl");
         driver.get("https://www.ynet.co.il");
     }
 

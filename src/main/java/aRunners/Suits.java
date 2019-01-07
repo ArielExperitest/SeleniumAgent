@@ -127,7 +127,7 @@ public class Suits {
             executor.execute(new AccessKeyTest(browserType));
             executor.execute(new PassTest(browserType));
             executor.execute(new FailTest(browserType));
-            executor.execute(new MinimumCapabilityTest(browserType));
+            executor.execute(new MinimumCapabilityTest());
             new VersionCheckOneByOne(1);
 
             executor.shutdown();

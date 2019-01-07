@@ -28,7 +28,6 @@ public class WatchCloudTest extends TestBase {
 
     @Override
     public void test() {
-        driver = new RemoteWebDriver(url, dc);
         loginTOCloud();
         int randomIndex = new Random().nextInt(cloudPages.length);
         int i = 0;
