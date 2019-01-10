@@ -3,9 +3,13 @@ package FrameWork;
 import Utils.CollectSupportDataAPI;
 import aRunners.TestInitializer;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -20,6 +24,8 @@ import static FrameWork.Credentials.PROJECT;
 public abstract class TestBase extends TestInitializer implements Runnable {
     protected abstract void test() throws Exception;
 
+    protected WebDriverWait wait;
+
     @Override
     public void run() {
         try {
@@ -30,7 +36,6 @@ public abstract class TestBase extends TestInitializer implements Runnable {
             test();
             log.info("Result - #" + (++testIndex) + " @PASS " + getSessionDetails());
         } catch (Exception e) {
-            e.printStackTrace();
             writeToLog(driver.getCapabilities(), e);
         } finally {
             if (driver != null) {
@@ -49,7 +54,7 @@ public abstract class TestBase extends TestInitializer implements Runnable {
 
         countExc(platform + " " + browserName + " " + browserVersion + " - " + exception.getMessage().split("\n")[0]);
         if (failCount % 10 == 0) {
-            String CSDPath = testIndex + "_" + testName + "_" + System.currentTimeMillis() + ".zip";
+            String CSDPath = testIndex + "_" + testName + "_" + sessionId + ".zip";
             new Thread(new CollectSupportDataAPI(CSDPath), CSDPath).start();
             log.info("Start downloading Collect Support Data =" + CSDPath);
             //Download report from reporter
@@ -93,12 +98,17 @@ public abstract class TestBase extends TestInitializer implements Runnable {
         this.viewUrl = (String) capabilities.getCapability("viewUrl");
         this.browserName = capabilities.getBrowserName();
 
-        if (!browserName.equals(BrowserType.IE)) {//https://github.com/theintern/leadfoot/issues/134
+        wait = new WebDriverWait(driver, 90);
+        if (!browserName.equals(BrowserType.IE) && !browserVersion.equals("64.0") && !browserVersion.equals("65.0")) {//https://github.com/theintern/leadfoot/issues/134
             driver.manage().timeouts()
                     .implicitlyWait(90, TimeUnit.SECONDS)
                     .pageLoadTimeout(90, TimeUnit.SECONDS)
                     .setScriptTimeout(90, TimeUnit.SECONDS);
         }
+    }
+
+    protected WebElement myFindElement(By xPath) {
+        return USE_WAIT_UNTIL ? wait.until(ExpectedConditions.visibilityOfElementLocated(xPath)) : driver.findElement(xPath);
     }
 
     private void setDC() throws MalformedURLException {
@@ -119,7 +129,6 @@ public abstract class TestBase extends TestInitializer implements Runnable {
     private static int failCount = 0, testIndex = 0;
     protected URL url;
     protected RemoteWebDriver driver;
-
 }
 
 class Node {
