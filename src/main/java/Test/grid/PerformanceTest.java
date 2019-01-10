@@ -18,9 +18,6 @@ public class PerformanceTest extends TestBase {
         dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
     }
 
-    public PerformanceTest() {
-    }
-
     @Override
     protected void test() {
         driver.get("https://qacloud.experitest.com");

@@ -15,9 +15,6 @@ public class BasicWikiTest extends TestBase {
         dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
     }
 
-    public BasicWikiTest() {
-    }
-
     @Override
     public void test() {
         System.out.println((String) driver.getCapabilities().getCapability("viewUrl"));

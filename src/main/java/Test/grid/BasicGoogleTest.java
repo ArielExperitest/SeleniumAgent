@@ -15,9 +15,6 @@ public class BasicGoogleTest extends TestBase {
         dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
     }
 
-    public BasicGoogleTest() {
-    }
-
     @Override
     public void test() {
         driver.get("https://www.ynet.co.il");

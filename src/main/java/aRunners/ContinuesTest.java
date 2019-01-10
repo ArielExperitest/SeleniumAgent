@@ -13,9 +13,8 @@ public class ContinuesTest {
     //  9, 9.4 minutes >>>>>false
 
     public static void main(String[] args) {
-        before(10);
 //        tester(20, 50);
-        singleTest(3, BrowserType.FIREFOX, new LongTest());
+        singlePerformanceTest(10, 3, BrowserType.FIREFOX);
         after();
     }
 
@@ -38,18 +37,29 @@ public class ContinuesTest {
         }
     }
 
-    private static void singleTest(int numOfTest, String browserName, Object object) {
+    private static void singleLogTest(int numOfThreads, int numOfTest, String browserName) {
+        before(numOfThreads);
         for (int i = 0; i < numOfTest; i++) {
-            if (object instanceof PerformanceTest) {
-                executorService.submit(new PerformanceTest(browserName));
-            } else if (object instanceof LongTest) {
-                executorService.submit(new LongTest(browserName));
-            } else if (object instanceof BasicWikiTest) {
-                executorService.submit(new BasicWikiTest(browserName));
-            } else if (object instanceof BasicGoogleTest) {
-                executorService.submit(new BasicGoogleTest(browserName));
-            }
+            executorService.submit(new LongTest(browserName));
         }
+        log.info("=========Finish upload tests");
+    }
+    private static void singlePerformanceTest(int numOfThreads, int numOfTest, String browserName) {
+        before(numOfThreads);
+        for (int i = 0; i < numOfTest; i++) {
+
+            executorService.submit(new PerformanceTest(browserName));
+        }
+        log.info("=========Finish upload tests");
+    }
+    private static void singleBasicTest(int numOfThreads, int numOfTest, String browserName) {
+        before(numOfThreads);
+
+        for (int i = 0; i < numOfTest; i++) {
+            executorService.submit(new BasicGoogleTest(browserName));
+        }
+
+        log.info("=========Finish upload tests");
     }
 
     private static void before(int numOfThreads) {
@@ -72,31 +82,4 @@ public class ContinuesTest {
     private static final Logger log = Logger.getLogger("ContinuesTest");
     private static ExecutorService executorService;
     private static long startTime;
-
-
-//    private static void singleLogTest(int numOfThreads, int numOfTest, String browserName) {
-//        before(numOfThreads);
-//        for (int i = 0; i < numOfTest; i++) {
-//            executorService.submit(new LongTest(browserName));
-//        }
-//        log.info("=========Finish upload tests");
-//    }
-//    private static void singlePerformanceTest(int numOfThreads, int numOfTest, String browserName) {
-//        before(numOfThreads);
-//        for (int i = 0; i < numOfTest; i++) {
-//
-//            executorService.submit(new PerformanceTest(browserName));
-//        }
-//        log.info("=========Finish upload tests");
-//    }
-//    private static void singleBasicTest(int numOfThreads, int numOfTest, String browserName) {
-//        before(numOfThreads);
-//
-//        for (int i = 0; i < numOfTest; i++) {
-//            executorService.submit(new BasicGoogleTest(browserName));
-//        }
-//
-//        log.info("=========Finish upload tests");
-//    }
-
 }

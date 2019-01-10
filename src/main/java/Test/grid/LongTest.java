@@ -16,9 +16,6 @@ public class LongTest extends TestBase {
         dc.setCapability(CapabilityType.BROWSER_NAME, browserType);
     }
 
-    public LongTest() {
-    }
-
     @Override
     protected void test() throws Exception {
         loginTOCloud();
