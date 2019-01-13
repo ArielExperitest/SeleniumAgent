@@ -18,7 +18,7 @@ public class SingleRunner {
 //            new Thread(new SeleniumScreenshot(BrowserType.FIREFOX)).start();
 //            new Thread(new PerformanceTest(BrowserType.IE)).start();
 //            new Thread(new BasicWikiTest(BrowserType.FIREFOX)).start();
-            new Thread(new BasicWikiTest(BrowserType.SAFARI)).start();
+            new Thread(new LongTest(BrowserType.CHROME)).start();
 //            new Thread(new MinimumCapabilityTest()).start();
 //            new VersionCheckOneByOne(10);
 //            new Thread(new AccessKeyTest(BrowserType.CHROME)).start();

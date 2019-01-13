@@ -14,7 +14,7 @@ public class ContinuesTest {
 
     public static void main(String[] args) {
 //        tester(20, 50);
-        singlePerformanceTest(10, 3, BrowserType.FIREFOX);
+        singlePerformanceTest(20, 100, BrowserType.FIREFOX);
         after();
     }
 

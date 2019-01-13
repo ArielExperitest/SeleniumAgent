@@ -20,7 +20,7 @@ public class LongTest extends TestBase {
     protected void test() throws Exception {
         loginTOCloud();
         int i = 0;
-        while (i < 1000) {
+        while (i < 100000) {
             driver.navigate().refresh();
             Thread.sleep(4_000);
             i++;
