@@ -17,13 +17,6 @@ public class BasicWikiTest extends TestBase {
 
     @Override
     public void test() {
-        System.out.println((String) driver.getCapabilities().getCapability("viewUrl"));
         driver.get("https://en.wikipedia.org/wiki/Special:Random");
-//        driver.getTitle();
-        try {
-            Thread.sleep(7 * 60 * 1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }

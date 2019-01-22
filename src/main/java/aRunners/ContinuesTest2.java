@@ -1,21 +1,22 @@
 package aRunners;
 
-import Test.grid.*;
+import Test.grid.BasicGoogleTest;
+import Test.grid.LongTest;
+import Test.grid.PerformanceTest;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.remote.BrowserType;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ContinuesTest {
+public class ContinuesTest2 {
 
     public static void main(String[] args) {
-//        tester(30, 30);
+        tester(10, 2500);
 //        singlePerformanceTest(7, 25, BrowserType.SAFARI);
-//        singleGoogleTest(6, 300, BrowserType.FIREFOX);
-//        singleGoogleTest(6, 300, BrowserType.CHROME);
-//        singlePerformanceTest(5, 10, BrowserType.FIREFOX);
-        singleLongLiteTest(5, 10, BrowserType.CHROME);
+//        singleGoogleTest(10, 3000, BrowserType.FIREFOX);
+//        singleGoogleTest(10, 3000, BrowserType.CHROME);
+//        singlePerformanceTest(10, 50, BrowserType.CHROME);
         after();
     }
 
@@ -24,18 +25,17 @@ public class ContinuesTest {
         before(numOfThreads);
 
         for (int i = 0; i < numOfTest; i++) {
-            executorService.submit(new LongLiteTest(BrowserType.CHROME));
-//            executorService.submit(new LongWikiTest(BrowserType.SAFARI));
-            executorService.submit(new LongLiteTest(BrowserType.FIREFOX));
+            executorService.submit(new PerformanceTest(BrowserType.CHROME));
+            executorService.submit(new PerformanceTest(BrowserType.FIREFOX));
 
             if (i % 10 == 0) {
-//                executorService.submit(new LongLiteTest(BrowserType.EDGE));
+//                executorService.submit(new PerformanceTest(BrowserType.EDGE));
+            }
+            if (i % 100 == 0) {
+                executorService.submit(new PerformanceTest(BrowserType.SAFARI));
             }
             if (i % 10 == 0) {
-                executorService.submit(new LongLiteTest(BrowserType.SAFARI));
-            }
-            if (i % 10 == 0) {
-//                executorService.submit(new LongLiteTest(BrowserType.IE));
+//                executorService.submit(new PerformanceTest(BrowserType.IE));
             }
         }
     }
@@ -65,15 +65,6 @@ public class ContinuesTest {
         log.info("=========Finish upload tests");
     }
 
-    private static void singleLongLiteTest(int nubOfWorkers, int numOfTasks, String browserName) {
-        before(nubOfWorkers);
-        for (int i = 0; i < numOfTasks; i++)
-            executorService.submit(new LongLiteTest(browserName));
-
-        log.info("=========Finish upload tests");
-    }
-
-
     private static void singleBasicTest(int numOfThreads, int numOfTest, String browserName) {
         before(numOfThreads);
 
@@ -92,20 +83,13 @@ public class ContinuesTest {
     }
 
     private static void after() {
+        log.info("=========Finish upload tests");
         executorService.shutdown();
-        long currentTime = System.currentTimeMillis();
-        int i = 0;
-        while (true) {
-            if (executorService.isTerminated()) break;
-            else if (currentTime + 60_000 * i < System.currentTimeMillis()) {
-                log.info("Not all threads are finished");
-                i++;
-            }
-
-        }
+        while (true) if (executorService.isTerminated()) break;
         log.info("-------Finished all threads-------");
         double seconds = (System.nanoTime() - startTime) / 1_000_000_000.0;
         log.info("The test has run: " + (int) (seconds / 60) + " minuets");
+
     }
 
     private static final Logger log = Logger.getLogger("ContinuesTest");

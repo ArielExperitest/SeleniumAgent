@@ -1,5 +1,6 @@
 package aRunners;
 
+import FrameWork.TestBase;
 import Test.grid.*;
 import Test.manual.OpenManualBrowserViaCloud;
 import org.apache.log4j.Logger;
@@ -71,7 +72,7 @@ public class Suits {
     }
 
     private static void testAgent(int numOfReturns, int numOfSet) {
-        testAgent(numOfSet * 3 + 1, numOfReturns, numOfSet);
+        testAgent(numOfSet * 2, numOfReturns, numOfSet);
     }
 
     private static void testEdge(int numOfThreads, int numOfReturns, int numOfSet) {
@@ -98,11 +99,11 @@ public class Suits {
 
         for (int i = 0; i < numOfReturns; i++) {
             executor = Executors.newFixedThreadPool(numOfThreads);
-
+            long startTime = System.nanoTime();
             for (int j = 0; j < numOfSet; j++) {
-                executor.execute(new PerformanceTest(BrowserType.CHROME));
-                executor.execute(new PerformanceTest(BrowserType.SAFARI));
-                executor.execute(new PerformanceTest(BrowserType.FIREFOX));
+                executor.execute(new LongWikiTest(BrowserType.CHROME));
+                executor.execute(new LongWikiTest(BrowserType.SAFARI));
+                executor.execute(new LongWikiTest(BrowserType.FIREFOX));
             }
 //            executor.execute(new PerformanceTest(BrowserType.EDGE));
 //            executor.execute(new PerformanceTest(BrowserType.IE));
@@ -113,6 +114,8 @@ public class Suits {
                 if (executor.isTerminated()) break;
             }
             log.info("=========Finish Agent Suits #" + i + "=========");
+            double endTime = (System.nanoTime() - startTime) / 1_000_000_000.0;
+            log.info(numOfThreads + " threats run " + (numOfSet * 3) + " tests in parallel take " + (int) (endTime / 60) + " minuets, failed " + TestBase.failCount);
         }
         log.info("-------Finished all threads-------");
     }

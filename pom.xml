@@ -36,12 +36,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.experitest</groupId>
-            <artifactId>seetest-client</artifactId>
-            <version>14.0</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.mashape.unirest</groupId>
             <artifactId>unirest-java</artifactId>
             <version>1.4.9</version>
@@ -51,6 +45,12 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.camel/camel-zipfile -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-zipfile</artifactId>
+            <version>2.23.0</version>
         </dependency>
 
     </dependencies>

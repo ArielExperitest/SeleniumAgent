@@ -34,9 +34,10 @@ public abstract class TestBase extends TestInitializer implements Runnable {
             initDriver();
             log.info((this.reportUrl != null ? "Done init driver.. " : "Done init driver - Report is null ") + sessionId + " viewUrl: " + viewUrl);
             test();
-            log.info("Result - #" + (++testIndex) + " @PASS " + getSessionDetails());
+            log.info("Result - #" + (++testIndex)  + " @PASS " + getSessionDetails());
         } catch (Exception e) {
-            writeToLog(driver.getCapabilities(), e);
+            if (driver != null) writeToLog(driver.getCapabilities(), e);
+            else e.printStackTrace();
         } finally {
             if (driver != null) {
                 try {
@@ -126,7 +127,8 @@ public abstract class TestBase extends TestInitializer implements Runnable {
 
     private final Logger log = Logger.getLogger(this.getClass().getName());
     private static List<Node> excList = new ArrayList<>();
-    private static int failCount = 0, testIndex = 0;
+    public static int failCount = 0;
+    private static int testIndex = 0;
     protected URL url;
     protected RemoteWebDriver driver;
 }

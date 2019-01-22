@@ -17,7 +17,7 @@ public class BasicYnetTest extends TestBase {
 
     @Override
     public void test() {
-        driver.get("https://www.google.com");
+        driver.get("https://www.ynet.com");
         System.out.println((String) driver.getCapabilities().getCapability("viewUrl"));
 //        driver.getTitle();
         try {

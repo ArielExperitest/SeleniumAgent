@@ -9,7 +9,7 @@ public class Credentials {
     public static boolean SECURE, REPORTER_SECURE;
 
     public enum CloudServerName {
-        NAVOT, STAGE_CLOUD_ADMIN, VM, MIRRON, PUBLIC, EYAl, QA_Not_Secured, ARIEL_WIN_ADMIN, ARIEL_WIN_SECURE_ADMIN, ARIEL_WIN_PRO_ADMIN, ARIEL_WIN_USER, ARIEL_MAC_ADMIN, ARIEL_MAC_PRO_ADMIN, ARIEL_MAC_USER, YEHUDA, RELEASE_CLOUD, MASTER_CLOUD, QA_SECURE_USER, QA_ADMIN, QA_SECURE_PRO, SHELI, IGAL, SELENIUM, YORAM, ARIEL_MAC_SECURE_PRO_ADMIN, ARIEL_MAC_SECURE_USER, ARIEL_MAC_SECURE_ADMIN, DIKLA_WIN_ADMIN, DIKLA_MAC_ADMIN, DEEP_TESTING_CLOUD_ADMIN, DIKLA_WIN_USER, RND_VM_CLOUD, DEEP_TESTING_CLOUD_PROJECT_ADMIN
+        NAVOT, MIRRON, EYAl, ARIEL_WIN_ADMIN, ARIEL_WIN_SECURE_ADMIN, ARIEL_WIN_PRO_ADMIN, ARIEL_WIN_USER, ARIEL_MAC_ADMIN, ARIEL_MAC_PRO_ADMIN, ARIEL_MAC_USER, RELEASE_CLOUD, MASTER_CLOUD, QA_SECURE_USER, QA_ADMIN, QA_SECURE_PRO, SHELI, IGAL, SELENIUM, YORAM, ARIEL_MAC_SECURE_PRO_ADMIN, ARIEL_MAC_SECURE_USER, ARIEL_MAC_SECURE_ADMIN, DIKLA_WIN_ADMIN, DIKLA_MAC_ADMIN, DEEP_TESTING_CLOUD_ADMIN, DIKLA_WIN_USER, RND_VM_CLOUD, DEEP_TESTING_CLOUD_PROJECT_ADMIN
     }
 
     public static void updateServerCredentials(CloudServerName cloudName) {
@@ -128,30 +128,6 @@ public class Credentials {
                 PORT = "80";
                 USER = "sheli";
                 PROJECT = "";
-                PASS = "Experitest2012";
-                SECURE = false;
-                REPORTER_HOST = "";
-                REPORTER_PORT = "";
-                REPORTER_SECURE = false;
-                AK = "";
-                break;
-            case STAGE_CLOUD_ADMIN:
-                HOST = "stage.experitest.com";
-                PORT = "443";
-                USER = "ariel";
-                PROJECT = "";
-                PASS = "Experitest2012";
-                SECURE = true;
-                REPORTER_HOST = "";
-                REPORTER_PORT = "";
-                REPORTER_SECURE = false;
-                AK = "eyJ4cC51IjozOSwieHAucCI6MiwieHAubSI6Ik1UVXdNek01TnpBNU5Ea3lOdyIsImFsZyI6IkhTMjU2In0.eyJleHAiOjE4MzA5NTcxNDMsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.0CL9CIH-5432p1jTl6WAP09xqOWQn6BOw5id12Q6Cgc";
-                break;
-            case VM:
-                HOST = "192.168.2.139";
-                PORT = "80";
-                USER = "admin";
-                PROJECT = "Default";
                 PASS = "Experitest2012";
                 SECURE = false;
                 REPORTER_HOST = "";
@@ -284,18 +260,6 @@ public class Credentials {
                 REPORTER_SECURE = false;
                 AK = "";
                 break;
-            case YEHUDA:
-                HOST = "192.168.2.31";
-                PORT = "1111";
-                USER = "yehuda";
-                PROJECT = "";
-                PASS = "Experitest2012";
-                SECURE = false;
-                REPORTER_HOST = "";
-                REPORTER_PORT = "";
-                REPORTER_SECURE = false;
-                AK = "";
-                break;
             case QA_ADMIN:
                 HOST = "qacloud.experitest.com";
                 PORT = "443";
@@ -344,18 +308,6 @@ public class Credentials {
                 REPORTER_SECURE = false;
                 AK = "eyJ4cC51IjoyNjkxLCJ4cC5wIjoyLCJ4cC5tIjoiTVRRNU9UTTFNVE16TkRrNE5nIiwiYWxnIjoiSFMyNTYifQ.eyJleHAiOjQ2NzIxOTU0MDAsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.XUOSiX6WGh8sF-l86TuTemYHES1s7QXD2UBKKKUUEqI";
                 break;
-            case QA_Not_Secured:
-                HOST = "qacloud.experitest.com";
-                PORT = "80";
-                USER = "ariel";
-                PROJECT = "";
-                PASS = "Experitest2012";
-                SECURE = false;
-                REPORTER_HOST = "";
-                REPORTER_PORT = "";
-                REPORTER_SECURE = false;
-                AK = "";
-                break;
             case MIRRON:
                 HOST = "192.168.2.71";
                 PORT = "8080";
@@ -363,18 +315,6 @@ public class Credentials {
                 PROJECT = "";
                 PASS = "Welc0me!";
                 SECURE = false;
-                REPORTER_HOST = "";
-                REPORTER_PORT = "";
-                REPORTER_SECURE = false;
-                AK = "";
-                break;
-            case PUBLIC:
-                HOST = "https://cloud.experitest.com";
-                PORT = "443";
-                USER = "ariel.hazan@experitest.com";
-                PROJECT = "";
-                PASS = "Experitest2012";
-                SECURE = true;
                 REPORTER_HOST = "";
                 REPORTER_PORT = "";
                 REPORTER_SECURE = false;

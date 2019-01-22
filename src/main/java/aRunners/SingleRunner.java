@@ -10,7 +10,7 @@ public class SingleRunner {
     public static void main(String[] args) {
 
         int j = 0;
-        while (j < 5) {
+        while (j < 1) {
 //            new Thread(new PassTest(BrowserType.CHROME)).start();
 //            CollectSupportDataAPI collectSupportDataAPI = new CollectSupportDataAPI();
 //            collectSupportDataAPI.downloadCSD(1,"aaa","166");
@@ -18,7 +18,7 @@ public class SingleRunner {
 //            new Thread(new SeleniumScreenshot(BrowserType.FIREFOX)).start();
 //            new Thread(new PerformanceTest(BrowserType.IE)).start();
 //            new Thread(new BasicWikiTest(BrowserType.FIREFOX)).start();
-            new Thread(new LongTest(BrowserType.CHROME)).start();
+            new Thread(new BasicWikiTest(BrowserType.CHROME)).start();
 //            new Thread(new MinimumCapabilityTest()).start();
 //            new VersionCheckOneByOne(10);
 //            new Thread(new AccessKeyTest(BrowserType.CHROME)).start();
