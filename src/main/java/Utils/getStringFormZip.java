@@ -16,9 +16,8 @@ public class getStringFormZip {
     private static ArrayList<File> fileToCopy = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
-        String path = "C:\\IntelljiProject\\SeleniumAgent\\reports\\CSD\\88_PerformanceTest chrome_267f8b8ad9a91f20b26b0a4cb14395d4.zip";
-        String sessionId = "267f8b8ad9a91f20b26b0a4cb14395d4" +
-                "";
+        String path = "C:\\Users\\ariel.hazan\\Downloads\\cloud_SupportData Wed Jan 23 2019 07_27_52 IST.zip";
+        String sessionId = "64.0.2" ;
         findSessionID(path, sessionId);
     }
 

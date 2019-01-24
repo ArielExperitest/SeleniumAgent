@@ -26,7 +26,7 @@ public class TestInitializer {
 //        dc.setCapability(CapabilityType.BROWSER_VERSION, "64.0");
 //        dc.setCapability(CapabilityType.PLATFORM, Platform.WIN10);
 //        dc.setCapability(CapabilityType.BROWSER_NAME, BrowserType.FIREFOX);
-        dc.setCapability("agentName", "QA-Selenium - 2.119");
+        dc.setCapability("agentName", "QA-Selenium - 2.167");
     }
 
     protected DesiredCapabilities dc = new DesiredCapabilities();

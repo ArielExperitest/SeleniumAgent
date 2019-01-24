@@ -4,19 +4,21 @@ import Test.grid.*;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.remote.BrowserType;
 
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ContinuesTest {
 
     public static void main(String[] args) {
-//        tester(30, 30);
+//        tester(15, 5000);
 //        singlePerformanceTest(7, 25, BrowserType.SAFARI);
 //        singleGoogleTest(6, 300, BrowserType.FIREFOX);
 //        singleGoogleTest(6, 300, BrowserType.CHROME);
 //        singlePerformanceTest(5, 10, BrowserType.FIREFOX);
-        singleLongLiteTest(5, 10, BrowserType.CHROME);
-        after();
+//        singleLongLiteTest(11, 50, BrowserType.SAFARI);
+//        singleBingTest(80, 140, BrowserType.CHROME);
+//        after();
     }
 
 
@@ -24,18 +26,18 @@ public class ContinuesTest {
         before(numOfThreads);
 
         for (int i = 0; i < numOfTest; i++) {
-            executorService.submit(new LongLiteTest(BrowserType.CHROME));
+            executorService.submit(new BasicWikiTest(BrowserType.CHROME));
 //            executorService.submit(new LongWikiTest(BrowserType.SAFARI));
-            executorService.submit(new LongLiteTest(BrowserType.FIREFOX));
+            executorService.submit(new BasicWikiTest(BrowserType.FIREFOX));
 
             if (i % 10 == 0) {
-//                executorService.submit(new LongLiteTest(BrowserType.EDGE));
+                executorService.submit(new BasicWikiTest(BrowserType.EDGE));
             }
             if (i % 10 == 0) {
-                executorService.submit(new LongLiteTest(BrowserType.SAFARI));
+//                executorService.submit(new BasicWikiTest(BrowserType.SAFARI));
             }
             if (i % 10 == 0) {
-//                executorService.submit(new LongLiteTest(BrowserType.IE));
+                executorService.submit(new BasicWikiTest(BrowserType.IE));
             }
         }
     }
@@ -69,6 +71,14 @@ public class ContinuesTest {
         before(nubOfWorkers);
         for (int i = 0; i < numOfTasks; i++)
             executorService.submit(new LongLiteTest(browserName));
+
+        log.info("=========Finish upload tests");
+    }
+
+    private static void singleBingTest(int nubOfWorkers, int numOfTasks, String browserName) {
+        before(nubOfWorkers);
+        for (int i = 0; i < numOfTasks; i++)
+            executorService.submit(new BingTest(browserName));
 
         log.info("=========Finish upload tests");
     }

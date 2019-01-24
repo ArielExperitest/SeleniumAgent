@@ -100,7 +100,7 @@ public abstract class TestBase extends TestInitializer implements Runnable {
         this.browserName = capabilities.getBrowserName();
 
         wait = new WebDriverWait(driver, 90);
-        if (!browserName.equals(BrowserType.IE) && !browserVersion.equals("64.0") && !browserVersion.equals("65.0")) {//https://github.com/theintern/leadfoot/issues/134
+        if (!browserName.equals(BrowserType.IE) && !browserVersion.contains("64.0") && !browserVersion.equals("65.0")) {//https://github.com/theintern/leadfoot/issues/134
             driver.manage().timeouts()
                     .implicitlyWait(90, TimeUnit.SECONDS)
                     .pageLoadTimeout(90, TimeUnit.SECONDS)
